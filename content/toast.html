@@ -1,0 +1,142 @@
+<div class="page-header">
+  <h2 id="toast">Toast / Sonner</h2>
+  <p class="text-muted">A toast notification system powered by Sonner. Provides lightweight, customizable notifications for success, error, and informational messages.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+    <span class="tag">sonner</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="toast-types">Toast Types</h3>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex gap-3" style="flex-wrap: wrap;">
+        <button class="btn btn-primary" onclick="toast.success('Operation completed successfully')">Success Toast</button>
+        <button class="btn btn-destructive" onclick="toast.error('Something went wrong')">Error Toast</button>
+        <button class="btn btn-secondary" onclick="toast.info('Your request is being processed')">Info Toast</button>
+        <button class="btn btn-secondary" onclick="toast.warning('This action cannot be undone')">Warning Toast</button>
+        <button class="btn btn-ghost" onclick="toast.loading('Loading...')">Loading Toast</button>
+      </div>
+
+      <div style="margin-top: 24px;">
+        <h4 id="toast-icon-map" style="margin-bottom: 8px; font-size: 13px; color: #E2E2E5;">Icon Mapping</h4>
+        <div style="overflow-x: auto;">
+          <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+                <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Type</th>
+                <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Icon</th>
+                <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Color</th>
+                <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Usage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+                <td style="padding: 8px 12px;"><span class="prop-name">success</span></td>
+                <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">CheckCircle</td>
+                <td style="padding: 8px 12px; color: #4ADE80;">Green (#4ADE80)</td>
+                <td style="padding: 8px 12px; color: #E2E2E5;">Operation completed successfully</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+                <td style="padding: 8px 12px;"><span class="prop-name">error</span></td>
+                <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">XCircle</td>
+                <td style="padding: 8px 12px; color: #F87171;">Red (#F87171)</td>
+                <td style="padding: 8px 12px; color: #E2E2E5;">Error or failure occurred</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+                <td style="padding: 8px 12px;"><span class="prop-name">info</span></td>
+                <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">Info</td>
+                <td style="padding: 8px 12px; color: #ADC6FF;">Blue (#ADC6FF)</td>
+                <td style="padding: 8px 12px; color: #E2E2E5;">Informational message</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+                <td style="padding: 8px 12px;"><span class="prop-name">warning</span></td>
+                <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">AlertTriangle</td>
+                <td style="padding: 8px 12px; color: #FBBF24;">Yellow (#FBBF24)</td>
+                <td style="padding: 8px 12px; color: #E2E2E5;">Warning or caution</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+                <td style="padding: 8px 12px;"><span class="prop-name">loading</span></td>
+                <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">Loader</td>
+                <td style="padding: 8px 12px; color: #4D8EFF;">Blue (#4D8EFF)</td>
+                <td style="padding: 8px 12px; color: #E2E2E5;">Loading / in progress</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>Toasts use the Sonner library with a dark theme. Import the <span class="font-mono text-code-sm">Toaster</span> component once at the root layout level and call <span class="font-mono text-code-sm">toast.success('message')</span> from anywhere in your app. The toaster renders in a fixed position at the bottom-right of the viewport by default.</p>
+  </div>
+
+  <h3 id="toast-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Method</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Signature</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">toast.success</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">(message: string) =&gt; string</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Show a success toast</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">toast.error</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">(message: string) =&gt; string</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Show an error toast</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">toast.info</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">(message: string) =&gt; string</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Show an info toast</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">toast.warning</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">(message: string) =&gt; string</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Show a warning toast</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">toast.loading</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">(message: string) =&gt; string</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Show a loading toast (returns toast ID for dismissal)</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">toast.dismiss</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">(id?: string) =&gt; void</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Dismiss a toast by ID, or all toasts</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="toast-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import { Toaster } from 'sonner'
+
+// In root layout:
+&lt;Toaster
+  position="bottom-right"
+  theme="dark"
+  richColors
+  closeButton
+/&gt;
+
+// Anywhere in app:
+import { toast } from 'sonner'
+
+toast.success('Ticket created successfully')
+toast.error('Failed to create ticket')
+toast.info('Your request is being processed')`}</code></pre>
+  </div>
+</div>

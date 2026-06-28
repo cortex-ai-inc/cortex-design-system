@@ -1,0 +1,131 @@
+<div class="page-header">
+  <h2 id="empty-state">EmptyState</h2>
+  <p class="text-muted">A structured empty state component for displaying placeholder content when lists, searches, or views have no data to show.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="empty-state-examples">Examples</h3>
+    </div>
+    <div class="preview-card-body">
+      <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+          <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(194, 198, 214, 0.1); display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <div>
+            <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #E2E2E5;">No tickets yet</h4>
+            <p style="margin: 4px 0 0; font-size: 13px; color: #C2C6D6; max-width: 240px;">Create your first support ticket to get started with the system.</p>
+          </div>
+          <button class="btn btn-primary btn-sm">Create Ticket</button>
+        </div>
+
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+          <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(194, 198, 214, 0.1); display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <div>
+            <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #E2E2E5;">No results found</h4>
+            <p style="margin: 4px 0 0; font-size: 13px; color: #C2C6D6; max-width: 240px;">Try adjusting your search or filters to find what you are looking for.</p>
+          </div>
+          <button class="btn btn-secondary btn-sm">Clear Filters</button>
+        </div>
+
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+          <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(194, 198, 214, 0.1); display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #E2E2E5;">No team members</h4>
+            <p style="margin: 4px 0 0; font-size: 13px; color: #C2C6D6; max-width: 240px;">Invite team members to collaborate on support tickets.</p>
+          </div>
+        </div>
+
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 32px 24px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center;">
+          <div style="width: 100px; height: 64px; border-radius: 8px; background: rgba(194, 198, 214, 0.05); display: flex; align-items: center; justify-content: center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="rgba(194, 198, 214, 0.2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <div>
+            <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #E2E2E5;">Dashboard</h4>
+            <p style="margin: 4px 0 0; font-size: 13px; color: #C2C6D6; max-width: 240px;">Media variant with custom illustration placeholder.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>The EmptyState component provides a consistent layout for empty views. It includes sub-components: <span class="font-mono text-code-sm">EmptyHeader</span>, <span class="font-mono text-code-sm">EmptyTitle</span>, <span class="font-mono text-code-sm">EmptyDescription</span>, <span class="font-mono text-code-sm">EmptyContent</span>, and <span class="font-mono text-code-sm">EmptyMedia</span>. The media variant can display as either an icon (in a <span class="font-mono text-code-sm">size-10</span> container with <span class="font-mono text-code-sm">bg-muted</span>) or a custom illustration.</p>
+  </div>
+
+  <h3 id="empty-state-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Component</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Props</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">Empty</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">className?: string, children: ReactNode</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Root container for empty state.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">EmptyMedia</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">variant?: 'default' | 'icon', children?: ReactNode</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Media/illustration area. 'icon' variant renders children in a <span class="font-mono">size-10</span> container.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">EmptyTitle</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">className?: string, children: ReactNode</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Empty state heading.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">EmptyDescription</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">className?: string, children: ReactNode</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Descriptive text explaining the empty state.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">EmptyContent</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">className?: string, children: ReactNode</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Action area (buttons, links, etc.).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="empty-state-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import { Empty, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent } from '@/components/ui/empty-state'
+
+// Basic empty state
+&lt;Empty&gt;
+  &lt;EmptyMedia variant="icon"&gt;
+    &lt;FileIcon /&gt;
+  &lt;/EmptyMedia&gt;
+  &lt;EmptyTitle&gt;No tickets found&lt;/EmptyTitle&gt;
+  &lt;EmptyDescription&gt;There are no tickets matching your criteria.&lt;/EmptyDescription&gt;
+  &lt;EmptyContent&gt;
+    &lt;Button&gt;Create Ticket&lt;/Button&gt;
+  &lt;/EmptyContent&gt;
+&lt;/Empty&gt;
+
+// Check in list rendering:
+{tickets.length === 0 ? (
+  &lt;Empty&gt;
+    &lt;EmptyTitle&gt;No results&lt;/EmptyTitle&gt;
+    &lt;EmptyDescription&gt;Try adjusting your search.&lt;/EmptyDescription&gt;
+  &lt;/Empty&gt;
+) : (
+  tickets.map(ticket =&gt; ...)
+)}`}</code></pre>
+  </div>
+</div>

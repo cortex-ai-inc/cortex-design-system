@@ -1,0 +1,288 @@
+<div class="page-header">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h1 id="navigation" class="text-display-sm">Navigation</h1>
+      <p class="text-muted">Sidebar navigation, topbar controls, breadcrumbs, and user menu patterns.</p>
+    </div>
+    <div class="flex gap-2">
+      <span class="tag tag-ts">TypeScript</span>
+      <span class="tag tag-react">React 19</span>
+      <span class="tag tag-radix">Radix UI</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- Sidebar -->
+  <h2 id="sidebar">Sidebar</h2>
+  <p>The sidebar is the primary navigation surface. It contains navigation items with icons and labels, organized into labeled sections. Bottom actions (docs, help, logout) are pinned to the bottom of the sidebar.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Sidebar (Expanded)</span>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex" style="background: #111319; border-radius: 6px; overflow: hidden;">
+        <!-- Sidebar mockup -->
+        <div style="width: 260px; background: #0C0E14; border-right: 1px solid #282A30;" class="flex flex-col">
+          <!-- Logo area -->
+          <div class="flex items-center gap-3 px-4 py-4" style="border-bottom: 1px solid #191B22;">
+            <div class="w-8 h-8 rounded-sm gradient-primary"></div>
+            <span style="color: #E2E2E5; font-weight: 600; font-size: 14px;">Cortex</span>
+          </div>
+
+          <!-- Nav sections -->
+          <div class="flex-1 flex flex-col gap-1 p-2">
+            <span class="text-label-sm text-muted px-2 pt-3 pb-1">Main</span>
+            <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="background: #282A30; border-left: 3px solid #4D8EFF; color: #E2E2E5;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              <span class="text-body-sm">Dashboard</span>
+            </div>
+            <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 5v2"/><path d="M15 11v2"/><path d="M15 17v2"/><path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2Z"/></svg>
+              <span class="text-body-sm">Tickets</span>
+            </div>
+            <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span class="text-body-sm">Profile</span>
+            </div>
+
+            <span class="text-label-sm text-muted px-2 pt-3 pb-1">Administration</span>
+            <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span class="text-body-sm">Admin Panel</span>
+            </div>
+          </div>
+
+          <!-- Bottom actions -->
+          <div class="p-2" style="border-top: 1px solid #191B22;">
+            <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+              <span class="text-body-sm">Documentation</span>
+            </div>
+            <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+              <span class="text-body-sm">Help &amp; Support</span>
+            </div>
+            <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #F87171;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+              <span class="text-body-sm">Logout</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">Primary navigation with active state (3px left border) and section labels</span>
+    </div>
+  </div>
+
+  <!-- Active State -->
+  <h3 id="active-state">Active State</h3>
+  <p>The active navigation item is identified by a <strong>3px solid left border</strong> in <span class="font-mono" style="color: #4D8EFF;">#4D8EFF</span> (k-primary-container), a slightly lighter background, and brighter text color.</p>
+
+  <div class="grid-2 gap-4">
+    <div class="preview-card">
+      <div class="preview-card-header">
+        <span class="text-label-sm">Active Item</span>
+      </div>
+      <div class="preview-card-body">
+        <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="background: #282A30; border-left: 3px solid #4D8EFF; color: #E2E2E5;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span class="text-body-sm">Dashboard</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">
+        <span class="text-label-sm">Inactive Item</span>
+      </div>
+      <div class="preview-card-body">
+        <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M15 5v2"/><path d="M15 11v2"/><path d="M15 17v2"/><path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2Z"/></svg>
+          <span class="text-body-sm">Tickets</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Collapsed Sidebar -->
+  <h3 id="collapsed-sidebar">Collapsed Sidebar</h3>
+  <p>When collapsed, only icons are shown. The toggle button in the topbar switches between expanded and collapsed states. On mobile, the sidebar is hidden by default and opens as an overlay.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Sidebar (Collapsed)</span>
+    </div>
+    <div class="preview-card-body">
+      <div style="width: 72px; background: #0C0E14; border-radius: 6px; border: 1px solid #282A30;" class="flex flex-col items-center py-3 gap-1">
+        <div class="w-8 h-8 rounded-sm gradient-primary mb-2"></div>
+        <div class="flex items-center justify-center w-10 h-10 rounded-sm" style="background: #282A30; border-left: 3px solid #4D8EFF; color: #E2E2E5;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <div class="flex items-center justify-center w-10 h-10 rounded-sm" style="color: #C2C6D6;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M15 5v2"/><path d="M15 11v2"/><path d="M15 17v2"/><path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2Z"/></svg>
+        </div>
+        <div class="flex items-center justify-center w-10 h-10 rounded-sm" style="color: #C2C6D6;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="flex-1"></div>
+        <div class="flex items-center justify-center w-10 h-10 rounded-sm" style="color: #C2C6D6;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">Icons only — labels hidden. 72px width. Active state retains 3px border.</span>
+    </div>
+  </div>
+
+  <!-- Topbar -->
+  <h2 id="topbar">Topbar</h2>
+  <p>The topbar sits above the content area and contains breadcrumbs, a sidebar toggle, the notification bell, and the user menu.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Topbar</span>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex items-center justify-between px-4 py-2 rounded-sm" style="background: #0C0E14; border: 1px solid #282A30; height: 48px;">
+        <div class="flex items-center gap-3">
+          <!-- Hamburger -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" style="color: #C2C6D6; cursor: pointer;">
+            <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+          </svg>
+          <!-- Breadcrumbs -->
+          <div class="flex items-center gap-2 text-body-sm">
+            <span style="color: #C2C6D6;">Dashboard</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="color: #C2C6D6;"><path d="m9 18 6-6-6-6"/></svg>
+            <span style="color: #C2C6D6;">Tickets</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="color: #C2C6D6;"><path d="m9 18 6-6-6-6"/></svg>
+            <span style="color: #E2E2E5;">Ticket #1234</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <!-- Notification bell -->
+          <div style="position: relative; cursor: pointer;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" style="color: #C2C6D6;">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <div style="position: absolute; top: -2px; right: -2px; width: 8px; height: 8px; background: #F87171; border-radius: 50%;"></div>
+          </div>
+          <!-- User avatar -->
+          <div class="flex items-center gap-2" style="cursor: pointer;">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background: #282A30; color: #E2E2E5; font-size: 12px; font-weight: 600;">TF</div>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="color: #C2C6D6;"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">z-index: 20 (topbar), sticky top-0</span>
+    </div>
+  </div>
+
+  <!-- Breadcrumb Route Mapping -->
+  <h3 id="breadcrumb-route-mapping">Breadcrumb Route Mapping</h3>
+  <p>Breadcrumbs derive labels from a <span class="font-mono">routeNames</span> object that maps route paths to human-readable labels.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Route Name Mapping</span>
+    </div>
+    <div class="preview-card-body">
+      <pre class="font-mono text-code-sm" style="color: #E2E2E5; background: #111319; padding: 16px; border-radius: 4px; overflow-x: auto;">const routeNames: Record&lt;string, string&gt; = {
+  '/':                    'Home',
+  '/dashboard':           'Dashboard',
+  '/tickets':             'Tickets',
+  '/tickets/new':         'New Ticket',
+  '/tickets/:id':         'Ticket Detail',
+  '/profile':             'Profile',
+  '/admin':               'Administration',
+  '/admin/tickets':       'All Tickets',
+  '/admin/tickets/:id':   'Ticket Detail',
+  '/admin/team':          'Team Management',
+  '/admin/settings':      'Settings',
+};</pre>
+    </div>
+  </div>
+
+  <!-- Nav Sections -->
+  <h3 id="nav-sections">Nav Sections</h3>
+  <p>Sidebar items are grouped into sections with uppercase labels. Each section has a <span class="font-mono">.text-label-sm.text-muted</span> heading with padding above.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-body">
+      <div style="width: 240px; background: #0C0E14; border-radius: 6px; border: 1px solid #282A30; padding: 12px;">
+        <span class="text-label-sm text-muted" style="display: block; padding: 4px 8px; margin-top: 4px;">Main</span>
+        <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="background: #282A30; color: #E2E2E5;">Dashboard</div>
+        <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">Tickets</div>
+        <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">Profile</div>
+
+        <span class="text-label-sm text-muted" style="display: block; padding: 4px 8px; margin-top: 12px;">Administration</span>
+        <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">Admin Panel</div>
+        <div class="flex items-center gap-3 px-3 py-2 rounded-sm" style="color: #C2C6D6;">Team</div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">.text-label-sm.text-muted — 11px uppercase, 700 weight, 1.2 spacing</span>
+    </div>
+  </div>
+
+  <!-- Mobile Hamburger Menu -->
+  <h2 id="mobile-hamburger">Mobile Hamburger Menu</h2>
+  <p>On viewports below the md breakpoint, the sidebar is hidden and replaced by a hamburger button in the topbar. Tapping it opens the sidebar as a full-height overlay with a semi-transparent backdrop.</p>
+
+  <div class="do-dont">
+    <div class="flex flex-col gap-3">
+
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center" style="background: rgba(77,142,255,0.15);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="color: #ADC6FF;"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <span class="text-body-sm" style="color: #E2E2E5;"><strong>Do:</strong> Use a semi-transparent backdrop (bg-black/50) behind the overlay sidebar on mobile.</span>
+        </div>
+      </div>
+
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center" style="background: rgba(248,113,113,0.15);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="color: #F87171;"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </div>
+        <div>
+          <span class="text-body-sm" style="color: #E2E2E5;"><strong>Don't:</strong> Push the content to the right on mobile — always use overlay.</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Actions -->
+  <h3 id="bottom-actions">Bottom Actions</h3>
+  <p>The bottom of the sidebar contains secondary actions: Documentation, Help &amp; Support, and Logout. These are visually separated from the primary navigation by a border.</p>
+
+  <div class="prop-table">
+    <div class="prop-table-row">
+      <span class="prop-name">Item</span>
+      <span class="prop-type">Icon</span>
+      <span class="prop-default">Color</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Documentation</span>
+      <span class="prop-type">BookOpen</span>
+      <span class="prop-default">on-surface-variant</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Help &amp; Support</span>
+      <span class="prop-type">Headphones</span>
+      <span class="prop-default">on-surface-variant</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Logout</span>
+      <span class="prop-type">LogOut</span>
+      <span class="prop-default">k-error (#F87171)</span>
+    </div>
+  </div>
+
+</div>

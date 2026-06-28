@@ -1,0 +1,171 @@
+<div class="page-header">
+  <h1>Card</h1>
+  <p>Contained surface for grouping related content and actions.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Cards are the primary container pattern for grouped content. They sit on the surface layer using
+    <code>bg-surface-container-low</code> with a <code>ghost-border</code> stroke, creating a subtle
+    distinction from the page background. The Card component (available in <strong>cortex-coder-front</strong>)
+    provides seven sub-components for structured layouts.
+  </p>
+  <div class="callout callout-info">
+    <strong>Note:</strong> The Card component is used in <strong>cortex-coder-front</strong>. The
+    <strong>cortex-support-front</strong> project does not have a Card component and surfaces content directly.
+  </div>
+
+  <h2 id="structure">Structure</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Component</span>
+      <span class="prop-table-cell">Role</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Card</span>
+      <span class="prop-default">Root wrapper with surface background + border + rounded-sm</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">CardHeader</span>
+      <span class="prop-default">Top section containing title, description, and actions</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">CardTitle</span>
+      <span class="prop-default">Card heading using text-title-sm</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">CardDescription</span>
+      <span class="prop-default">Subtitle text using on-surface-variant color</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">CardAction</span>
+      <span class="prop-default">Action slot in the top-right of CardHeader</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">CardContent</span>
+      <span class="prop-default">Main body area with padding</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">CardFooter</span>
+      <span class="prop-default">Bottom section for actions (buttons, links)</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="preview-card" style="max-width: 420px;">
+    <div class="preview-card-header">Example Card</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <div style="font-size: 0.9375rem; font-weight: 600; color: #E2E2E5;">Getting Started</div>
+        <div style="font-size: 0.8125rem; color: #C2C6D6;">Follow these steps to set up your workspace.</div>
+      </div>
+      <div style="font-size: 0.8125rem; color: #C2C6D6; line-height: 1.5;">
+        Configure your API keys, invite team members, and deploy your first agent.
+        Each step includes detailed documentation and examples.
+      </div>
+      <div style="display: flex; gap: 8px; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.06);">
+        <button class="btn btn-primary btn-sm">Get started</button>
+        <button class="btn btn-ghost btn-sm">Learn more</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="anatomy">Anatomy</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Card</div>
+      <div class="preview-card-body">
+        <pre><code>&lt;Card&gt;
+  &lt;CardHeader&gt;
+    &lt;CardTitle&gt;Title&lt;/CardTitle&gt;
+    &lt;CardDescription&gt;Description&lt;/CardDescription&gt;
+    &lt;CardAction&gt;
+      &lt;Button variant="ghost" size="icon" /&gt;
+    &lt;/CardAction&gt;
+  &lt;/CardHeader&gt;
+  &lt;CardContent&gt;
+    Main content here
+  &lt;/CardContent&gt;
+  &lt;CardFooter&gt;
+    &lt;Button&gt;Action&lt;/Button&gt;
+  &lt;/CardFooter&gt;
+&lt;/Card&gt;</code></pre>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Styling</div>
+      <div class="preview-card-body">
+        <ul>
+          <li>Background: <code>bg-surface-container-low</code> (#191B22)</li>
+          <li>Border: <code>ghost-border</code> (1px semi-transparent)</li>
+          <li>Radius: <code>rounded-sm</code> (4px)</li>
+          <li>Shadow: none (tonal layering provides depth)</li>
+          <li>Padding: p-4 in header/content, pt-0 in footer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <h3 id="card">Card</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h3 id="cardheader">CardHeader</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use cards to group related content with clear hierarchy</li>
+        <li>Use CardAction for contextual menu or tertiary actions</li>
+        <li>Keep card content focused and scannable</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Nest cards inside cards</li>
+        <li>Place primary CTAs in CardFooter — use page-level actions</li>
+        <li>Overcrowd — if content exceeds 400px height, consider a different layout</li>
+      </ul>
+    </div>
+  </div>
+</div>

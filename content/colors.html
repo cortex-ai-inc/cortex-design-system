@@ -1,0 +1,161 @@
+<div class="page-header">
+  <h1>Colors</h1>
+  <p>The Cortex color system — surfaces, brand, text, and semantic colors.</p>
+</div>
+<div class="page-body">
+  <h2 id="surfaces">Surface Colors</h2>
+  <p>Tonal layering defines hierarchy. Higher layers sit closer to the user, lower layers recede.</p>
+  <div class="grid-3">
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#111319;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">surface-dim</div>
+        <div class="color-swatch-value">#111319</div>
+        <div class="color-swatch-usage">App background — the base layer of every page</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#0C0E14;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">surface-container-lowest</div>
+        <div class="color-swatch-value">#0C0E14</div>
+        <div class="color-swatch-usage">Sidebar background — below the main content surface</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#191B22;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">surface-container-low</div>
+        <div class="color-swatch-value">#191B22</div>
+        <div class="color-swatch-usage">Cards, panels, and elevated surfaces</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#282A30;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">surface-container-high</div>
+        <div class="color-swatch-value">#282A30</div>
+        <div class="color-swatch-usage">Hover states, active elements, pressed states</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:rgba(40,42,48,0.70);"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">surface-container-highest</div>
+        <div class="color-swatch-value">rgba(40,42,48,0.70)</div>
+        <div class="color-swatch-usage">Glassmorphism effects, overlay surfaces</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="brand">Brand &amp; Primary</h2>
+  <div class="grid-2">
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#ADC6FF;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">k-primary</div>
+        <div class="color-swatch-value">#ADC6FF</div>
+        <div class="color-swatch-usage">Primary actions, links, active states, brand accent</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#4D8EFF;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">k-primary-container</div>
+        <div class="color-swatch-value">#4D8EFF</div>
+        <div class="color-swatch-usage">Primary container, gradient partner, emphasized states</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="text">Text Colors</h2>
+  <div class="grid-2">
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#E2E2E5;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">on-surface</div>
+        <div class="color-swatch-value">#E2E2E5</div>
+        <div class="color-swatch-usage">Primary body text, headings</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#C2C6D6;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">on-surface-variant</div>
+        <div class="color-swatch-value">#C2C6D6</div>
+        <div class="color-swatch-usage">Secondary text, labels, placeholders, muted content</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="semantic">Semantic Colors</h2>
+  <div class="grid-3">
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#4ADE80;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">k-secondary</div>
+        <div class="color-swatch-value">#4ADE80</div>
+        <div class="color-swatch-usage">Success states, resolved status, positive indicators</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#F87171;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">k-error</div>
+        <div class="color-swatch-value">#F87171</div>
+        <div class="color-swatch-usage">Error states, destructive actions, critical alerts</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#FBBF24;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">k-warning</div>
+        <div class="color-swatch-value">#FBBF24</div>
+        <div class="color-swatch-usage">Warning states, pending status, attention indicators</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="gradient">Gradient</h2>
+  <p>The <code>.gradient-primary</code> utility creates the signature Cortex blue gradient.</p>
+  <div class="preview-card">
+    <div class="preview-card-header">Preview</div>
+    <div class="preview-card-body">
+      <div style="width:200px;height:48px;border-radius:4px;background:linear-gradient(135deg,#ADC6FF 0%,#4D8EFF 100%);"></div>
+    </div>
+    <div class="preview-card-footer"><code>background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%);</code></div>
+  </div>
+
+  <h2 id="borders">Ghost Borders</h2>
+  <p>Subtle borders that separate without adding visual weight:</p>
+  <div class="grid-2">
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:rgba(194,198,214,0.15);"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">ghost-border</div>
+        <div class="color-swatch-value">rgba(194,198,214,0.15)</div>
+        <div class="color-swatch-usage">Default divider and border color</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:rgba(194,198,214,0.20);"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">ghost-border-20</div>
+        <div class="color-swatch-value">rgba(194,198,214,0.20)</div>
+        <div class="color-swatch-usage">Emphasized borders, focus rings</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="do-dont">
+    <div class="do-dont-item do">
+      <div class="do-dont-label">&#10003; Do</div>
+      <p>Use surface colors to create visual hierarchy. Use k-primary for primary actions and links. Use semantic colors consistently.</p>
+    </div>
+    <div class="do-dont-item dont">
+      <div class="do-dont-label">&#10007; Don't</div>
+      <p>Use surface colors interchangeably — keep the layering consistent. Use colors outside the defined palette.</p>
+    </div>
+  </div>
+</div>

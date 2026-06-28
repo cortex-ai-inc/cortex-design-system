@@ -1,0 +1,183 @@
+<div class="page-header">
+  <h1>Select</h1>
+  <p>Dropdown selector for choosing from a predefined list of options.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix Select</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    The Select component uses Radix UI Select for accessible, keyboard-navigable option picking.
+    The trigger button matches the Input styling (<code>h-10</code>, <code>bg-surface-dim</code>,
+    <code>ghost-border-20</code>, <code>rounded-sm</code>) for visual consistency in forms.
+    The dropdown content appears at <code>z-50</code> with <code>shadow-ambient</code> elevation.
+  </p>
+
+  <h2 id="structure">Structure</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Component</span>
+      <span class="prop-table-cell">Role</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Select</span>
+      <span class="prop-default">Root context provider for value + open state</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">SelectTrigger</span>
+      <span class="prop-default">Visible trigger button (styled like Input)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">SelectValue</span>
+      <span class="prop-default">Displays the current selected value</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">SelectContent</span>
+      <span class="prop-default">The dropdown panel (z-50, shadow-ambient)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">SelectItem</span>
+      <span class="prop-default">Individual option in the list</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">SelectLabel</span>
+      <span class="prop-default">Section label within the dropdown</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">SelectSeparator</span>
+      <span class="prop-default">Divider between option groups</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="grid-3">
+    <div class="preview-card">
+      <div class="preview-card-header">Default</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
+        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Role</label>
+        <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #C2C6D6; cursor: pointer;">
+          <span>Select role...</span>
+          <span style="color: #C2C6D6; font-size: 0.625rem;">&#x25BC;</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Open</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
+        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Role</label>
+        <div style="height: 40px; background: #111319; border: 1px solid rgba(77,142,255,0.5); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #E2E2E5; cursor: pointer; box-shadow: 0 0 0 2px rgba(77,142,255,0.3);">
+          <span>Agent</span>
+          <span style="color: #C2C6D6; font-size: 0.625rem;">&#x25B2;</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Dropdown Content</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 4px; background: #191B22; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 8px; max-width: 200px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px;">Admin</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px; background: #282A30;">Agent</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px;">Viewer</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="max-width: 400px;">
+    <div class="preview-card-header">Select States</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Enabled</label>
+        <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #C2C6D6;">
+          <span>Option selected</span>
+          <span style="color: #C2C6D6; font-size: 0.625rem;">&#x25BC;</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Disabled</label>
+        <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #6B7280; opacity: 0.5;">
+          <span>Not available</span>
+          <span style="font-size: 0.625rem;">&#x25BC;</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Error</label>
+        <div style="height: 40px; background: #111319; border: 1px solid #F87171; border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #C2C6D6;">
+          <span>Select role...</span>
+          <span style="color: #C2C6D6; font-size: 0.625rem;">&#x25BC;</span>
+        </div>
+        <div style="font-size: 0.75rem; color: #F87171;">This field is required.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <h3 id="select-item">SelectItem</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h3 id="select-trigger">SelectTrigger</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use Select for 5+ options — prefer RadioGroup or ToggleGroup for fewer</li>
+        <li>Provide a meaningful default or placeholder option</li>
+        <li>Group related options with SelectLabel and SelectSeparator</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use Select for navigation — it's for value selection</li>
+        <li>Make options too long — keep text concise</li>
+        <li>Use placeholder as the only label — always pair with a visible label</li>
+      </ul>
+    </div>
+  </div>
+</div>

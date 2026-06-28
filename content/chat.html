@@ -1,0 +1,368 @@
+<div class="page-header">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h1 id="chat" class="text-display-sm">Chat Interface</h1>
+      <p class="text-muted">Chat message components, markdown rendering, code syntax highlighting, diff view, and prism theme colors.</p>
+    </div>
+    <div class="flex gap-2">
+      <span class="tag tag-ts">TypeScript</span>
+      <span class="tag tag-react">React 19</span>
+      <span class="tag tag-new">Chat UI</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- Chat Messages -->
+  <h2 id="chat-messages">Chat Messages</h2>
+  <p>Chat messages use an <strong>Item</strong> component that renders a message bubble with optional sender information, timestamp, and actions. Messages alternate between user (right-aligned) and assistant (left-aligned), though in support contexts all messages are typically left-aligned with the agent's name and avatar.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Chat Message — Agent</span>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex items-start gap-3" style="max-width: 700px;">
+        <!-- Avatar -->
+        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(77,142,255,0.2); color: #ADC6FF; font-size: 12px; font-weight: 600;">AI</div>
+        <!-- Message -->
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-body-sm" style="color: #ADC6FF; font-weight: 600;">Cortex Assistant</span>
+            <span class="text-code-sm text-muted">2 min ago</span>
+          </div>
+          <div class="prose-chat" style="color: #E2E2E5; font-size: 13px; line-height: 1.6;">
+            <p style="margin: 0 0 8px 0;">I can help you investigate this issue. Let me check the recent logs for any relevant errors.</p>
+            <p style="margin: 0 0 8px 0;">Based on the logs, it looks like there's a database connection timeout. Here's the relevant error:</p>
+            <pre style="background: #111319; border: 1px solid #282A30; border-radius: 4px; padding: 12px; overflow-x: auto; font-size: 12px; line-height: 1.5;"><code style="font-family: 'JetBrains Mono', monospace;"><span style="color: #F87171;">ERROR</span> <span style="color: #FBBF24;">[2025-06-28 14:23:15]</span> <span style="color: #4ADE80;">"POST /api/tickets"</span>
+<span style="color: #C2C6D6;">Error: Connection timeout after 30000ms</span>
+    at <span style="color: #93C5FD;">TCPConnectWrap.afterConnect</span> [as oncomplete] (net.js:1158:16)</pre>
+
+            <p style="margin: 8px 0 0 0;">This suggests the database pool is exhausted. I recommend checking the <span class="chat-inline-code">max_connections</span> setting and considering connection pooling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">.prose-chat — chat-specific prose styling with 13px base font</span>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Chat Message — User</span>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex items-start gap-3" style="max-width: 700px;">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background: rgba(74,222,128,0.2); color: #4ADE80; font-size: 12px; font-weight: 600;">JD</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-body-sm" style="color: #4ADE80; font-weight: 600;">Jane Doe</span>
+            <span class="text-code-sm text-muted">1 min ago</span>
+          </div>
+          <div class="prose-chat" style="color: #E2E2E5; font-size: 13px; line-height: 1.6;">
+            <p style="margin: 0;">Can you show me the <span class="chat-inline-code">pg_stat_activity</span> output for the past hour? I want to see how many idle connections we have.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">User messages use k-secondary (#4ADE80) for sender name accent</span>
+    </div>
+  </div>
+
+  <!-- Markdown Rendering -->
+  <h2 id="markdown-rendering">Markdown Rendering</h2>
+  <p>Chat messages render markdown using <span class="font-mono">react-markdown</span> with the <span class="font-mono">remark-gfm</span> plugin for GitHub-flavored markdown (tables, strikethrough, task lists).</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Markdown Rendering</span>
+    </div>
+    <div class="preview-card-body">
+      <div class="prose-chat" style="max-width: 640px; color: #E2E2E5; font-size: 13px; line-height: 1.6;">
+
+        <h3 style="font-size: 15px; font-weight: 600; margin: 0 0 8px 0; color: #E2E2E5;">Deployment Checklist</h3>
+
+        <ul style="margin: 0 0 12px 0; padding-left: 20px;">
+          <li><input type="checkbox" checked disabled style="accent-color: #4ADE80;" /> Run database migrations</li>
+          <li><input type="checkbox" checked disabled style="accent-color: #4ADE80;" /> Build frontend assets</li>
+          <li><input type="checkbox" disabled /> Deploy to staging for validation</li>
+          <li><input type="checkbox" disabled /> Run smoke tests</li>
+          <li><input type="checkbox" disabled /> Deploy to production</li>
+        </ul>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 12px 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid #282A30;">
+              <th style="padding: 8px 12px; text-align: left; color: #C2C6D6; font-size: 11px; text-transform: uppercase;">Service</th>
+              <th style="padding: 8px 12px; text-align: left; color: #C2C6D6; font-size: 11px; text-transform: uppercase;">Status</th>
+              <th style="padding: 8px 12px; text-align: left; color: #C2C6D6; font-size: 11px; text-transform: uppercase;">Version</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid #191B22;">
+              <td style="padding: 8px 12px; color: #E2E2E5;">API Gateway</td>
+              <td style="padding: 8px 12px;"><span class="badge badge-success">Healthy</span></td>
+              <td style="padding: 8px 12px; color: #C2C6D6;">v2.4.1</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #191B22;">
+              <td style="padding: 8px 12px; color: #E2E2E5;">Auth Service</td>
+              <td style="padding: 8px 12px;"><span class="badge badge-success">Healthy</span></td>
+              <td style="padding: 8px 12px; color: #C2C6D6;">v3.0.0</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 12px; color: #E2E2E5;">Queue Worker</td>
+              <td style="padding: 8px 12px;"><span class="badge badge-warning">Degraded</span></td>
+              <td style="padding: 8px 12px; color: #C2C6D6;">v1.9.8</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="margin: 0;"><del style="color: #C2C6D6;">Deploy to production is scheduled for 2 PM</del> <strong>Rescheduled to 4 PM</strong> due to the queue worker issue.</p>
+
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">react-markdown + remark-gfm — tables, strikethrough (~text~), task lists (- [x])</span>
+    </div>
+  </div>
+
+  <!-- Code Syntax Highlighting -->
+  <h2 id="syntax-highlighting">Code Syntax Highlighting</h2>
+  <p>Code blocks are highlighted using <span class="font-mono">refractor</span> (a React wrapper for Prism.js). The design system defines a custom dark theme for syntax tokens.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Syntax Highlighted Code Block</span>
+    </div>
+    <div class="preview-card-body">
+      <div style="background: #111319; border: 1px solid #282A30; border-radius: 6px; overflow: hidden;">
+        <!-- Language label -->
+        <div style="padding: 8px 12px; border-bottom: 1px solid #191B22; font-size: 11px; color: #C2C6D6; font-family: 'JetBrains Mono', monospace;">typescript</div>
+        <!-- Code -->
+        <pre style="padding: 16px; margin: 0; overflow-x: auto; font-size: 12px; line-height: 1.7; font-family: 'JetBrains Mono', monospace; tab-size: 2;"><code><span style="color: #F9A8D4;">import</span> <span style="color: #E2E2E5;">{</span> <span style="color: #93C5FD;">createServerFn</span> <span style="color: #E2E2E5;">}</span> <span style="color: #F9A8D4;">from</span> <span style="color: #4ADE80;">"@tanstack/react-start"</span><span style="color: #E2E2E5;">;</span>
+
+<span style="color: #F9A8D4;">interface</span> <span style="color: #93C5FD;">Ticket</span> <span style="color: #E2E2E5;">{</span>
+  <span style="color: #93C5FD;">id</span><span style="color: #E2E2E5;">:</span> <span style="color: #FBBF24;">string</span><span style="color: #E2E2E5;">;</span>
+  <span style="color: #93C5FD;">title</span><span style="color: #E2E2E5;">:</span> <span style="color: #FBBF24;">string</span><span style="color: #E2E2E5;">;</span>
+  <span style="color: #93C5FD;">status</span><span style="color: #E2E2E5;">:</span> <span style="color: #4ADE80;">"open"</span> <span style="color: #E2E2E5;">|</span> <span style="color: #4ADE80;">"in_progress"</span> <span style="color: #E2E2E5;">|</span> <span style="color: #4ADE80;">"resolved"</span><span style="color: #E2E2E5;">;</span>
+<span style="color: #E2E2E5;">}</span>
+
+<span style="color: #F9A8D4;">const</span> <span style="color: #93C5FD;">fetchTicket</span> <span style="color: #E2E2E5;">=</span> <span style="color: #93C5FD;">createServerFn</span><span style="color: #E2E2E5;">({</span>
+  <span style="color: #93C5FD;">method</span><span style="color: #E2E2E5;">:</span> <span style="color: #4ADE80;">"GET"</span><span style="color: #E2E2E5;">,</span>
+<span style="color: #E2E2E5;">}).</span><span style="color: #93C5FD;">validator</span><span style="color: #E2E2E5;">((</span><span style="color: #93C5FD;">d</span><span style="color: #E2E2E5;">:</span> <span style="color: #FBBF24;">unknown</span><span style="color: #E2E2E5;">)</span> <span style="color: #F9A8D4;">=&gt;</span> <span style="color: #E2E2E5;">{</span>
+  <span style="color: #F9A8D4;">return</span> <span style="color: #93C5FD;">z</span><span style="color: #E2E2E5;">.</span><span style="color: #93C5FD;">object</span><span style="color: #E2E2E5;">({</span> <span style="color: #93C5FD;">ticketId</span><span style="color: #E2E2E5;">:</span> <span style="color: #93C5FD;">z</span><span style="color: #E2E2E5;">.</span><span style="color: #93C5FD;">string</span><span style="color: #E2E2E5;">() }).</span><span style="color: #93C5FD;">parse</span><span style="color: #E2E2E5;">(</span><span style="color: #93C5FD;">d</span><span style="color: #E2E2E5;">);</span>
+<span style="color: #E2E2E5;">});</span></code></pre>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">refractor (Prism-based) with custom dark theme — 12px JetBrains Mono, 1.7 line height</span>
+    </div>
+  </div>
+
+  <!-- Diff View -->
+  <h2 id="diff-view">Diff View</h2>
+  <p>Code diffs are rendered using <span class="font-mono">react-diff-view</span> with a custom dark theme. Additions are green and deletions are red, matching the system's semantic colors.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Diff View</span>
+    </div>
+    <div class="preview-card-body">
+      <div style="background: #111319; border: 1px solid #282A30; border-radius: 6px; overflow: hidden; font-size: 12px; font-family: 'JetBrains Mono', monospace; line-height: 1.6;">
+        <!-- Diff header -->
+        <div style="padding: 8px 16px; border-bottom: 1px solid #191B22; color: #C2C6D6;">@@ -42,7 +42,7 @@ export function TicketList() {</div>
+
+        <!-- Diff line: context -->
+        <div style="padding: 2px 16px; color: #C2C6D6; background: #0C0E14; display: flex;">
+          <span style="width: 40px; flex-shrink: 0; color: rgba(194,198,214,0.4);">42</span>
+          <span style="width: 40px; flex-shrink: 0; color: rgba(194,198,214,0.4);">42</span>
+          <span>const { data } = useTicketList();</span>
+        </div>
+
+        <!-- Diff line: deletion -->
+        <div style="padding: 2px 16px; color: #F87171; background: rgba(248,113,113,0.1); display: flex;">
+          <span style="width: 40px; flex-shrink: 0; color: rgba(248,113,113,0.4);">43</span>
+          <span style="width: 40px; flex-shrink: 0;"></span>
+          <span>- const filteredTickets = tickets.filter(t =&gt; t.status === 'open');</span>
+        </div>
+
+        <!-- Diff line: addition -->
+        <div style="padding: 2px 16px; color: #4ADE80; background: rgba(74,222,128,0.1); display: flex;">
+          <span style="width: 40px; flex-shrink: 0;"></span>
+          <span style="width: 40px; flex-shrink: 0; color: rgba(74,222,128,0.4);">43</span>
+          <span>+ const filteredTickets = useMemo(() =&gt; {</span>
+        </div>
+        <div style="padding: 2px 16px; color: #4ADE80; background: rgba(74,222,128,0.1); display: flex;">
+          <span style="width: 40px; flex-shrink: 0;"></span>
+          <span style="width: 40px; flex-shrink: 0; color: rgba(74,222,128,0.4);">44</span>
+          <span>+   return tickets.filter(t =&gt; t.status === 'open');</span>
+        </div>
+        <div style="padding: 2px 16px; color: #4ADE80; background: rgba(74,222,128,0.1); display: flex;">
+          <span style="width: 40px; flex-shrink: 0;"></span>
+          <span style="width: 40px; flex-shrink: 0; color: rgba(74,222,128,0.4);">45</span>
+          <span>+ }, [tickets]);</span>
+        </div>
+
+        <!-- Diff line: context -->
+        <div style="padding: 2px 16px; color: #C2C6D6; background: #0C0E14; display: flex;">
+          <span style="width: 40px; flex-shrink: 0; color: rgba(194,198,214,0.4);">44</span>
+          <span style="width: 40px; flex-shrink: 0; color: rgba(194,198,214,0.4);">46</span>
+          <span>return (</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">react-diff-view — deletions: #F87171 bg: rgba(248,113,113,0.1) / additions: #4ADE80 bg: rgba(74,222,128,0.1)</span>
+    </div>
+  </div>
+
+  <!-- Prism Syntax Highlighting Colors -->
+  <h2 id="prism-colors">Prism Syntax Highlighting Colors</h2>
+  <p>The following color tokens define the syntax highlighting theme for code blocks. These are applied via CSS classes generated by refractor/Prism.</p>
+
+  <div class="prop-table">
+    <div class="prop-table-row">
+      <span class="prop-name">Token</span>
+      <span class="prop-type">CSS Class</span>
+      <span class="prop-default">Color</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Comments</span>
+      <span class="prop-type">.token.comment</span>
+      <span class="prop-default" style="color: rgba(194,198,214,0.5);">rgba(194,198,214,0.5) <em>italic</em></span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Keywords</span>
+      <span class="prop-type">.token.keyword</span>
+      <span class="prop-default" style="color: #ADC6FF;">#ADC6FF (k-primary)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Strings</span>
+      <span class="prop-type">.token.string</span>
+      <span class="prop-default" style="color: #4ADE80;">#4ADE80 (k-secondary)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Numbers</span>
+      <span class="prop-type">.token.number</span>
+      <span class="prop-default" style="color: #FBBF24;">#FBBF24 (k-warning)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Functions</span>
+      <span class="prop-type">.token.function</span>
+      <span class="prop-default" style="color: #93C5FD;">#93C5FD (light blue)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Tags / Selectors</span>
+      <span class="prop-type">.token.tag / .token.selector</span>
+      <span class="prop-default" style="color: #F9A8D4;">#F9A8D4 (pink)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Plain Text</span>
+      <span class="prop-type">.token.plain</span>
+      <span class="prop-default" style="color: #E2E2E5;">#E2E2E5 (on-surface)</span>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Color Swatches</span>
+    </div>
+    <div class="preview-card-body flex flex-wrap gap-3">
+      <div class="flex items-center gap-2">
+        <div style="width: 16px; height: 16px; border-radius: 3px; background: rgba(194,198,214,0.5);"></div>
+        <span class="text-code-sm text-muted">Comment</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div style="width: 16px; height: 16px; border-radius: 3px; background: #ADC6FF;"></div>
+        <span class="text-code-sm text-muted">Keyword</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div style="width: 16px; height: 16px; border-radius: 3px; background: #4ADE80;"></div>
+        <span class="text-code-sm text-muted">String</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div style="width: 16px; height: 16px; border-radius: 3px; background: #FBBF24;"></div>
+        <span class="text-code-sm text-muted">Number</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div style="width: 16px; height: 16px; border-radius: 3px; background: #93C5FD;"></div>
+        <span class="text-code-sm text-muted">Function</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div style="width: 16px; height: 16px; border-radius: 3px; background: #F9A8D4;"></div>
+        <span class="text-code-sm text-muted">Tag/Selector</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <div style="width: 16px; height: 16px; border-radius: 3px; background: #E2E2E5;"></div>
+        <span class="text-code-sm text-muted">Plain</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Prose Styling -->
+  <h2 id="chat-prose-styling">Chat Prose Styling</h2>
+  <p>The <span class="font-mono">.prose-chat</span> class provides tailored typography for chat messages, distinct from the general prose styles used in ticket descriptions.</p>
+
+  <div class="prop-table">
+    <div class="prop-table-row">
+      <span class="prop-name">Class</span>
+      <span class="prop-type">Purpose</span>
+      <span class="prop-default">Value</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">.prose-chat</span>
+      <span class="prop-type">Chat message wrapper</span>
+      <span class="prop-default">13px, 1.6 line-height, #E2E2E5</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">.chat-inline-code</span>
+      <span class="prop-type">Inline code within chat</span>
+      <span class="prop-default">12px JetBrains Mono, bg #191B22, #ADC6FF</span>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Inline Code Example</span>
+    </div>
+    <div class="preview-card-body">
+      <p class="text-body-sm" style="color: #E2E2E5;">
+        You need to update the <span class="chat-inline-code" style="display: inline-block; padding: 1px 6px; background: #191B22; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #ADC6FF;">DATABASE_URL</span> environment variable and restart the service using <span class="chat-inline-code" style="display: inline-block; padding: 1px 6px; background: #191B22; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #ADC6FF;">docker compose restart</span>.
+      </p>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">.chat-inline-code — 12px JetBrains Mono, #191B22 background, #ADC6FF text, 3px border-radius</span>
+    </div>
+  </div>
+
+  <!-- Message Actions -->
+  <h2 id="message-actions">Message Actions</h2>
+  <p>Each message can have contextual actions that appear on hover or are always visible for the last message: copy, edit, delete, retry (for failed messages).</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Message Actions</span>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex items-center gap-1 p-2 rounded-sm" style="background: #191B22; display: inline-flex;">
+        <button class="btn btn-icon" style="width: 28px; height: 28px;" aria-label="Copy message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </button>
+        <button class="btn btn-icon" style="width: 28px; height: 28px;" aria-label="Edit message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+        </button>
+        <div style="width: 1px; height: 16px; background: #282A30;"></div>
+        <button class="btn btn-icon" style="width: 28px; height: 28px;" aria-label="Delete message">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">Actions: Copy (Copy), Edit (Edit3), Delete (Trash2) — separator between copy/edit and delete</span>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,193 @@
+<div class="page-header">
+  <h1>Installation</h1>
+  <p>Set up the Cortex Design System in your project.</p>
+</div>
+<div class="page-body">
+  <h2 id="prerequisites">Prerequisites</h2>
+  <table class="token-table">
+    <thead>
+      <tr><th>Dependency</th><th>Version</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>React</td><td>19+</td></tr>
+      <tr><td>TypeScript</td><td>5.9+</td></tr>
+      <tr><td>Tailwind CSS</td><td>3.4+</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="dependencies">Dependencies</h2>
+  <p>Install the following packages:</p>
+  <pre><code>npm install react@19 react-dom@19 typescript@5.9
+npm install tailwindcss@3 @tailwindcss/typography tailwindcss-animate
+npm install class-variance-authority clsx tailwind-merge lucide-react
+npm install @radix-ui/react-avatar @radix-ui/react-dialog @radix-ui/react-dropdown-menu
+npm install @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-switch
+npm install @radix-ui/react-tabs @radix-ui/react-tooltip @radix-ui/react-scroll-area
+npm install @radix-ui/react-checkbox @radix-ui/react-slot
+npm install sonner date-fns@4
+npm install react-hook-form @hookform/resolvers zod</code></pre>
+
+  <div class="callout callout-info">
+    <div class="callout-title">Tip</div>
+    <p>Install only the Radix UI primitives you actually need. The list above covers the full set used across Cortex products.</p>
+  </div>
+
+  <h2 id="tailwind-config">Tailwind Configuration</h2>
+  <p>Extend your <code>tailwind.config.js</code> with the following:</p>
+  <pre><code>module.exports = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'surface-dim': '#111319',
+        'surface-container-lowest': '#0C0E14',
+        'surface-container-low': '#191B22',
+        'surface-container-high': '#282A30',
+        'surface-container-highest': 'rgba(40,42,48,0.70)',
+        'k-primary': '#ADC6FF',
+        'k-primary-container': '#4D8EFF',
+        'on-surface': '#E2E2E5',
+        'on-surface-variant': '#C2C6D6',
+        'k-secondary': '#4ADE80',
+        'k-error': '#F87171',
+        'k-warning': '#FBBF24',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      fontSize: {
+        'display-sm': ['36px', { lineHeight: '2.25rem', fontWeight: '700', letterSpacing: '-0.02em' }],
+        'title-sm': ['16px', { lineHeight: '1rem', fontWeight: '600', letterSpacing: '-0.02em' }],
+        'body-sm': ['13px', { lineHeight: '0.8125rem', fontWeight: '400' }],
+        'label-sm': ['11px', { lineHeight: '0.6875rem', fontWeight: '500', letterSpacing: '0.05em' }],
+        'code-sm': ['12px', { lineHeight: '0.75rem' }],
+      },
+      borderRadius: {
+        xs: 'calc(var(--radius) - 6px)',
+        sm: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius) - 2px)',
+        lg: 'var(--radius)',
+        xl: 'calc(var(--radius) + 4px)',
+      },
+      keyframes: {
+        'fade-in': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        'slide-up': {
+          from: { opacity: '0', transform: 'translateY(10px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        'pulse-ring': {
+          '0%': { transform: 'scale(1)', opacity: '0.2' },
+          '100%': { transform: 'scale(1.5)', opacity: '0' },
+        },
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+        'caret-blink': {
+          '0%,70%,100%': { opacity: '1' },
+          '20%,50%': { opacity: '0' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 200ms ease-out',
+        'slide-up': 'slide-up 200ms ease-out',
+        'pulse-ring': 'pulse-ring 2s linear infinite',
+        'accordion-down': 'accordion-down 200ms ease-out',
+        'accordion-up': 'accordion-up 200ms ease-out',
+        'caret-blink': 'caret-blink 1.25s step-end infinite',
+      },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('tailwindcss-animate'),
+  ],
+}</code></pre>
+
+  <h2 id="css-variables">CSS Variables</h2>
+  <p>Add these CSS custom properties to your root stylesheet:</p>
+  <pre><code>:root {
+  --radius: 0.5rem;
+
+  --surface-dim: #111319;
+  --surface-container-lowest: #0C0E14;
+  --surface-container-low: #191B22;
+  --surface-container-high: #282A30;
+  --surface-container-highest: rgba(40, 42, 48, 0.70);
+
+  --k-primary: #ADC6FF;
+  --k-primary-container: #4D8EFF;
+
+  --on-surface: #E2E2E5;
+  --on-surface-variant: #C2C6D6;
+
+  --k-secondary: #4ADE80;
+  --k-error: #F87171;
+  --k-warning: #FBBF24;
+
+  --ghost-border: rgba(194, 198, 214, 0.15);
+  --ghost-border-20: rgba(194, 198, 214, 0.20);
+
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-ambient: 0 32px 64px rgba(0, 0, 0, 0.12);
+}</code></pre>
+
+  <h2 id="fonts">Font Setup</h2>
+  <p>Include Inter and JetBrains Mono in your HTML:</p>
+  <pre><code>&lt;link rel="preconnect" href="https://fonts.googleapis.com" /&gt;
+&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /&gt;
+&lt;link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/&gt;</code></pre>
+  <p>Then apply them via CSS:</p>
+  <pre><code>body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  color: var(--on-surface);
+  background-color: var(--surface-dim);
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}</code></pre>
+
+  <h2 id="cn-utility">cn() Utility</h2>
+  <p>The <code>cn()</code> utility merges Tailwind classes, resolving conflicts intelligently:</p>
+  <pre><code>import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}</code></pre>
+
+  <h2 id="shadcn-setup">shadcn/ui Setup</h2>
+  <p>Configure <code>components.json</code>:</p>
+  <pre><code>{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "src/index.css",
+    "baseColor": "slate",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils",
+    "ui": "@/components/ui"
+  },
+  "iconLibrary": "lucide"
+}</code></pre>
+</div>

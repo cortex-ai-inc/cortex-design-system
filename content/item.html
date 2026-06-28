@@ -1,0 +1,178 @@
+<div class="page-header">
+  <h2 id="item">Item</h2>
+  <p class="text-muted">A flexible list item component for rendering rows in lists, chat messages, and feed items. Supports variants, sizes, and multiple compositional parts.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="item-variants">Variants</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="display: flex; flex-direction: column; gap: 8px; max-width: 500px;">
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px;">
+          <div style="display: flex; gap: 12px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%); display: flex; align-items: center; justify-content: center; color: #111319; font-size: 13px; font-weight: 600; flex-shrink: 0;">JD</div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 13px; font-weight: 600; color: #E2E2E5;">John Doe</span>
+                <span style="font-size: 11px; color: rgba(194, 198, 214, 0.6);">2h ago</span>
+              </div>
+              <p style="margin: 2px 0 0; font-size: 13px; color: #C2C6D6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">I am experiencing an issue with the login page not loading correctly after the latest update.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px;">
+          <div style="display: flex; gap: 12px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(74, 222, 128, 0.15); display: flex; align-items: center; justify-content: center; color: #4ADE80; font-size: 13px; font-weight: 600; flex-shrink: 0;">AS</div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 13px; font-weight: 600; color: #E2E2E5;">Alice Smith</span>
+                <span style="font-size: 11px; color: rgba(194, 198, 214, 0.6);">1d ago</span>
+              </div>
+              <p style="margin: 2px 0 0; font-size: 13px; color: #C2C6D6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">The new dashboard looks great! One small thing though...</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(194, 198, 214, 0.05); border-radius: 8px; padding: 16px;">
+          <div style="display: flex; gap: 12px;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(194, 198, 214, 0.15); display: flex; align-items: center; justify-content: center; color: #C2C6D6; font-size: 13px; font-weight: 600; flex-shrink: 0;">MK</div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 13px; font-weight: 600; color: #E2E2E5;">Mike Johnson</span>
+                <span style="font-size: 11px; color: rgba(194, 198, 214, 0.6);">3d ago</span>
+              </div>
+              <p style="margin: 2px 0 0; font-size: 13px; color: #C2C6D6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">System seems stable after the last deployment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <div class="flex gap-3" style="flex-wrap: wrap;">
+        <span class="tag tag-react">default</span>
+        <span class="tag tag-react">outline</span>
+        <span class="tag tag-react">muted</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="margin-top: 24px;">
+    <div class="preview-card-header">
+      <h3 id="item-sizes">Sizes</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="display: flex; flex-direction: column; gap: 4px; max-width: 500px;">
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span style="font-size: 13px; font-weight: 600; color: #E2E2E5;">Default size (p-4)</span>
+            </div>
+            <span class="badge badge-success">Active</span>
+          </div>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 12px 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span style="font-size: 13px; font-weight: 600; color: #E2E2E5;">Small size (py-3 px-4)</span>
+            </div>
+            <span class="badge badge-default">Draft</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="margin-top: 24px;">
+    <div class="preview-card-header">
+      <h3 id="item-actions">With Actions</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="display: flex; flex-direction: column; gap: 8px; max-width: 500px;">
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 12px 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span style="font-size: 13px; font-weight: 600; color: #E2E2E5;">Item with actions</span>
+            </div>
+            <div class="flex gap-2" style="display: flex; gap: 4px;">
+              <button style="padding: 4px 8px; font-size: 12px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 4px; cursor: pointer;">Edit</button>
+              <button style="padding: 4px 8px; font-size: 12px; color: #F87171; background: transparent; border: 1px solid rgba(248, 113, 113, 0.3); border-radius: 4px; cursor: pointer;">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>The Item component follows a compositional pattern with <span class="font-mono text-code-sm">ItemGroup</span> for grouping related items, <span class="font-mono text-code-sm">ItemMedia</span> for avatars/icons, <span class="font-mono text-code-sm">ItemContent</span> for main content, <span class="font-mono text-code-sm">ItemActions</span> for action buttons, and <span class="font-mono text-code-sm">ItemHeader</span> / <span class="font-mono text-code-sm">ItemFooter</span> for header/footer sections. Variants: <span class="font-mono text-code-sm">default</span> (bg-surface-container-low), <span class="font-mono text-code-sm">outline</span> (transparent with border), <span class="font-mono text-code-sm">muted</span> (bg-muted/50).</p>
+  </div>
+
+  <h3 id="item-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Prop</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Type</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Default</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">variant</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">"default" | "outline" | "muted"</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">"default"</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Visual variant of the item.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">size</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">"default" | "sm"</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">"default"</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Item padding. default=p-4, sm=py-3 px-4.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">className</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">string</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">""</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Additional CSS classes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="item-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import { Item, ItemMedia, ItemContent, ItemActions, ItemTitle, ItemDescription, ItemHeader, ItemFooter } from '@/components/ui/item'
+
+// Basic item
+&lt;Item variant="default"&gt;
+  &lt;ItemMedia&gt;
+    &lt;Avatar&gt;JD&lt;/Avatar&gt;
+  &lt;/ItemMedia&gt;
+  &lt;ItemContent&gt;
+    &lt;ItemHeader&gt;
+      &lt;ItemTitle&gt;John Doe&lt;/ItemTitle&gt;
+      &lt;span className="text-muted text-body-sm"&gt;2h ago&lt;/span&gt;
+    &lt;/ItemHeader&gt;
+    &lt;ItemDescription&gt;Message content here&lt;/ItemDescription&gt;
+  &lt;/ItemContent&gt;
+  &lt;ItemActions&gt;
+    &lt;Button variant="ghost" size="sm"&gt;Reply&lt;/Button&gt;
+  &lt;/ItemActions&gt;
+&lt;/Item&gt;
+
+// With ItemGroup
+&lt;ItemGroup&gt;
+  &lt;Item&gt;...&lt;/Item&gt;
+  &lt;Item variant="outline"&gt;...&lt;/Item&gt;
+  &lt;Item variant="muted" size="sm"&gt;...&lt;/Item&gt;
+&lt;/ItemGroup&gt;`}</code></pre>
+  </div>
+</div>

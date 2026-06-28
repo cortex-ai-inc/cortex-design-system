@@ -1,0 +1,32 @@
+<div class="page-header">
+  <h1>Shadows</h1>
+  <p>Minimal shadow usage — prefer tonal layering over drop shadows.</p>
+</div>
+<div class="page-body">
+  <h2 id="tokens">Shadow Tokens</h2>
+  <table class="token-table">
+    <thead>
+      <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>shadow-xs</code></td>
+        <td><code>0 1px 2px 0 rgb(0 0 0 / 0.05)</code></td>
+        <td>Subtle elevation for small floating elements</td>
+      </tr>
+      <tr>
+        <td><code>shadow-ambient</code></td>
+        <td><code>0 32px 64px rgba(0, 0, 0, 0.12)</code></td>
+        <td>Modal and dialog ambient occlusion</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="usage">When to Use Shadows</h2>
+  <p>Shadows are reserved exclusively for floating elements: modals, dropdowns, tooltips, and popovers. Cards and panels use tonal layering instead.</p>
+
+  <div class="callout callout-info">
+    <div class="callout-title">&#128161; Design Principle</div>
+    <p>Surface colors create depth: surface-dim &rarr; surface-container-lowest &rarr; surface-container-low &rarr; surface-container-high. Each level sits "higher" than the last without requiring a drop shadow.</p>
+  </div>
+</div>

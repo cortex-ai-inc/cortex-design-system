@@ -1,0 +1,279 @@
+<div class="page-header">
+  <h1>Form & Field</h1>
+  <p>Structured form layout patterns with react-hook-form integration and consistent field components.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-ts">react-hook-form</span>
+    <span class="tag tag-ts">Zod</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Forms follow a consistent pattern using <code>react-hook-form</code> with <code>@hookform/resolvers/zod</code>
+    for validation. The system provides a <code>Field</code> component with configurable orientation and a
+    <code>FormSection</code> pattern for grouping related fields into card-like areas with icons and titles.
+  </p>
+  <p>
+    Standard form width is capped at <code>max-w-5xl</code>. Two-column layouts use
+    <code>grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5</code>.
+  </p>
+
+  <h2 id="field-component">Field Component</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+      <span class="prop-table-cell">Description</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">orientation</span>
+      <span class="prop-type">"vertical" | "horizontal" | "responsive"</span>
+      <span class="prop-default">"vertical"</span>
+      <span>Label position relative to input</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">label</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+      <span>Field label text</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">description</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+      <span>Help text below the field</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">error</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+      <span>Validation error message</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">required</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+      <span>Shows asterisk after label</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+      <span>Additional CSS classes</span>
+    </div>
+  </div>
+
+  <h2 id="field-orientations">Field Orientations</h2>
+  <div class="grid-3">
+    <div class="preview-card">
+      <div class="preview-card-header">Vertical (default)</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email <span style="color: #F87171;">*</span></label>
+          <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Password <span style="color: #F87171;">*</span></label>
+          <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Horizontal</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 12px; align-items: center;">
+          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Name</label>
+          <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 12px; align-items: center;">
+          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Role</label>
+          <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Responsive</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
+        <p class="text-muted" style="font-size: 0.8125rem;">Vertical on mobile, horizontal on md+ via <code>md:grid-cols-[180px_1fr]</code></p>
+        <div style="display: grid; grid-template-columns: 1fr; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6;">Field</label>
+            <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="form-section">FormSection Pattern</h2>
+  <p>
+    FormSection groups related fields into a card-like container with an icon, title, and optional description.
+    Each section represents a logical group within the form (e.g., "Profile Details", "Notifications").
+  </p>
+  <div class="preview-card" style="max-width: 640px;">
+    <div class="preview-card-header">FormSection Example</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <div style="width: 32px; height: 32px; background: rgba(77,142,255,0.12); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ADC6FF; font-size: 1rem;">&#x1F464;</div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="font-size: 0.9375rem; font-weight: 600; color: #E2E2E5;">Profile Details</div>
+            <div style="font-size: 0.8125rem; color: #C2C6D6;">Basic information about your account.</div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6;">Name</label>
+              <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6;">Email</label>
+              <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="form-patterns">Form Patterns</h2>
+
+  <h3 id="standard-form">Standard Form Layout</h3>
+  <div class="preview-card" style="max-width: 720px;">
+    <div class="preview-card-header">Complete Form Layout</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; gap: 12px; align-items: flex-start;">
+        <div style="width: 32px; height: 32px; background: rgba(77,142,255,0.12); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #ADC6FF; font-size: 1rem;">&#x2699;</div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+          <div>
+            <div style="font-size: 0.9375rem; font-weight: 600; color: #E2E2E5;">Settings</div>
+            <div style="font-size: 0.8125rem; color: #C2C6D6;">Configure your workspace preferences.</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px 24px;">
+            <div style="display: flex; flex-direction: column; gap: 4px; grid-column: 1 / -1;">
+              <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6;">Workspace name</label>
+              <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6;">Language</label>
+              <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6;">Timezone</label>
+              <div style="height: 36px; background: #0C0E14; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px;"></div>
+            </div>
+          </div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; display: flex; gap: 8px; justify-content: flex-end;">
+            <button class="btn btn-ghost">Cancel</button>
+            <button class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="form-item-components">FormItem Sub-components</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Component</span>
+      <span class="prop-table-cell">Role</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">FormItem</span>
+      <span class="prop-default">Root wrapper for a form field (flex flex-col gap-2)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">FormLabel</span>
+      <span class="prop-default">Label element with uppercase styling</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">FormControl</span>
+      <span class="prop-default">Wraps the input element, connects to form state</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">FormDescription</span>
+      <span class="prop-default">Help text below the field (text-muted, text-xs)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">FormMessage</span>
+      <span class="prop-default">Error message in k-error color</span>
+    </div>
+  </div>
+
+  <h2 id="validation">Validation Pattern</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Error State</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px; max-width: 400px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email <span style="color: #F87171;">*</span></label>
+        <div style="height: 36px; background: #0C0E14; border: 1px solid #F87171; border-radius: 4px;"></div>
+        <div style="font-size: 0.75rem; color: #F87171;">Please enter a valid email address.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <h3 id="field">Field</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">orientation</span>
+      <span class="prop-type">"vertical" | "horizontal" | "responsive"</span>
+      <span class="prop-default">"vertical"</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">label</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">description</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">error</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">required</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">name</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use FormSection to group related fields logically</li>
+        <li>Cap form width at <code>max-w-5xl</code></li>
+        <li>Use two-column grid for field pairs (label + value)</li>
+        <li>Show validation errors inline below each field</li>
+        <li>Disable submit button while form is submitting</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Place more than two columns in a grid row</li>
+        <li>Use horizontal orientation for long labels</li>
+        <li>Show success toasts on every save — use subtle indicators</li>
+        <li>Reset form state unexpectedly on background refetches</li>
+      </ul>
+    </div>
+  </div>
+</div>

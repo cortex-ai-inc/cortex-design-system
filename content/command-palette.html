@@ -1,0 +1,170 @@
+<div class="page-header">
+  <h2 id="command-palette">Command Palette</h2>
+  <p class="text-muted">A keyboard-driven command palette for quickly navigating and performing actions within the application. Powered by the cmdk library.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+    <span class="tag">cmdk</span>
+    <span class="tag tag-new">New</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="command-palette-example">Example</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="max-width: 560px; background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.5); overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Type a command or search..." value="ticket" style="flex: 1; background: transparent; border: none; outline: none; font-size: 14px; color: #E2E2E5; font-family: inherit;" readonly />
+          <span style="font-size: 10px; padding: 2px 6px; border: 1px solid rgba(194, 198, 214, 0.2); border-radius: 4px; color: rgba(194, 198, 214, 0.5); font-family: 'JetBrains Mono', monospace;">ESC</span>
+        </div>
+        <div style="padding: 8px;">
+          <div style="padding: 4px 8px; margin-bottom: 4px; font-size: 11px; font-weight: 600; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em;">Navigation</div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 8px; border-radius: 6px; background: rgba(173, 198, 255, 0.1); cursor: pointer;">
+            <div style="width: 32px; height: 32px; border-radius: 6px; background: rgba(77, 142, 255, 0.15); display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ADC6FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div style="flex: 1;">
+              <div style="font-size: 13px; color: #E2E2E5;">Tickets</div>
+              <div style="font-size: 11px; color: #C2C6D6;">View all support tickets</div>
+            </div>
+            <span style="font-size: 10px; padding: 2px 6px; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 4px; color: rgba(194, 198, 214, 0.5); font-family: 'JetBrains Mono', monospace;">G T</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 8px; border-radius: 6px; cursor: pointer;">
+            <div style="width: 32px; height: 32px; border-radius: 6px; background: rgba(194, 198, 214, 0.08); display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </div>
+            <div style="flex: 1;">
+              <div style="font-size: 13px; color: #E2E2E5;">Dashboard</div>
+              <div style="font-size: 11px; color: #C2C6D6;">View dashboard and statistics</div>
+            </div>
+            <span style="font-size: 10px; padding: 2px 6px; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 4px; color: rgba(194, 198, 214, 0.5); font-family: 'JetBrains Mono', monospace;">G D</span>
+          </div>
+        </div>
+        <div style="padding: 4px 8px 8px;">
+          <div style="padding: 4px 8px; margin-bottom: 4px; font-size: 11px; font-weight: 600; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em;">Actions</div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 8px; border-radius: 6px; cursor: pointer;">
+            <div style="width: 32px; height: 32px; border-radius: 6px; background: rgba(194, 198, 214, 0.08); display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div style="flex: 1;">
+              <div style="font-size: 13px; color: #E2E2E5;">New Ticket</div>
+              <div style="font-size: 11px; color: #C2C6D6;">Create a new support ticket</div>
+            </div>
+            <span style="font-size: 10px; padding: 2px 6px; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 4px; color: rgba(194, 198, 214, 0.5); font-family: 'JetBrains Mono', monospace;">C</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; padding: 10px 8px; border-radius: 6px; cursor: pointer;">
+            <div style="width: 32px; height: 32px; border-radius: 6px; background: rgba(194, 198, 214, 0.08); display: flex; align-items: center; justify-content: center;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div style="flex: 1;">
+              <div style="font-size: 13px; color: #E2E2E5;">Edit Profile</div>
+              <div style="font-size: 11px; color: #C2C6D6;">Update your profile settings</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 12px; border-top: 1px solid rgba(194, 198, 214, 0.15); display: flex; gap: 16px; font-size: 11px; color: rgba(194, 198, 214, 0.5);">
+          <span><span style="padding: 1px 4px; border: 1px solid rgba(194, 198, 214, 0.2); border-radius: 3px; font-family: 'JetBrains Mono', monospace;">&uarr;</span> <span style="padding: 1px 4px; border: 1px solid rgba(194, 198, 214, 0.2); border-radius: 3px; font-family: 'JetBrains Mono', monospace;">&darr;</span> navigate</span>
+          <span><span style="padding: 1px 4px; border: 1px solid rgba(194, 198, 214, 0.2); border-radius: 3px; font-family: 'JetBrains Mono', monospace;">&crarr;</span> select</span>
+          <span><span style="padding: 1px 4px; border: 1px solid rgba(194, 198, 214, 0.2); border-radius: 3px; font-family: 'JetBrains Mono', monospace;">ESC</span> close</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>The Command Palette uses the <span class="font-mono text-code-sm">cmdk</span> library (unstyled, accessible command menu). It provides <span class="font-mono text-code-sm">CommandDialog</span> for a modal overlay, <span class="font-mono text-code-sm">CommandInput</span> for search, <span class="font-mono text-code-sm">CommandList</span> for results, <span class="font-mono text-code-sm">CommandEmpty</span> for no-results state, <span class="font-mono text-code-sm">CommandGroup</span> for categorizing items, and <span class="font-mono text-code-sm">CommandItem</span> for individual entries. Keyboard shortcuts like <span class="font-mono text-code-sm">Ctrl+K</span> or <span class="font-mono text-code-sm">Cmd+K</span> toggle the dialog.</p>
+  </div>
+
+  <h3 id="command-palette-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Component</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">Command</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Root container for the command menu.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">CommandDialog</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Modal dialog wrapper that opens on keyboard shortcut (Ctrl+K / Cmd+K).</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">CommandInput</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Search input field for filtering commands.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">CommandList</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Scrollable container for command groups and items.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">CommandEmpty</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Displayed when no results match the search query.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">CommandGroup</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Groups related commands under a heading.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">CommandItem</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Individual selectable command entry with icon, label, description, and keyboard shortcut.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="command-palette-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import {
+  Command,
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+  CommandShortcut,
+} from '@/components/ui/command'
+
+// Dialog mode (keyboard shortcut)
+&lt;CommandDialog open={open} onOpenChange={setOpen}&gt;
+  &lt;CommandInput placeholder="Type a command or search..." /&gt;
+  &lt;CommandList&gt;
+    &lt;CommandEmpty&gt;No results found.&lt;/CommandEmpty&gt;
+    &lt;CommandGroup heading="Navigation"&gt;
+      &lt;CommandItem onSelect={() => navigate('/tickets')}&gt;
+        &lt;FileIcon /&gt;
+        &lt;span&gt;Tickets&lt;/span&gt;
+        &lt;CommandShortcut&gt;G T&lt;/CommandShortcut&gt;
+      &lt;/CommandItem&gt;
+    &lt;/CommandGroup&gt;
+    &lt;CommandGroup heading="Actions"&gt;
+      &lt;CommandItem onSelect={() => navigate('/tickets/new')}&gt;
+        &lt;PlusIcon /&gt;
+        &lt;span&gt;New Ticket&lt;/span&gt;
+        &lt;CommandShortcut&gt;C&lt;/CommandShortcut&gt;
+      &lt;/CommandItem&gt;
+    &lt;/CommandGroup&gt;
+  &lt;/CommandList&gt;
+&lt;/CommandDialog&gt;
+
+// Trigger with Ctrl+K
+useEffect(() => {
+  const down = (e: KeyboardEvent) => {
+    if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault()
+      setOpen((open) => !open)
+    }
+  }
+  document.addEventListener('keydown', down)
+  return () => document.removeEventListener('keydown', down)
+}, [])`}</code></pre>
+  </div>
+</div>

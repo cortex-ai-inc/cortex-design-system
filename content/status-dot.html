@@ -1,0 +1,177 @@
+<div class="page-header">
+  <h2 id="status-dot">StatusDot</h2>
+  <p class="text-muted">A small colored dot indicator representing status or state. Supports multiple status colors, sizes, and an optional pulse animation for active states.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="status-dot-examples">Status Examples</h3>
+    </div>
+    <div class="preview-card-body">
+      <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #4ADE80; box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5);"></div>
+          <span style="font-size: 13px; color: #E2E2E5;">Active / Success</span>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: rgba(194, 198, 214, 0.3);"></div>
+          <span style="font-size: 13px; color: #E2E2E5;">Inactive / Offline</span>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #F87171;"></div>
+          <span style="font-size: 13px; color: #E2E2E5;">Failed / Error</span>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #ADC6FF; box-shadow: 0 0 0 0 rgba(173, 198, 255, 0.5);"></div>
+          <span style="font-size: 13px; color: #E2E2E5;">Running</span>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #FBBF24;"></div>
+          <span style="font-size: 13px; color: #E2E2E5;">Warning</span>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 10px;">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #C2C6D6;"></div>
+          <span style="font-size: 13px; color: #E2E2E5;">Pending</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="margin-top: 24px;">
+    <div class="preview-card-header">
+      <h3 id="status-dot-sizes">Sizes</h3>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex gap-4 items-center" style="flex-wrap: wrap;">
+        <div class="flex gap-3 items-center">
+          <div style="width: 6px; height: 6px; border-radius: 50%; background: #4ADE80;"></div>
+          <span style="font-size: 12px; color: #C2C6D6;">sm (6px)</span>
+        </div>
+        <div class="flex gap-3 items-center">
+          <div style="width: 8px; height: 8px; border-radius: 50%; background: #4ADE80;"></div>
+          <span style="font-size: 12px; color: #C2C6D6;">md (8px)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="status-dot-color-map">Color Map</h3>
+  <div style="overflow-x: auto; margin-top: 16px;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Status</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Color</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">CSS Variable</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Pulse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">active / success</span></td>
+          <td style="padding: 8px 12px;"><span style="color: #4ADE80;">Green (#4ADE80)</span></td>
+          <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(194, 198, 214, 0.6);">--k-secondary</td>
+          <td style="padding: 8px 12px; color: #4ADE80;">Yes</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">inactive / offline</span></td>
+          <td style="padding: 8px 12px;"><span style="color: #C2C6D6;">Gray (#C2C6D6)</span></td>
+          <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(194, 198, 214, 0.6);">--on-surface-variant</td>
+          <td style="padding: 8px 12px; color: rgba(194, 198, 214, 0.4);">No</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">failed / error</span></td>
+          <td style="padding: 8px 12px;"><span style="color: #F87171;">Red (#F87171)</span></td>
+          <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(194, 198, 214, 0.6);">--k-error</td>
+          <td style="padding: 8px 12px; color: rgba(194, 198, 214, 0.4);">No</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">running</span></td>
+          <td style="padding: 8px 12px;"><span style="color: #ADC6FF;">Blue (#ADC6FF)</span></td>
+          <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(194, 198, 214, 0.6);">--k-primary</td>
+          <td style="padding: 8px 12px; color: #4ADE80;">Yes</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">warning</span></td>
+          <td style="padding: 8px 12px;"><span style="color: #FBBF24;">Yellow (#FBBF24)</span></td>
+          <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(194, 198, 214, 0.6);">--k-warning</td>
+          <td style="padding: 8px 12px; color: rgba(194, 198, 214, 0.4);">No</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">pending</span></td>
+          <td style="padding: 8px 12px;"><span style="color: #C2C6D6;">Gray (#C2C6D6)</span></td>
+          <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: rgba(194, 198, 214, 0.6);">--on-surface-variant</td>
+          <td style="padding: 8px 12px; color: rgba(194, 198, 214, 0.4);">No</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>The <span class="font-mono text-code-sm">pulse-ring</span> animation is applied to active/success and running statuses to draw attention. The dot renders as a <span class="font-mono text-code-sm">span</span> with <span class="font-mono text-code-sm">rounded-full</span> and the appropriate background color.</p>
+  </div>
+
+  <h3 id="status-dot-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Prop</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Type</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Default</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">status</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">StatusDotStatus</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">"inactive"</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Status key for color mapping.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">size</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">"sm" | "md"</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">"md"</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Dot size. sm=6px, md=8px.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">pulse</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">boolean</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">false</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Show pulse ring animation.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">className</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">string</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">""</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Additional CSS classes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="status-dot-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import { StatusDot } from '@/components/ui/status-dot'
+
+// Basic
+&lt;StatusDot status="active" /&gt;
+
+// With pulse
+&lt;StatusDot status="running" pulse /&gt;
+
+// Small size
+&lt;StatusDot status="success" size="sm" /&gt;
+
+// With label
+&lt;div className="flex items-center gap-2"&gt;
+  &lt;StatusDot status="active" pulse /&gt;
+  &lt;span className="text-body-sm"&gt;Online&lt;/span&gt;
+&lt;/div&gt;`}</code></pre>
+  </div>
+</div>

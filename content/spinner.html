@@ -1,0 +1,108 @@
+<div class="page-header">
+  <h2 id="spinner">Spinner</h2>
+  <p class="text-muted">A simple spinning border indicator for loading states. Supports multiple sizes and can be used inline or as an overlay.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="spinner-sizes">Sizes</h3>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex gap-4 items-center" style="flex-wrap: wrap;">
+        <div class="flex gap-3 items-center">
+          <div style="width: 16px; height: 16px; border: 2px solid rgba(77, 142, 255, 0.3); border-top-color: #4D8EFF; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+          <span style="font-size: 12px; color: #C2C6D6;">sm (w-4)</span>
+        </div>
+        <div class="flex gap-3 items-center">
+          <div style="width: 20px; height: 20px; border: 2px solid rgba(77, 142, 255, 0.3); border-top-color: #4D8EFF; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+          <span style="font-size: 12px; color: #C2C6D6;">md (w-5)</span>
+        </div>
+        <div class="flex gap-3 items-center">
+          <div style="width: 32px; height: 32px; border: 3px solid rgba(77, 142, 255, 0.3); border-top-color: #4D8EFF; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+          <span style="font-size: 12px; color: #C2C6D6;">lg (w-8)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="margin-top: 24px;">
+    <div class="preview-card-header">
+      <h3 id="spinner-contexts">Usage Contexts</h3>
+    </div>
+    <div class="preview-card-body">
+      <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 32px; display: flex; align-items: center; justify-content: center;">
+          <div style="width: 20px; height: 20px; border: 2px solid rgba(77, 142, 255, 0.3); border-top-color: #4D8EFF; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <div style="width: 32px; height: 32px; border: 3px solid rgba(77, 142, 255, 0.3); border-top-color: #4D8EFF; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+          <span style="font-size: 13px; color: #C2C6D6;">Loading tickets...</span>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 16px; display: flex; align-items: center; gap: 12px;">
+          <div style="width: 16px; height: 16px; border: 2px solid rgba(77, 142, 255, 0.3); border-top-color: #4D8EFF; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+          <span style="font-size: 13px; color: #E2E2E5;">Saving...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>The Spinner uses a CSS border animation technique. It consists of a circular border with <span class="font-mono text-code-sm">border-k-primary-container/30</span> on three sides and <span class="font-mono text-code-sm">border-t-k-primary-container</span> on the top, rotating via <span class="font-mono text-code-sm">animate-spin</span>.</p>
+  </div>
+
+  <h3 id="spinner-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Prop</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Type</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Default</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">size</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">"sm" | "md" | "lg"</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">"md"</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Spinner size. sm=16px, md=20px, lg=32px.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">className</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">string</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">""</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Additional CSS classes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="spinner-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import { Spinner } from '@/components/ui/spinner'
+
+// Basic usage
+&lt;Spinner /&gt;
+
+// With size
+&lt;Spinner size="sm" /&gt;
+&lt;Spinner size="lg" /&gt;
+
+// With label
+&lt;div className="flex items-center gap-3"&gt;
+  &lt;Spinner /&gt;
+  &lt;span&gt;Loading...&lt;/span&gt;
+&lt;/div&gt;`}</code></pre>
+  </div>
+
+  <style>
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</div>

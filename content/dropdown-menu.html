@@ -1,0 +1,149 @@
+<div class="page-header">
+  <h1>DropdownMenu</h1>
+  <p>Contextual menu triggered by a button, providing a list of actions or options.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix DropdownMenu</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Dropdown menus display a list of actions or options anchored to a trigger element. Built on Radix DropdownMenu,
+    they provide keyboard navigation (arrow keys, Enter, Escape), proper positioning with collision detection,
+    and full ARIA menu pattern compliance.
+  </p>
+  <p>
+    The menu content uses <code>bg-surface-container-low</code> with <code>ghost-border</code>,
+    <code>rounded-sm</code>, and <code>shadow-ambient</code> for elevation. Items are <code>h-8</code>
+    with horizontal padding and a hover state of <code>bg-surface-container-high</code>.
+  </p>
+
+  <h2 id="structure">Structure</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Component</span>
+      <span class="prop-table-cell">Role</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">DropdownMenu</span>
+      <span class="prop-default">Root context provider</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">DropdownMenuTrigger</span>
+      <span class="prop-default">Button/element that opens the menu (usually btn-ghost btn-icon)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">DropdownMenuContent</span>
+      <span class="prop-default">The popover panel containing menu items</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">DropdownMenuItem</span>
+      <span class="prop-default">Individual action item (h-8, hover highlight)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">DropdownMenuSeparator</span>
+      <span class="prop-default">Visual divider between item groups</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">DropdownMenuLabel</span>
+      <span class="prop-default">Section header label (uppercase, 11px, muted)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">DropdownMenuGroup</span>
+      <span class="prop-default">Groups related items together</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="grid-3">
+    <div class="preview-card">
+      <div class="preview-card-header">Basic Menu</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 4px; background: #191B22; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 8px; max-width: 200px;">
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px; background: #282A30;">View profile</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px;">Settings</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px;">Keyboard shortcuts</div>
+        <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 4px 0;"></div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #F87171; border-radius: 4px;">Logout</div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">With Label & Icons</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 4px; background: #191B22; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 8px; max-width: 200px;">
+        <div style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; padding: 4px 8px; letter-spacing: 0.05em;">Account</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px; gap: 8px;"><span>&#x1F464;</span> Profile</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px; gap: 8px;"><span>&#x2699;</span> Settings</div>
+        <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 4px 0;"></div>
+        <div style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; padding: 4px 8px; letter-spacing: 0.05em;">Team</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px; gap: 8px;"><span>&#x1F465;</span> Invite members</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px; gap: 8px;"><span>&#x1F4CB;</span> Billing</div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Item Variants</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 4px; background: #191B22; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 8px; max-width: 200px;">
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px;">Default item</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px;">Default item</div>
+        <div style="height: 1px; background: rgba(255,255,255,0.08); margin: 4px 0;"></div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #F87171; border-radius: 4px; background: rgba(248,113,113,0.08);">Destructive item</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <h3 id="dropdownmenuitem">DropdownMenuItem</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">variant</span>
+      <span class="prop-type">"default" | "destructive"</span>
+      <span class="prop-default">"default"</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">asChild</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use destructive variant for irreversible actions</li>
+        <li>Group related items with separators and labels</li>
+        <li>Use icon + text for items to improve scannability</li>
+        <li>Provide keyboard shortcuts as secondary text</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Overcrowd — limit to 7-10 items maximum</li>
+        <li>Use for navigation — prefer sidebar or topbar</li>
+        <li>Hide critical actions in dropdowns</li>
+      </ul>
+    </div>
+  </div>
+</div>

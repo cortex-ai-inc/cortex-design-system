@@ -1,0 +1,126 @@
+<div class="page-header">
+  <h1>Checkbox</h1>
+  <p>Binary selection control for toggling an option on or off.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix Checkbox</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    The Checkbox component uses Radix Checkbox for accessible, keyboard-navigable binary selection.
+    Checkboxes are <code>w-4 h-4</code> with <code>rounded-sm</code> (4px) corners. When checked,
+    the background fills with <code>bg-k-primary-container</code> (#4D8EFF) and displays a white
+    checkmark icon. The unchecked state shows a <code>ghost-border-20</code> border with no fill.
+  </p>
+  <p>
+    Checkboxes should always be paired with a <code>Label</code> component for accessibility.
+    The label uses <code>text-body-sm</code> (13px) and sits to the right of the checkbox with
+    <code>gap-2</code> spacing.
+  </p>
+
+  <h2 id="preview">Preview</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Unchecked</div>
+      <div class="preview-card-body" style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 16px; height: 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; background: transparent; flex-shrink: 0;"></div>
+        <label style="font-size: 0.8125rem; color: #E2E2E5; cursor: pointer;">Enable notifications</label>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Checked</div>
+      <div class="preview-card-body" style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 16px; height: 16px; border: 1px solid transparent; border-radius: 4px; background: #4D8EFF; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.625rem; line-height: 1;">&#x2713;</div>
+        <label style="font-size: 0.8125rem; color: #E2E2E5; cursor: pointer;">Enable notifications</label>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Disabled (unchecked)</div>
+      <div class="preview-card-body" style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 16px; height: 16px; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; background: transparent; flex-shrink: 0; opacity: 0.5;"></div>
+        <label style="font-size: 0.8125rem; color: #6B7280; cursor: not-allowed;">Enable notifications</label>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Disabled (checked)</div>
+      <div class="preview-card-body" style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 16px; height: 16px; border: 1px solid transparent; border-radius: 4px; background: #4D8EFF; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.625rem; line-height: 1; opacity: 0.5;">&#x2713;</div>
+        <label style="font-size: 0.8125rem; color: #6B7280; cursor: not-allowed;">Enable notifications</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="max-width: 480px;">
+    <div class="preview-card-header">Checkbox Group</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 16px; height: 16px; border: 1px solid transparent; border-radius: 4px; background: #4D8EFF; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.625rem;">&#x2713;</div>
+        <label style="font-size: 0.8125rem; color: #E2E2E5;">Email notifications</label>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 16px; height: 16px; border: 1px solid transparent; border-radius: 4px; background: #4D8EFF; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.625rem;">&#x2713;</div>
+        <label style="font-size: 0.8125rem; color: #E2E2E5;">Push notifications</label>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="width: 16px; height: 16px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; background: transparent; flex-shrink: 0;"></div>
+        <label style="font-size: 0.8125rem; color: #E2E2E5;">SMS notifications</label>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">checked</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">required</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onCheckedChange</span>
+      <span class="prop-type">(checked: boolean) => void</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Always pair with a visible label</li>
+        <li>Use for multi-select lists of options</li>
+        <li>Use for binary settings (on/off)</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use for mutually exclusive options — use RadioGroup instead</li>
+        <li>Trigger actions immediately on check — pair with a submit button</li>
+      </ul>
+    </div>
+  </div>
+</div>

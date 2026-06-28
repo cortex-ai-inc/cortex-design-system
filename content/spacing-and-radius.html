@@ -1,0 +1,70 @@
+<div class="page-header">
+  <h1>Spacing &amp; Radius</h1>
+  <p>Consistent spacing and border radius based on a <code>--radius: 0.5rem</code> base.</p>
+</div>
+<div class="page-body">
+  <h2 id="border-radius">Border Radius</h2>
+  <table class="token-table">
+    <thead>
+      <tr><th>Token</th><th>Value</th><th>Example</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--radius (base)</code></td>
+        <td>0.5rem (8px)</td>
+        <td><div class="token-demo" style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
+      </tr>
+      <tr>
+        <td><code>xl</code></td>
+        <td>calc(var(--radius) + 4px) = 12px</td>
+        <td><div class="token-demo" style="width:32px;height:32px;border-radius:12px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
+      </tr>
+      <tr>
+        <td><code>lg</code></td>
+        <td>var(--radius) = 8px</td>
+        <td><div class="token-demo" style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
+      </tr>
+      <tr>
+        <td><code>md</code></td>
+        <td>calc(var(--radius) - 2px) = 6px</td>
+        <td><div class="token-demo" style="width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
+      </tr>
+      <tr>
+        <td><code>sm</code></td>
+        <td>calc(var(--radius) - 4px) = 4px</td>
+        <td><div class="token-demo" style="width:32px;height:32px;border-radius:4px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
+      </tr>
+      <tr>
+        <td><code>xs</code></td>
+        <td>calc(var(--radius) - 6px) = 2px</td>
+        <td><div class="token-demo" style="width:32px;height:32px;border-radius:2px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>In practice, <code>rounded-sm</code> (4px) is used most commonly for buttons, inputs, and cards.</p>
+
+  <h2 id="spacing">Spacing</h2>
+  <p>Uses Tailwind's default spacing scale. Common values in practice:</p>
+  <table class="token-table">
+    <thead>
+      <tr><th>Class</th><th>Value</th><th>Typical Usage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>p-2</code></td><td>8px</td><td>Compact padding for badges, tags, small elements</td></tr>
+      <tr><td><code>p-3</code></td><td>12px</td><td>Input padding, small card padding</td></tr>
+      <tr><td><code>p-4</code></td><td>16px</td><td>Standard card padding, modal content</td></tr>
+      <tr><td><code>p-5</code></td><td>20px</td><td>Generous card padding, page sections</td></tr>
+      <tr><td><code>p-6</code></td><td>24px</td><td>Page-level padding, wide containers</td></tr>
+      <tr><td><code>gap-2</code></td><td>8px</td><td>Tight element spacing (icon + label)</td></tr>
+      <tr><td><code>gap-3</code></td><td>12px</td><td>Default flex/grid gap</td></tr>
+      <tr><td><code>gap-4</code></td><td>16px</td><td>Section spacing, card grids</td></tr>
+      <tr><td><code>gap-6</code></td><td>24px</td><td>Large section spacing</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="constraint">Constraint</h2>
+  <div class="callout callout-warning">
+    <div class="callout-title">&#9888;&#65039; Never exceed 0.375rem (6px)</div>
+    <p>In cortex-coder-front, border-radius is constrained to maximum 6px in practice, overriding the shadcn defaults.</p>
+  </div>
+</div>

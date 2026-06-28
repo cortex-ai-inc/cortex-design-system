@@ -1,0 +1,350 @@
+<div class="page-header">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h1 id="layout" class="text-display-sm">Layout</h1>
+      <p class="text-muted">Application layout patterns, responsive behavior, and spacing conventions used across the Cortex platform.</p>
+    </div>
+    <div class="flex gap-2">
+      <span class="tag tag-ts">TypeScript</span>
+      <span class="tag tag-react">React 19</span>
+      <span class="tag tag-radix">Radix UI</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- App Shell -->
+  <h2 id="app-shell">App Shell</h2>
+  <p>The application shell consists of a persistent <strong>sidebar</strong> on the left, a <strong>topbar</strong> at the top, and a <strong>main content</strong> area. The sidebar provides primary navigation, while the topbar contains secondary navigation, breadcrumbs, and user controls.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Layout Structure</span>
+    </div>
+    <div class="preview-card-body flex items-center justify-center p-8">
+      <div class="w-full max-w-2xl rounded-sm ghost-border overflow-hidden" style="background: #111319;">
+        <!-- Mock layout -->
+        <div class="flex" style="min-height: 320px;">
+          <!-- Sidebar -->
+          <div style="width: 72px; background: #0C0E14; border-right: 1px solid #282A30;" class="flex flex-col items-center py-4 gap-4">
+            <div class="w-8 h-8 rounded-sm" style="background: #4D8EFF;"></div>
+            <div class="w-5 h-5 rounded-sm" style="background: #282A30;"></div>
+            <div class="w-5 h-5 rounded-sm" style="background: #282A30;"></div>
+            <div class="w-5 h-5 rounded-sm" style="background: #282A30;"></div>
+            <div class="flex-1"></div>
+            <div class="w-5 h-5 rounded-sm" style="background: #282A30;"></div>
+          </div>
+          <!-- Main area -->
+          <div class="flex-1 flex flex-col">
+            <!-- Topbar -->
+            <div style="height: 48px; background: #0C0E14; border-bottom: 1px solid #282A30;" class="flex items-center px-4 gap-4">
+              <div class="w-5 h-5 rounded-sm" style="background: #282A30;"></div>
+              <div class="flex-1"></div>
+              <div class="w-24 h-3 rounded-sm" style="background: #282A30;"></div>
+              <div class="w-8 h-8 rounded-full" style="background: #282A30;"></div>
+            </div>
+            <!-- Content -->
+            <div class="flex-1 p-6">
+              <div class="w-48 h-4 rounded-sm mb-3" style="background: #282A30;"></div>
+              <div class="w-full h-3 rounded-sm mb-2" style="background: #191B22;"></div>
+              <div class="w-3/4 h-3 rounded-sm mb-2" style="background: #191B22;"></div>
+              <div class="w-5/6 h-3 rounded-sm mb-2" style="background: #191B22;"></div>
+              <div class="w-2/3 h-3 rounded-sm" style="background: #191B22;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">Sidebar (72px collapsed / 260px expanded) + Topbar (48px) + Main content area</span>
+    </div>
+  </div>
+
+  <!-- Sidebar Dimensions -->
+  <h3 id="sidebar-dimensions">Sidebar Dimensions</h3>
+  <p>The sidebar has two states: <strong>expanded</strong> (260px) and <strong>collapsed</strong> (72px). On desktop the sidebar is always visible; on mobile it renders as an overlay panel.</p>
+
+  <div class="grid-2 gap-4">
+    <div class="preview-card">
+      <div class="preview-card-header">
+        <span class="text-label-sm">Expanded</span>
+      </div>
+      <div class="preview-card-body">
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-code-sm">width: 260px</span>
+        </div>
+        <div class="mt-3" style="width: 260px; height: 24px; background: #191B22; border-radius: 4px;"></div>
+        <p class="text-body-sm text-muted mt-2">Shows icon + label for all nav items. Default state on desktop.</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">
+        <span class="text-label-sm">Collapsed</span>
+      </div>
+      <div class="preview-card-body">
+        <div class="flex items-center gap-3">
+          <span class="font-mono text-code-sm">width: 72px</span>
+        </div>
+        <div class="mt-3" style="width: 72px; height: 24px; background: #191B22; border-radius: 4px;"></div>
+        <p class="text-body-sm text-muted mt-2">Icons only. Labels hidden. Toggle via hamburger menu or keyboard shortcut.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Z-Index Layers -->
+  <h3 id="z-index-layers">Z-Index Layers</h3>
+  <p>A clear z-index hierarchy prevents stacking conflicts across the application.</p>
+
+  <div class="prop-table">
+    <div class="prop-table-row">
+      <span class="prop-name">Layer</span>
+      <span class="prop-type">Value</span>
+      <span class="prop-default">Usage</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">base</span>
+      <span class="prop-type">0</span>
+      <span class="prop-default">Page content, cards, grids</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">sidebar</span>
+      <span class="prop-type">10</span>
+      <span class="prop-default">Sidebar navigation panel</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">topbar</span>
+      <span class="prop-type">20</span>
+      <span class="prop-default">Top bar, sticky headers</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">dropdown</span>
+      <span class="prop-type">100</span>
+      <span class="prop-default">Dropdown menus, popovers, tooltips</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">modal</span>
+      <span class="prop-type">200</span>
+      <span class="prop-default">Dialogs, modals, slide-overs</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">toast</span>
+      <span class="prop-type">300</span>
+      <span class="prop-default">Toast notifications (sonner)</span>
+    </div>
+  </div>
+
+  <!-- Page Headers -->
+  <h2 id="page-headers">Page Headers</h2>
+  <p>Page headers combine a title, optional description, and action buttons. On mobile the layout stacks vertically; on desktop the actions align to the right.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Page Header</span>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between p-4" style="background: #111319; border-radius: 6px;">
+        <div>
+          <h3 class="text-title-sm" style="margin: 0;">Page Title</h3>
+          <p class="text-body-sm text-muted" style="margin: 4px 0 0 0;">Optional description that provides context for the current page.</p>
+        </div>
+        <div class="flex gap-2">
+          <button class="btn btn-secondary btn-sm">Secondary</button>
+          <button class="btn btn-primary btn-sm">Primary</button>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between</span>
+    </div>
+  </div>
+
+  <!-- Content Width Caps -->
+  <h3 id="content-width-caps">Content Width Caps</h3>
+  <p>Content areas use max-width constraints to maintain readability and prevent overly wide layouts.</p>
+
+  <div class="prop-table">
+    <div class="prop-table-row">
+      <span class="prop-name">Container</span>
+      <span class="prop-type">Class</span>
+      <span class="prop-default">Use Case</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Default</span>
+      <span class="prop-type">max-w-7xl</span>
+      <span class="prop-default">Most list pages, dashboards</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Narrow</span>
+      <span class="prop-type">max-w-5xl</span>
+      <span class="prop-default">Forms, detail pages, settings</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Editor</span>
+      <span class="prop-type">max-w-6xl</span>
+      <span class="prop-default">Rich text editor, content creation</span>
+    </div>
+  </div>
+
+  <div class="callout callout-info">
+    <strong>Rule:</strong> Always apply width caps to the <span class="font-mono">.page-body</span> or an inner wrapper. Never constrain individual sections within the page — use the cap once at the top level.
+  </div>
+
+  <!-- Grid-Based List Tables -->
+  <h2 id="grid-list-tables">Grid-Based List Tables</h2>
+  <p>Lists use CSS Grid for the table structure rather than HTML tables. This provides better control over alignment, responsive behavior, and interactive row states.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">List Table</span>
+    </div>
+    <div class="preview-card-body">
+      <div class="overflow-x-auto">
+        <div class="min-w-[640px]">
+          <!-- Header -->
+          <div class="grid grid-cols-12 gap-3 px-4 py-2" style="border-bottom: 1px solid #282A30;">
+            <div class="col-span-5"><span class="text-label-sm text-muted">Ticket</span></div>
+            <div class="col-span-2"><span class="text-label-sm text-muted">Status</span></div>
+            <div class="col-span-2"><span class="text-label-sm text-muted">Priority</span></div>
+            <div class="col-span-3"><span class="text-label-sm text-muted">Created</span></div>
+          </div>
+          <!-- Row -->
+          <div class="grid grid-cols-12 gap-3 px-4 py-3 items-center" style="border-bottom: 1px solid #191B22;">
+            <div class="col-span-5">
+              <span class="text-body-sm" style="color: #E2E2E5;">Login page not rendering on mobile</span>
+            </div>
+            <div class="col-span-2">
+              <span class="badge badge-warning">In Progress</span>
+            </div>
+            <div class="col-span-2">
+              <span class="badge badge-destructive">High</span>
+            </div>
+            <div class="col-span-3">
+              <span class="text-body-sm text-muted">2 hours ago</span>
+            </div>
+          </div>
+          <!-- Row -->
+          <div class="grid grid-cols-12 gap-3 px-4 py-3 items-center" style="border-bottom: 1px solid #191B22;">
+            <div class="col-span-5">
+              <span class="text-body-sm" style="color: #E2E2E5;">Database connection timeout in staging</span>
+            </div>
+            <div class="col-span-2">
+              <span class="badge badge-default">Open</span>
+            </div>
+            <div class="col-span-2">
+              <span class="badge badge-destructive">Critical</span>
+            </div>
+            <div class="col-span-3">
+              <span class="text-body-sm text-muted">5 hours ago</span>
+            </div>
+          </div>
+          <!-- Row -->
+          <div class="grid grid-cols-12 gap-3 px-4 py-3 items-center">
+            <div class="col-span-5">
+              <span class="text-body-sm" style="color: #E2E2E5;">Update payment gateway integration</span>
+            </div>
+            <div class="col-span-2">
+              <span class="badge badge-success">Resolved</span>
+            </div>
+            <div class="col-span-2">
+              <span class="badge badge-outline">Low</span>
+            </div>
+            <div class="col-span-3">
+              <span class="text-body-sm text-muted">1 day ago</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">overflow-x-auto &gt; .min-w-[640px] &gt; .grid.grid-cols-12</span>
+    </div>
+  </div>
+
+  <!-- Responsive Behavior -->
+  <h2 id="responsive-behavior">Responsive Behavior</h2>
+
+  <div class="grid-2 gap-4">
+    <div class="preview-card">
+      <div class="preview-card-header">
+        <span class="text-label-sm">Desktop</span>
+      </div>
+      <div class="preview-card-body">
+        <ul class="flex flex-col gap-2 text-body-sm" style="color: #E2E2E5;">
+          <li>Sidebar always visible (expanded or collapsed)</li>
+          <li>Topbar fixed at top</li>
+          <li>Content scrolls independently</li>
+          <li>Column layouts use <span class="font-mono">md:grid-cols-2</span></li>
+          <li>Headers: <span class="font-mono">sm:flex-row</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">
+        <span class="text-label-sm">Mobile</span>
+      </div>
+      <div class="preview-card-body">
+        <ul class="flex flex-col gap-2 text-body-sm" style="color: #E2E2E5;">
+          <li>Sidebar hidden by default, overlay on toggle</li>
+          <li>Topbar contains hamburger menu + breadcrumb</li>
+          <li>Single column layout</li>
+          <li>Headers stack vertically</li>
+          <li>Tables scroll horizontally</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spacing Conventions -->
+  <h2 id="spacing-conventions">Spacing Conventions</h2>
+  <p>Consistent spacing creates visual rhythm. The system uses a 4px base unit with the following common gaps:</p>
+
+  <div class="prop-table">
+    <div class="prop-table-row">
+      <span class="prop-name">Token</span>
+      <span class="prop-type">Tailwind</span>
+      <span class="prop-default">Pixel</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">xs</span>
+      <span class="prop-type">gap-1</span>
+      <span class="prop-default">4px</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">sm</span>
+      <span class="prop-type">gap-2</span>
+      <span class="prop-default">8px</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">md</span>
+      <span class="prop-type">gap-3</span>
+      <span class="prop-default">12px</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">lg</span>
+      <span class="prop-type">gap-4</span>
+      <span class="prop-default">16px</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">xl</span>
+      <span class="prop-type">gap-6</span>
+      <span class="prop-default">24px</span>
+    </div>
+  </div>
+
+  <div class="callout callout-warning">
+    <strong>Important:</strong> The sidebar uses <span class="font-mono">gap-4</span> between nav items. Forms use <span class="font-mono">gap-x-6 gap-y-5</span>. Lists use <span class="font-mono">gap-3</span> between columns. Do not introduce ad-hoc spacing values.
+  </div>
+
+  <!-- Gradient Primary -->
+  <h2 id="gradient-primary">Gradient Primary</h2>
+  <p>A subtle gradient accent used for decorative elements, brand highlights, and loading indicators.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-body flex items-center gap-4">
+      <div class="gradient-primary rounded-sm" style="width: 200px; height: 8px;"></div>
+      <span class="font-mono text-code-sm text-muted">.gradient-primary</span>
+    </div>
+  </div>
+
+</div>

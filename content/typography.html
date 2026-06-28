@@ -1,0 +1,91 @@
+<div class="page-header">
+  <h1>Typography</h1>
+  <p>Inter for body text, JetBrains Mono for code — a compact, readable type system.</p>
+</div>
+<div class="page-body">
+  <h2 id="scale">Type Scale</h2>
+  <table class="token-table">
+    <thead>
+      <tr><th>Token</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Letter Spacing</th><th>Sample</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>text-display-sm</code></td>
+        <td>36px / 2.25rem</td>
+        <td>700 (Bold)</td>
+        <td>2.25rem</td>
+        <td>-0.02em</td>
+        <td><span class="text-display-sm">Display</span></td>
+      </tr>
+      <tr>
+        <td><code>text-title-sm</code></td>
+        <td>16px / 1rem</td>
+        <td>600 (Semibold)</td>
+        <td>1rem</td>
+        <td>-0.02em</td>
+        <td><span class="text-title-sm">Section Title</span></td>
+      </tr>
+      <tr>
+        <td><code>text-body-sm</code></td>
+        <td>13px / 0.8125rem</td>
+        <td>400 (Regular)</td>
+        <td>0.8125rem</td>
+        <td>Normal</td>
+        <td><span class="text-body-sm">Body text sample</span></td>
+      </tr>
+      <tr>
+        <td><code>text-label-sm</code></td>
+        <td>11px / 0.6875rem</td>
+        <td>500 (Medium)</td>
+        <td>0.6875rem</td>
+        <td>+0.05em</td>
+        <td><span class="text-label-sm">LABEL TEXT</span></td>
+      </tr>
+      <tr>
+        <td><code>text-code-sm</code></td>
+        <td>12px / 0.75rem</td>
+        <td>400 (Regular)</td>
+        <td>0.75rem</td>
+        <td>Normal</td>
+        <td><code class="text-code-sm">code sample</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info">
+    <div class="callout-title">Default body text</div>
+    <p><code>text-body-sm</code> (13px) is the default body size used throughout all Cortex products. It provides a compact, information-dense reading experience suitable for developer tools.</p>
+  </div>
+
+  <h2 id="fonts">Font Family</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Inter (Body)</div>
+      <div class="preview-card-body" style="font-family:'Inter',sans-serif;">
+        <p style="font-weight:400;">Regular 400 — The quick brown fox jumps over the lazy dog.</p>
+        <p style="font-weight:500;">Medium 500 — The quick brown fox jumps over the lazy dog.</p>
+        <p style="font-weight:600;">Semibold 600 — The quick brown fox jumps over the lazy dog.</p>
+        <p style="font-weight:700;">Bold 700 — The quick brown fox jumps over the lazy dog.</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">JetBrains Mono (Code)</div>
+      <div class="preview-card-body" style="font-family:'JetBrains Mono',monospace;">
+        <p style="font-weight:400;">Regular 400 — const fn = (x: T) => x ?? fallback;</p>
+        <p style="font-weight:500;">Medium 500 — import { cn } from '@/lib/utils';</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="do-dont">
+    <div class="do-dont-item do">
+      <div class="do-dont-label">&#10003; Do</div>
+      <p>Use <code>text-body-sm</code> (13px) as the default body text. Use <code>text-label-sm</code> (11px uppercase) for labels, section headers, and table headers. Use <code>text-display-sm</code> (36px) sparingly — only for primary page titles.</p>
+    </div>
+    <div class="do-dont-item dont">
+      <div class="do-dont-label">&#10007; Don't</div>
+      <p>Use font sizes outside the defined scale. Use more than one <code>text-display-sm</code> per page.</p>
+    </div>
+  </div>
+</div>

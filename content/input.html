@@ -1,0 +1,175 @@
+<div class="page-header">
+  <h1>Input & Textarea</h1>
+  <p>Text input fields for single-line and multi-line data entry.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Input fields follow a consistent styling pattern: <code>h-10</code> (40px) height, <code>bg-surface-dim</code>
+    fill, and a <code>ghost-border-20</code> border. On focus, inputs display a <code>ring-2 ring-k-primary</code>
+    ring. All inputs use <code>rounded-sm</code> (4px) corners and <code>px-3 py-2</code> padding.
+    Placeholder text uses <code>on-surface-variant</code> (muted) color.
+  </p>
+
+  <h2 id="input-states">Input States</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Default</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
+          <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #C2C6D6;">you@example.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Focus</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
+          <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #E2E2E5; box-shadow: 0 0 0 2px rgba(77,142,255,0.5);">you@example.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Disabled</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
+          <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #6B7280; opacity: 0.5;">you@example.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Placeholder</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
+          <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #6B7280;">you@example.com</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="textarea">Textarea</h2>
+  <p>
+    Textareas use the same visual styling as inputs but have a <code>min-h-[80px]</code> minimum height
+    and allow vertical resizing. They are used for multi-line content like descriptions and comments.
+  </p>
+  <div class="preview-card" style="max-width: 480px;">
+    <div class="preview-card-header">Textarea</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
+      <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Description</label>
+      <div style="min-height: 80px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 8px 12px; font-size: 0.8125rem; color: #C2C6D6;">Enter a description for this ticket...</div>
+    </div>
+  </div>
+
+  <h2 id="input-with-icon">Input with Icon</h2>
+  <p>
+    When an input is accompanied by an icon (e.g., search), the icon sits inside the input area to the left,
+    with the input text offset appropriately. The icon uses <code>text-on-surface-variant</code> color.
+  </p>
+  <div class="preview-card" style="max-width: 360px;">
+    <div class="preview-card-header">Search Input</div>
+    <div class="preview-card-body">
+      <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; gap: 8px;">
+        <span style="color: #C2C6D6; font-size: 0.875rem;">&#x1F50D;</span>
+        <span style="font-size: 0.8125rem; color: #6B7280;">Search tickets...</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <h3 id="input-props">Input</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">type</span>
+      <span class="prop-type">"text" | "email" | "password" | "number" | "url" | "search"</span>
+      <span class="prop-default">"text"</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">placeholder</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h3 id="textarea-props">Textarea</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">placeholder</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">rows</span>
+      <span class="prop-type">number</span>
+      <span class="prop-default">3</span>
+    </div>
+  </div>
+
+  <h2 id="error-state">Error State</h2>
+  <div class="preview-card" style="max-width: 400px;">
+    <div class="preview-card-header">Input with Error</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
+      <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
+      <div style="height: 40px; background: #111319; border: 1px solid #F87171; border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #C2C6D6;"></div>
+      <div style="font-size: 0.75rem; color: #F87171;">This field is required.</div>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Always pair inputs with labels</li>
+        <li>Use appropriate <code>type</code> for email, password, etc.</li>
+        <li>Show error messages inline below the field</li>
+        <li>Use Input with icon for search fields</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use placeholder text as a label substitute</li>
+        <li>Remove focus rings for custom styling</li>
+        <li>Use inputs without proper <code>aria-label</code> or associated label</li>
+      </ul>
+    </div>
+  </div>
+</div>

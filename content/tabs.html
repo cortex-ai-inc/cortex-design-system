@@ -1,0 +1,169 @@
+<div class="page-header">
+  <h1>Tabs</h1>
+  <p>Tabbed navigation for switching between related content sections.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix Tabs</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Tabs organize content into separate views accessible via a tab bar. Built on Radix Tabs,
+    they provide full keyboard navigation (arrow keys switch tabs, Tab moves into content),
+    proper ARIA tab pattern, and automatic content visibility management.
+  </p>
+  <p>
+    The tab list (<code>TabsList</code>) uses <code>bg-surface-container-high</code> (#282A30)
+    with <code>rounded-sm</code> (4px) and <code>p-1</code> padding. Each trigger
+    (<code>TabsTrigger</code>) is inactive by default and activates with
+    <code>bg-surface-container-low</code> (#191B22) fill.
+  </p>
+
+  <h2 id="structure">Structure</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Component</span>
+      <span class="prop-table-cell">Role</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Tabs</span>
+      <span class="prop-default">Root context provider with value + onValueChange</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">TabsList</span>
+      <span class="prop-default">Container for tab triggers (bg-surface-container-high, rounded-sm, p-1)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">TabsTrigger</span>
+      <span class="prop-default">Clickable tab header (active: bg-surface-container-low)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">TabsContent</span>
+      <span class="prop-default">Content panel associated with a tab value</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Default Tabs</div>
+    <div class="preview-card-body">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: inline-flex; background: #282A30; border-radius: 4px; padding: 4px; gap: 2px;">
+          <div style="padding: 8px 16px; font-size: 0.8125rem; color: #E2E2E5; background: #191B22; border-radius: 4px; cursor: pointer; font-weight: 500;">Account</div>
+          <div style="padding: 8px 16px; font-size: 0.8125rem; color: #C2C6D6; border-radius: 4px; cursor: pointer;">Password</div>
+          <div style="padding: 8px 16px; font-size: 0.8125rem; color: #C2C6D6; border-radius: 4px; cursor: pointer;">Notifications</div>
+        </div>
+        <div style="padding: 8px 0; font-size: 0.8125rem; color: #C2C6D6;">
+          Account settings content goes here. This panel is shown when the "Account" tab is active.
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-muted font-mono text-xs">Active trigger uses bg-surface-container-low (#191B22) on bg-surface-container-high (#282A30) list</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">With Badges</div>
+      <div class="preview-card-body">
+        <div style="display: inline-flex; background: #282A30; border-radius: 4px; padding: 4px; gap: 2px;">
+          <div style="padding: 8px 16px; font-size: 0.8125rem; color: #E2E2E5; background: #191B22; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 500;">
+            Open
+            <span style="font-size: 0.6875rem; background: rgba(77,142,255,0.2); color: #ADC6FF; padding: 0 6px; border-radius: 9999px;">12</span>
+          </div>
+          <div style="padding: 8px 16px; font-size: 0.8125rem; color: #C2C6D6; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+            Closed
+            <span style="font-size: 0.6875rem; background: rgba(255,255,255,0.08); color: #C2C6D6; padding: 0 6px; border-radius: 9999px;">45</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Full Width</div>
+      <div class="preview-card-body">
+        <div style="display: flex; background: #282A30; border-radius: 4px; padding: 4px; gap: 2px; width: 100%;">
+          <div style="flex: 1; padding: 8px 16px; font-size: 0.8125rem; color: #E2E2E5; background: #191B22; border-radius: 4px; cursor: pointer; text-align: center; font-weight: 500;">Details</div>
+          <div style="flex: 1; padding: 8px 16px; font-size: 0.8125rem; color: #C2C6D6; border-radius: 4px; cursor: pointer; text-align: center;">Comments</div>
+          <div style="flex: 1; padding: 8px 16px; font-size: 0.8125rem; color: #C2C6D6; border-radius: 4px; cursor: pointer; text-align: center;">History</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <h3 id="tabs">Tabs</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">defaultValue</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onValueChange</span>
+      <span class="prop-type">(value: string) => void</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">orientation</span>
+      <span class="prop-type">"horizontal" | "vertical"</span>
+      <span class="prop-default">"horizontal"</span>
+    </div>
+  </div>
+
+  <h3 id="tabstrigger">TabsTrigger</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Keep tab labels short — one to two words</li>
+        <li>Use badges to indicate counts on tabs</li>
+        <li>Ensure content in each tab is independently meaningful</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use tabs for navigation between unrelated pages — use sidebar or topbar</li>
+        <li>Put more than 6-7 tabs in a single list</li>
+        <li>Use vertical tabs in narrow containers</li>
+      </ul>
+    </div>
+  </div>
+</div>

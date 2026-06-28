@@ -1,0 +1,399 @@
+<div class="page-header">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h1 id="iconography" class="text-display-sm">Iconography</h1>
+      <p class="text-muted">Icon library, sizing guidelines, stroke conventions, and usage patterns for the Cortex design system.</p>
+    </div>
+    <div class="flex gap-2">
+      <span class="tag">lucide-react</span>
+      <span class="tag tag-new">v0.562</span>
+    </div>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- Library -->
+  <h2 id="icon-library">Icon Library</h2>
+  <p>The Cortex design system uses <strong>lucide-react</strong> v0.562 as its sole icon library. All interface icons should be sourced from Lucide. Do not use inline SVGs, emoji, or images as interface icons — use Lucide components.</p>
+
+  <div class="callout callout-info">
+    <strong>Note:</strong> The SVG paths shown below are for documentation purposes only. In production React code, import icons from <span class="font-mono">lucide-react</span> and use them as components: <span class="font-mono">{">"}import { Bell } from "lucide-react"</span>
+  </div>
+
+  <!-- Sizing -->
+  <h2 id="icon-sizing">Icon Sizing</h2>
+
+  <div class="prop-table">
+    <div class="prop-table-row">
+      <span class="prop-name">Property</span>
+      <span class="prop-type">Value</span>
+      <span class="prop-default">Description</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Default size</span>
+      <span class="prop-type">w-4 h-4</span>
+      <span class="prop-default">16px &times; 16px</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Standard stroke</span>
+      <span class="prop-type">strokeWidth=1.5</span>
+      <span class="prop-default">Consistent line weight</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">In buttons</span>
+      <span class="prop-type">[&amp;_svg]:size-4</span>
+      <span class="prop-default">Uniform icon sizing via Tailwind</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">In navigation</span>
+      <span class="prop-type">w-4 h-4</span>
+      <span class="prop-default">Sidebar nav items</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Large</span>
+      <span class="prop-type">w-5 h-5</span>
+      <span class="prop-default">Section headers, empty states</span>
+    </div>
+  </div>
+
+  <div class="callout callout-warning">
+    <strong>Important:</strong> Always use <span class="font-mono">[&amp;_svg]:size-4 [&amp;_svg]:shrink-0</span> on button containers to ensure consistent icon sizing. Never set individual icon sizes within buttons.
+  </div>
+
+  <!-- Icon in Button Example -->
+  <h3 id="icons-in-buttons">Icons in Buttons</h3>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Buttons with Icons</span>
+    </div>
+    <div class="preview-card-body flex flex-wrap gap-3 items-center">
+      <button class="btn btn-primary btn-sm flex items-center gap-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        <span>Create Ticket</span>
+      </button>
+      <button class="btn btn-secondary btn-sm flex items-center gap-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>Download</span>
+      </button>
+      <button class="btn btn-ghost btn-sm flex items-center gap-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+        <span>External Link</span>
+      </button>
+      <button class="btn btn-destructive btn-sm flex items-center gap-2">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+        <span>Delete</span>
+      </button>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">Button container: [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 + flex items-center gap-2</span>
+    </div>
+  </div>
+
+  <!-- Icon-Only Buttons -->
+  <h3 id="icon-only-buttons">Icon-Only Buttons</h3>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Icon Buttons</span>
+    </div>
+    <div class="preview-card-body flex items-center gap-3">
+      <button class="btn btn-icon" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+      <button class="btn btn-icon" aria-label="Notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      </button>
+      <button class="btn btn-icon" aria-label="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">Always include aria-label for icon-only buttons (screen reader accessibility)</span>
+    </div>
+  </div>
+
+  <!-- Usage Guidelines -->
+  <h2 id="usage-guidelines">Usage Guidelines</h2>
+
+  <div class="do-dont">
+    <div class="flex flex-col gap-3">
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center" style="background: rgba(77,142,255,0.15);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="color: #ADC6FF;"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <span class="text-body-sm" style="color: #E2E2E5;"><strong>Do:</strong> Use icons as <strong>decorative</strong> elements alongside text labels to enhance scanability. Icons should support, not replace, text.</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center" style="background: rgba(77,142,255,0.15);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="color: #ADC6FF;"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <span class="text-body-sm" style="color: #E2E2E5;"><strong>Do:</strong> Use <span class="font-mono">aria-label</span> when an icon is the sole indicator of an action or information (standalone icon buttons, status indicators).</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center" style="background: rgba(248,113,113,0.15);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="color: #F87171;"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </div>
+        <div>
+          <span class="text-body-sm" style="color: #E2E2E5;"><strong>Don't:</strong> Mix icon libraries. Stick to lucide-react exclusively.</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center" style="background: rgba(248,113,113,0.15);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="color: #F87171;"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </div>
+        <div>
+          <span class="text-body-sm" style="color: #E2E2E5;"><strong>Don't:</strong> Use emoji as interface icons. Reserve emoji for rich text content only.</span>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-5 h-5 rounded-sm flex items-center justify-center" style="background: rgba(248,113,113,0.15);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="color: #F87171;"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </div>
+        <div>
+          <span class="text-body-sm" style="color: #E2E2E5;"><strong>Don't:</strong> Change strokeWidth from the default of 1.5. Consistency in line weight is critical for visual harmony.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Icon Grid -->
+  <h2 id="icon-grid">Icon Reference</h2>
+  <p>Commonly used icons in the Cortex platform. Import names match the <span class="font-mono">lucide-react</span> component names.</p>
+
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <span class="text-label-sm">Common Icons</span>
+    </div>
+    <div class="preview-card-body">
+      <style>
+        .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+        .icon-grid-item { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 4px; border-radius: 6px; background: #111319; border: 1px solid #191B22; }
+        .icon-grid-item:hover { background: #191B22; border-color: #282A30; }
+        .icon-grid-item span { font-size: 11px; color: #C2C6D6; text-align: center; font-family: 'JetBrains Mono', monospace; }
+      </style>
+
+      <div class="icon-grid">
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span>Bell</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M15 5v2"/><path d="M15 11v2"/><path d="M15 17v2"/><path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4V7a2 2 0 0 1 2-2Z"/></svg>
+          <span>Ticket</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>LayoutDashboard</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Users</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+          <span>HelpCircle</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+          <span>BarChart3</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <span>Menu</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+          <span>LogOut</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M20 6 9 17l-5-5"/></svg>
+          <span>Check</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          <span>X</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="m6 9 6 6 6-6"/></svg>
+          <span>ChevronDown</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span>ArrowRight</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          <span>ArrowUpRight</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>MessageSquare</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>UserPlus</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+          <span>BookOpen</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M12 22V12"/><path d="m3.3 7 8.7 5 8.7-5"/></svg>
+          <span>Headphones</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" x2="15" y1="9" y2="15"/><line x1="15" x2="9" y1="9" y2="15"/></svg>
+          <span>PanelLeftClose</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" x2="9" y1="3" y2="21"/></svg>
+          <span>PanelLeftOpen</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+          <span>Loader2</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span>FileText</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polygon points="22 3 22 15 16 15 16 21 2 21 2 3"/><line x1="6" x2="10" y1="9" y2="9"/><line x1="6" x2="14" y1="13" y2="13"/><line x1="6" x2="14" y1="17" y2="17"/></svg>
+          <span>Filter</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          <span>Plus</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+          <span>Trash2</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+          <span>Edit3</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="1"/><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          <span>MoreHorizontal</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          <span>Download</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+          <span>Upload</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>Copy</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" x2="21" y1="14" y2="3"/></svg>
+          <span>ExternalLink</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+          <span>AlertCircle</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span>Info</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Clock</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg>
+          <span>Calendar</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Star</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Home</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Globe</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span>Mail</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>Phone</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Lock</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span>Eye</span>
+        </div>
+        <div class="icon-grid-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-10-7-10-7a18.45 18.45 0 0 1 5.06-5.94"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><path d="M2 2l20 20"/></svg>
+          <span>EyeOff</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-code-sm">43 commonly used icons — import from lucide-react, use at w-4 h-4 with strokeWidth=1.5</span>
+    </div>
+  </div>
+
+  <!-- Color and States -->
+  <h2 id="icon-states">Icon States</h2>
+  <p>Icons inherit their color from the surrounding text or via Tailwind classes. They support hover, active, and disabled states through the parent element.</p>
+
+  <div class="grid-3 gap-4">
+    <div class="preview-card">
+      <div class="preview-card-header">
+        <span class="text-label-sm">Default</span>
+      </div>
+      <div class="preview-card-body flex items-center gap-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color: #C2C6D6;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="text-code-sm text-muted">text-muted</span>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">
+        <span class="text-label-sm">Active</span>
+      </div>
+      <div class="preview-card-body flex items-center gap-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color: #ADC6FF;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="text-code-sm" style="color: #ADC6FF;">k-primary</span>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">
+        <span class="text-label-sm">Error</span>
+      </div>
+      <div class="preview-card-body flex items-center gap-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="color: #F87171;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="text-code-sm" style="color: #F87171;">k-error</span>
+      </div>
+    </div>
+  </div>
+
+</div>

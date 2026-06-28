@@ -1,0 +1,154 @@
+<div class="page-header">
+  <h1>Badge</h1>
+  <p>Small label for status indicators, counts, and metadata tags.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Badges provide a compact way to display status, counts, or categorical labels. They render as
+    <code>inline-flex</code> elements with uppercase text (11px), <code>rounded-sm</code> (4px) corners,
+    and horizontal padding. Unlike tags, badges carry semantic meaning through color.
+  </p>
+
+  <h2 id="variants">Variants</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Variant</span>
+      <span class="prop-table-cell">Class</span>
+      <span class="prop-table-cell">Visual</span>
+      <span class="prop-table-cell">Usage</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">default</span>
+      <span class="prop-type">badge badge-default</span>
+      <span class="prop-default">Surface-container-high bg, muted text</span>
+      <span class="prop-default">Generic label, neutral status</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">primary</span>
+      <span class="prop-type">badge badge-primary</span>
+      <span class="prop-default">Blue-toned bg, k-primary text</span>
+      <span class="prop-default">Primary label, "active" status</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">success</span>
+      <span class="prop-type">badge badge-success</span>
+      <span class="prop-default">Green-toned bg, k-secondary text</span>
+      <span class="prop-default">"Completed", "approved", "online"</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">warning</span>
+      <span class="prop-type">badge badge-warning</span>
+      <span class="prop-default">Yellow-toned bg, k-warning text</span>
+      <span class="prop-default">"Pending", "in progress", "awaiting"</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">destructive</span>
+      <span class="prop-type">badge badge-destructive</span>
+      <span class="prop-default">Red-toned bg, k-error text</span>
+      <span class="prop-default">"Error", "blocked", "overdue"</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">outline</span>
+      <span class="prop-type">badge badge-outline</span>
+      <span class="prop-default">Transparent bg, border only</span>
+      <span class="prop-default">Subtle labels, secondary info</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Badge Variants</div>
+    <div class="preview-card-body">
+      <div class="flex gap-3 items-center flex-wrap">
+        <span class="badge badge-default">Default</span>
+        <span class="badge badge-primary">Primary</span>
+        <span class="badge badge-success">Success</span>
+        <span class="badge badge-warning">Warning</span>
+        <span class="badge badge-destructive">Destructive</span>
+        <span class="badge badge-outline">Outline</span>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-muted font-mono text-xs">Rendered with <code>badge badge-{variant}</code></span>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-card-header">Status Indicators</div>
+    <div class="preview-card-body">
+      <div class="flex gap-3 items-center flex-wrap">
+        <span class="badge badge-primary">Active</span>
+        <span class="badge badge-success">Completed</span>
+        <span class="badge badge-warning">Pending</span>
+        <span class="badge badge-destructive">Blocked</span>
+        <span class="badge badge-default">Draft</span>
+        <span class="badge badge-outline">Archived</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-card-header">With Counts</div>
+    <div class="preview-card-body">
+      <div class="flex gap-3 items-center flex-wrap">
+        <span class="badge badge-primary">42</span>
+        <span class="badge badge-default">3 new</span>
+        <span class="badge badge-warning">12 pending</span>
+        <span class="badge badge-destructive">7 errors</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+      <span class="prop-table-cell">Description</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">variant</span>
+      <span class="prop-type">"default" | "primary" | "success" | "warning" | "destructive" | "outline"</span>
+      <span class="prop-default">"default"</span>
+      <span>Visual style of the badge</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+      <span>Additional CSS classes</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+      <span>Content inside the badge</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use semantic variants matching the status meaning</li>
+        <li>Keep badge text short — one or two words</li>
+        <li>Use uppercase text for consistency</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use multiple colors for the same status type</li>
+        <li>Put interactive elements inside badges</li>
+        <li>Use badges for long-form text</li>
+      </ul>
+    </div>
+  </div>
+</div>

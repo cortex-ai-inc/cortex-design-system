@@ -1,0 +1,142 @@
+<div class="page-header">
+  <h2 id="pagination">Pagination</h2>
+  <p class="text-muted">A pagination component for navigating through pages of content. Supports previous/next navigation and individual page links.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="pagination-example">Example</h3>
+    </div>
+    <div class="preview-card-body">
+      <nav aria-label="Page navigation" style="display: flex; align-items: center; gap: 4px;">
+        <button style="display: inline-flex; align-items: center; gap: 4px; padding: 8px 12px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          Previous
+        </button>
+        <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #E2E2E5; background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%); border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">1</button>
+        <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">2</button>
+        <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">3</button>
+        <span style="color: #C2C6D6; padding: 0 4px;">...</span>
+        <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">10</button>
+        <button style="display: inline-flex; align-items: center; gap: 4px; padding: 8px 12px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">
+          Next
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <div class="preview-card" style="margin-top: 24px;">
+    <div class="preview-card-header">
+      <h3 id="pagination-variants">Variants</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div>
+          <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; display: block;">Default</span>
+          <nav aria-label="Page navigation example 1" style="display: flex; align-items: center; gap: 4px;">
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #E2E2E5; background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%); border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">1</button>
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">2</button>
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">3</button>
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </nav>
+        </div>
+
+        <div>
+          <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; display: block;">With Page Numbers Only</span>
+          <nav aria-label="Page navigation example 2" style="display: flex; align-items: center; gap: 4px;">
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">1</button>
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #E2E2E5; background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%); border: none; border-radius: 6px; cursor: pointer; font-weight: 500;">2</button>
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">3</button>
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">4</button>
+            <button style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; font-size: 13px; color: #C2C6D6; background: transparent; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; cursor: pointer;">5</button>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>Pagination uses a consistent button-based layout. The current page is highlighted with the <span class="font-mono text-code-sm">gradient-primary</span> background. Previous/Next buttons include chevron icons and can show labels. Use the <span class="font-mono text-code-sm">PaginationEllipsis</span> component to indicate truncated page ranges.</p>
+  </div>
+
+  <h3 id="pagination-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Component</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Props</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">Pagination</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">className?: string</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Root nav wrapper.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">PaginationContent</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">className?: string</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Flex container for pagination items.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">PaginationItem</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">className?: string</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Individual pagination item wrapper.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">PaginationLink</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">href?: string, isActive?: boolean</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Clickable page link. Active state applied when <span class="font-mono">isActive</span> is true.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="pagination-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import {
+  Pagination,
+  PaginationContent,
+  PaginationLink,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+} from '@/components/ui/pagination'
+
+&lt;Pagination&gt;
+  &lt;PaginationContent&gt;
+    &lt;PaginationItem&gt;
+      &lt;PaginationPrevious href="#" /&gt;
+    &lt;/PaginationItem&gt;
+    &lt;PaginationItem&gt;
+      &lt;PaginationLink href="#" isActive&gt;1&lt;/PaginationLink&gt;
+    &lt;/PaginationItem&gt;
+    &lt;PaginationItem&gt;
+      &lt;PaginationLink href="#"&gt;2&lt;/PaginationLink&gt;
+    &lt;/PaginationItem&gt;
+    &lt;PaginationItem&gt;
+      &lt;PaginationLink href="#"&gt;3&lt;/PaginationLink&gt;
+    &lt;/PaginationItem&gt;
+    &lt;PaginationItem&gt;
+      &lt;PaginationEllipsis /&gt;
+    &lt;/PaginationItem&gt;
+    &lt;PaginationItem&gt;
+      &lt;PaginationNext href="#" /&gt;
+    &lt;/PaginationItem&gt;
+  &lt;/PaginationContent&gt;
+&lt;/Pagination&gt;`}</code></pre>
+  </div>
+</div>

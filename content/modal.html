@@ -1,0 +1,187 @@
+<div class="page-header">
+  <h2 id="sheet-drawer">Sheet / Drawer</h2>
+  <p class="text-muted">Overlay panels for side content (Sheet) and mobile-friendly bottom drawers (Drawer). Sheet is powered by Radix Dialog, Drawer uses vaul.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix</span>
+    <span class="tag">vaul</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="sheet-sides">Sheet Sides</h3>
+    </div>
+    <div class="preview-card-body">
+      <div class="grid-2" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+          <div style="width: 48px; height: 48px; border: 2px dashed rgba(194, 198, 214, 0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V3h6"/><path d="M21 15v6h-6"/><path d="M3 15v6h6"/><path d="M21 9V3h-6"/></svg>
+          </div>
+          <span style="font-size: 13px; color: #E2E2E5;">Right (default)</span>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+          <div style="width: 48px; height: 48px; border: 2px dashed rgba(194, 198, 214, 0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V3h6"/><path d="M15 3h6v6"/><path d="M15 21h6v-6"/><path d="M3 15v6h6"/></svg>
+          </div>
+          <span style="font-size: 13px; color: #E2E2E5;">Left</span>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+          <div style="width: 48px; height: 48px; border: 2px dashed rgba(194, 198, 214, 0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18"/><path d="M3 12h18"/><path d="M3 21h18"/></svg>
+          </div>
+          <span style="font-size: 13px; color: #E2E2E5;">Top</span>
+        </div>
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px;">
+          <div style="width: 48px; height: 48px; border: 2px dashed rgba(194, 198, 214, 0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18"/><path d="M12 3v18"/><path d="M21 3v18"/></svg>
+          </div>
+          <span style="font-size: 13px; color: #E2E2E5;">Bottom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="margin-top: 24px;">
+    <div class="preview-card-header">
+      <h3 id="sheet-example">Sheet Example</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button class="btn btn-secondary">Open Sheet</button>
+        <button class="btn btn-secondary">Open Drawer</button>
+      </div>
+      <div style="margin-top: 16px; position: relative; height: 320px; border-radius: 8px; overflow: hidden; background: #0C0E14;">
+        <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5); display: flex; align-items: flex-end; justify-content: center;">
+          <div style="width: 100%; max-width: 320px; background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 12px 12px 0 0; padding: 24px; box-shadow: 0 -8px 24px rgba(0,0,0,0.3);">
+            <div style="width: 40px; height: 4px; border-radius: 2px; background: rgba(194, 198, 214, 0.3); margin: 0 auto 16px;"></div>
+            <h4 style="margin: 0 0 8px; font-size: 14px; font-weight: 600; color: #E2E2E5;">Drawer Title</h4>
+            <p style="margin: 0 0 16px; font-size: 13px; color: #C2C6D6;">This is a mobile-friendly bottom drawer example using vaul. It features a drag handle at the top and can be swiped down to close.</p>
+            <button class="btn btn-primary w-full" style="width: 100%;">Action</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="margin-top: 24px;">
+    <div class="preview-card-header">
+      <h3 id="sheet-right-panel">Right Sheet Panel</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="display: flex; justify-content: flex-end; min-height: 200px; background: #0C0E14; border-radius: 8px; position: relative; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5);"></div>
+        <div style="position: relative; width: 75%; max-width: 384px; background: #191B22; border-left: 1px solid rgba(194, 198, 214, 0.15); padding: 24px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #E2E2E5;">Ticket Details</h4>
+            <button style="width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; color: #C2C6D6;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+              <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Status</span>
+              <span class="badge badge-warning">In Progress</span>
+            </div>
+            <div>
+              <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Priority</span>
+              <span class="badge badge-destructive">High</span>
+            </div>
+            <div>
+              <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Assigned To</span>
+              <span style="font-size: 13px; color: #E2E2E5;">John Doe</span>
+            </div>
+            <div>
+              <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;">Created</span>
+              <span style="font-size: 13px; color: #E2E2E5;">Jun 25, 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>Sheets are side panels powered by <span class="font-mono text-code-sm">@radix-ui/react-dialog</span>. Available sides: <span class="font-mono text-code-sm">top</span>, <span class="font-mono text-code-sm">right</span> (default), <span class="font-mono text-code-sm">bottom</span>, <span class="font-mono text-code-sm">left</span>. The overlay uses <span class="font-mono text-code-sm">bg-black/50</span>. Width defaults to <span class="font-mono text-code-sm">w-3/4 sm:max-w-sm</span>. Drawers use <span class="font-mono text-code-sm">vaul</span> for mobile-first bottom sheets with drag-to-dismiss behavior.</p>
+  </div>
+
+  <h3 id="sheet-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Prop</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Type</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Default</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">open</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">boolean</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">false</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Controlled open state.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">onOpenChange</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">(open: boolean) =&gt; void</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">--</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Callback when open state changes.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">side</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">"top" | "right" | "bottom" | "left"</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">"right"</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Side from which the sheet slides in.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="sheet-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+} from '@/components/ui/sheet'
+
+// Sheet (side panel)
+&lt;Sheet&gt;
+  &lt;SheetTrigger asChild&gt;
+    &lt;Button&gt;Open Sheet&lt;/Button&gt;
+  &lt;/SheetTrigger&gt;
+  &lt;SheetContent side="right"&gt;
+    &lt;SheetHeader&gt;
+      &lt;SheetTitle&gt;Ticket Details&lt;/SheetTitle&gt;
+      &lt;SheetDescription&gt;
+        View and edit ticket information.
+      &lt;/SheetDescription&gt;
+    &lt;/SheetHeader&gt;
+    {/* Content */}
+  &lt;/SheetContent&gt;
+&lt;/Sheet&gt;
+
+// Drawer (bottom sheet - vaul)
+import { Drawer } from 'vaul'
+
+&lt;Drawer.Root&gt;
+  &lt;Drawer.Trigger asChild&gt;
+    &lt;Button&gt;Open Drawer&lt;/Button&gt;
+  &lt;/Drawer.Trigger&gt;
+  &lt;Drawer.Portal&gt;
+    &lt;Drawer.Overlay className="fixed inset-0 bg-black/50" /&gt;
+    &lt;Drawer.Content className="..."&gt;
+      &lt;div className="mx-auto w-12 h-1.5 rounded-full bg-muted" /&gt;
+      &lt;Drawer.Title&gt;Title&lt;/Drawer.Title&gt;
+      &lt;Drawer.Description&gt;Description&lt;/Drawer.Description&gt;
+    &lt;/Drawer.Content&gt;
+  &lt;/Drawer.Portal&gt;
+&lt;/Drawer.Root&gt;`}</code></pre>
+  </div>
+</div>

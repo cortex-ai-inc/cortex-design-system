@@ -1,0 +1,212 @@
+<div class="page-header">
+  <h1>TopBar</h1>
+  <p>Top navigation bar with breadcrumbs, search, and user actions.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    The TopBar sits at the top of authenticated application views, spanning the full viewport width
+    with a fixed height of <code>h-12</code> (48px). It uses <code>bg-surface-dim</code> (#111319)
+    with a bottom border of <code>border-b ghost-border</code> and <code>sticky top-0</code> positioning.
+  </p>
+  <p>
+    The TopBar is divided into two zones: the left side contains the hamburger menu (mobile only)
+    and breadcrumb navigation. The right side contains the notification bell and user avatar dropdown.
+  </p>
+
+  <h2 id="structure">Structure</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Zone</span>
+      <span class="prop-table-cell">Content</span>
+      <span class="prop-table-cell">Visibility</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Left - Hamburger</span>
+      <span class="prop-default">btn-ghost btn-icon toggle for mobile sidebar</span>
+      <span class="prop-default">Mobile only (lg:hidden)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Left - Breadcrumbs</span>
+      <span class="prop-default">Route hierarchy with separators</span>
+      <span class="prop-default">Always visible</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Right - Notification Bell</span>
+      <span class="prop-default">Icon button with unread badge</span>
+      <span class="prop-default">Always visible</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Right - Avatar Dropdown</span>
+      <span class="prop-default">User avatar + dropdown menu</span>
+      <span class="prop-default">Always visible</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">TopBar Layout</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="height: 48px; background: #111319; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-radius: 4px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; cursor: pointer; color: #C2C6D6; font-size: 1.125rem; display: none;">&#x2630;</div>
+          <div style="display: flex; align-items: center; gap: 6px; font-size: 0.8125rem;">
+            <span style="color: #C2C6D6;">Dashboard</span>
+            <span style="color: #6B7280; font-size: 0.75rem;">/</span>
+            <span style="color: #E2E2E5; font-weight: 500;">Tickets</span>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; cursor: pointer; color: #C2C6D6; position: relative;">
+            <span style="font-size: 1.125rem;">&#x1F514;</span>
+            <div style="position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; background: #F87171; border-radius: 9999px;"></div>
+          </div>
+          <div style="width: 32px; height: 32px; border-radius: 4px; background: hsl(210, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: white; cursor: pointer;">JD</div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-muted font-mono text-xs">Full topbar with breadcrumbs (Dashboard / Tickets), notification bell with unread dot, and user avatar</span>
+    </div>
+  </div>
+
+  <h2 id="breadcrumbs">Breadcrumbs</h2>
+  <p>
+    Breadcrumbs show the current page location within the route hierarchy. Each segment is separated
+    by a forward slash (<code>/</code>) with muted styling. The final segment (current page) is
+    highlighted with <code>font-medium</code> weight and <code>on-surface</code> color.
+  </p>
+
+  <h3 id="route-mapping">Route Mapping</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Route</span>
+      <span class="prop-table-cell">Breadcrumb</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">/</span>
+      <span class="prop-default">Dashboard</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">/tickets</span>
+      <span class="prop-default">Dashboard / Tickets</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">/tickets/new</span>
+      <span class="prop-default">Dashboard / Tickets / New Ticket</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">/tickets/{id}</span>
+      <span class="prop-default">Dashboard / Tickets / {title or id}</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">/profile</span>
+      <span class="prop-default">Dashboard / Profile</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">/admin</span>
+      <span class="prop-default">Admin</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">/admin/tickets</span>
+      <span class="prop-default">Admin / Tickets</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">/admin/settings</span>
+      <span class="prop-default">Admin / Settings</span>
+    </div>
+  </div>
+
+  <h2 id="notification-bell">Notification Bell</h2>
+  <p>
+    The notification bell is a <code>btn-ghost btn-icon</code> button that displays an unread indicator
+    dot when there are unseen notifications. The bell polls every 30 seconds via React Query
+    (<code>refetchInterval: 30000</code>) and updates the badge based on the last-check timestamp
+    stored in <code>localStorage</code> (<code>cortex.notifications.since</code>).
+  </p>
+  <div class="preview-card" style="max-width: 200px;">
+    <div class="preview-card-header">Notification Bell</div>
+    <div class="preview-card-body" style="display: flex; align-items: center; gap: 16px;">
+      <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #C2C6D6; position: relative;">
+        <span style="font-size: 1.125rem;">&#x1F514;</span>
+        <div style="position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; background: #F87171; border-radius: 9999px;"></div>
+      </div>
+      <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #C2C6D6; position: relative;">
+        <span style="font-size: 1.125rem;">&#x1F514;</span>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-muted font-mono text-xs">Left: unread, Right: no unread</span>
+    </div>
+  </div>
+
+  <h2 id="responsive">Responsive Behavior</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Desktop</div>
+      <div class="preview-card-body">
+        <div style="height: 48px; background: #111319; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; padding: 0 16px; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="display: flex; align-items: center; gap: 6px; font-size: 0.8125rem;">
+              <span style="color: #E2E2E5; font-weight: 500;">Dashboard</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #C2C6D6;">&#x1F514;</div>
+            <div style="width: 32px; height: 32px; border-radius: 4px; background: hsl(210, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: white;">JD</div>
+          </div>
+        </div>
+        <ul style="font-size: 0.8125rem; color: #C2C6D6; margin-top: 8px;">
+          <li>Full breadcrumbs visible</li>
+          <li>Hamburger hidden (lg:hidden)</li>
+          <li>Sidebar visible alongside</li>
+        </ul>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Mobile</div>
+      <div class="preview-card-body">
+        <div style="height: 48px; background: #111319; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; padding: 0 12px; border-radius: 4px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; cursor: pointer; color: #C2C6D6; font-size: 1.125rem;">&#x2630;</div>
+            <span style="font-size: 0.8125rem; color: #E2E2E5; font-weight: 500;">Tickets</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <div style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; color: #C2C6D6;">&#x1F514;</div>
+            <div style="width: 32px; height: 32px; border-radius: 4px; background: hsl(210, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; color: white;">JD</div>
+          </div>
+        </div>
+        <ul style="font-size: 0.8125rem; color: #C2C6D6; margin-top: 8px;">
+          <li>Hamburger visible for sidebar toggle</li>
+          <li>Breadcrumbs show only current page</li>
+          <li>Sidebar hidden (overlay panel)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Show breadcrumbs reflecting the full route hierarchy</li>
+        <li>Use the notification bell with polling-based unread indicator</li>
+        <li>Show user avatar with dropdown for profile/account actions</li>
+        <li>Keep the topbar sticky at all times</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Place navigation links in the topbar — use sidebar</li>
+        <li>Overcrowd the topbar — limit to 3-4 right-side actions</li>
+        <li>Show the hamburger menu on desktop breakpoints</li>
+      </ul>
+    </div>
+  </div>
+</div>

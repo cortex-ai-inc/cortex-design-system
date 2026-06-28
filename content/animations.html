@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h1>Animations</h1>
+  <p>Subtle, purposeful animations that enhance without distracting.</p>
+</div>
+<div class="page-body">
+  <h2 id="keyframes">Keyframes</h2>
+  <table class="token-table">
+    <thead>
+      <tr><th>Name</th><th>Duration</th><th>Usage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>fade-in</td><td>200ms ease-out</td><td>Modals, dropdowns, page transitions</td></tr>
+      <tr><td>slide-up</td><td>200ms ease-out</td><td>Modal content entry</td></tr>
+      <tr><td>pulse-ring</td><td>2s linear infinite</td><td>StatusDot loading states</td></tr>
+      <tr><td>accordion-down</td><td>200ms ease-out</td><td>Accordion expand</td></tr>
+      <tr><td>accordion-up</td><td>200ms ease-out</td><td>Accordion collapse</td></tr>
+      <tr><td>caret-blink</td><td>1.25s step-end infinite</td><td>OTP input cursor</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="principles">Animation Principles</h2>
+  <ul>
+    <li><strong>200ms default</strong> — fast enough to feel responsive, slow enough to perceive</li>
+    <li><strong>ease-out</strong> — decelerate naturally; no bounce or spring effects</li>
+    <li><strong>Subtle shifts</strong> — 10px translateY for slide-up, opacity only for fade-in</li>
+    <li><strong>Infinite animations</strong> — reserved for loading/status indicators only</li>
+  </ul>
+
+  <h2 id="previews">Previews</h2>
+  <div class="grid-3">
+    <div class="preview-card">
+      <div class="preview-card-header">fade-in</div>
+      <div class="preview-card-body">
+        <div style="animation:fadeIn 200ms ease-out;width:80px;height:40px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);border-radius:4px;"></div>
+        <p class="text-label-sm" style="margin-top:8px;">200ms ease-out</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">slide-up</div>
+      <div class="preview-card-body">
+        <div style="animation:slideUp 200ms ease-out;width:80px;height:40px;background:linear-gradient(135deg,#4ADE80,#2ECC71);border-radius:4px;"></div>
+        <p class="text-label-sm" style="margin-top:8px;">200ms ease-out, 10px translateY</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">pulse-ring</div>
+      <div class="preview-card-body">
+        <div style="position:relative;width:16px;height:16px;">
+          <div style="position:absolute;inset:0;border-radius:50%;background:#4ADE80;animation:pulseRingAnim 2s linear infinite;"></div>
+          <div style="position:absolute;inset:0;border-radius:50%;background:#4ADE80;"></div>
+        </div>
+        <p class="text-label-sm" style="margin-top:16px;">2s linear infinite</p>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+@keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+@keyframes slideUp { from { opacity:0;transform:translateY(10px) } to { opacity:1;transform:translateY(0) } }
+@keyframes pulseRingAnim { 0% { transform:scale(1);opacity:0.2 } 100% { transform:scale(1.5);opacity:0 } }
+</style>

@@ -1,0 +1,110 @@
+<div class="page-header">
+  <h2 id="accordion">Accordion</h2>
+  <p class="text-muted">A vertically stacked set of interactive headings that expand and collapse content sections. Powered by Radix UI.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="accordion-example">Example</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; max-width: 500px; overflow: hidden;">
+        <div style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <button style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px; background: transparent; border: none; cursor: pointer; color: #E2E2E5; font-size: 13px; font-weight: 500; text-align: left;">
+            <span>What is a support ticket?</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s; transform: rotate(180deg);"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div style="padding: 0 16px 16px; font-size: 13px; color: #C2C6D6; line-height: 1.5;">
+            A support ticket is a record of a customer issue or request that needs to be addressed by the support team. Each ticket contains details about the problem, its priority, status, and communication history.
+          </div>
+        </div>
+        <div style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <button style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px; background: transparent; border: none; cursor: pointer; color: #E2E2E5; font-size: 13px; font-weight: 500; text-align: left;">
+            <span>How do I create a ticket?</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s;"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div style="padding: 0 16px 16px; font-size: 13px; color: #C2C6D6; line-height: 1.5; display: none;">
+            Navigate to Tickets &gt; New Ticket and fill in the required fields including subject, description, and priority. Our team will respond as soon as possible.
+          </div>
+        </div>
+        <div>
+          <button style="width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px; background: transparent; border: none; cursor: pointer; color: #E2E2E5; font-size: 13px; font-weight: 500; text-align: left;">
+            <span>What are the priority levels?</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s;"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div style="padding: 0 16px 16px; font-size: 13px; color: #C2C6D6; line-height: 1.5; display: none;">
+            Tickets can be marked as Low, Medium, High, or Critical. High and Critical priority tickets are escalated to senior team members for faster resolution.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>The Accordion uses Radix UI's <span class="font-mono text-code-sm">Accordion.Root</span>, <span class="font-mono text-code-sm">Accordion.Item</span>, <span class="font-mono text-code-sm">Accordion.Trigger</span>, and <span class="font-mono text-code-sm">Accordion.Content</span>. Items are separated by <span class="font-mono text-code-sm">border-b</span>. The chevron icon rotates on open/collapse using a CSS transition. Supports both single and multiple open items via the <span class="font-mono text-code-sm">type</span> prop.</p>
+  </div>
+
+  <h3 id="accordion-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Prop</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Type</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Default</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">type</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">"single" | "multiple"</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">"single"</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Accordion mode. "single" allows one open item, "multiple" allows several.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">collapsible</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">boolean</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">true</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Allow all items to be closed simultaneously (single mode).</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">defaultValue</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">string | string[]</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">--</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Initially open item value(s).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="accordion-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
+
+&lt;Accordion type="single" collapsible defaultValue="item-1"&gt;
+  &lt;AccordionItem value="item-1"&gt;
+    &lt;AccordionTrigger&gt;What is a support ticket?&lt;/AccordionTrigger&gt;
+    &lt;AccordionContent&gt;
+      A support ticket is a record of a customer issue or request.
+    &lt;/AccordionContent&gt;
+  &lt;/AccordionItem&gt;
+  &lt;AccordionItem value="item-2"&gt;
+    &lt;AccordionTrigger&gt;How do I create a ticket?&lt;/AccordionTrigger&gt;
+    &lt;AccordionContent&gt;
+      Navigate to Tickets &amp;gt; New Ticket and fill in the required fields.
+    &lt;/AccordionContent&gt;
+  &lt;/AccordionItem&gt;
+&lt;/Accordion&gt;`}</code></pre>
+  </div>
+</div>

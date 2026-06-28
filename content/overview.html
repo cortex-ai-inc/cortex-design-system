@@ -1,0 +1,86 @@
+<div class="page-header">
+  <h1>Cortex Design System</h1>
+  <p>Build consistent, accessible, dark-themed interfaces for Cortex AI products.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React 19</span>
+    <span class="tag tag-radix">Radix UI</span>
+    <span class="tag tag-ts">TypeScript</span>
+  </div>
+
+  <h2 id="principles">Design Principles</h2>
+  <div class="grid-3">
+    <div class="preview-card">
+      <div class="preview-card-header">Dark by default</div>
+      <div class="preview-card-body">
+        <p>A dark-first system designed for developer tools that are used for extended sessions. Reduces eye strain and emphasizes content.</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Tonal layering</div>
+      <div class="preview-card-body">
+        <p>Surface colors create depth without drop shadows. Each layer sits higher than the last — dim, lowest, low, high — forming a natural hierarchy.</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Blue gradient accent</div>
+      <div class="preview-card-body">
+        <p>The signature <span class="gradient-primary">Cortex blue gradient</span> — from <code>#ADC6FF</code> to <code>#4D8EFF</code> — is the primary visual identifier across all products.</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Compact &amp; efficient</div>
+      <div class="preview-card-body">
+        <p>Default body text at 13px (<code>text-body-sm</code>) keeps interfaces dense and information-rich. Every pixel is deliberate.</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Semantic color</div>
+      <div class="preview-card-body">
+        <p>Colors carry meaning: green for success, red for errors, yellow for warnings. Used consistently across all products for immediate recognition.</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Accessibility-first</div>
+      <div class="preview-card-body">
+        <p>ARIA labels, keyboard navigation, focus indicators, and contrast ratios are integral — not afterthoughts. Radix UI primitives provide a solid foundation.</p>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Developer experience</div>
+      <div class="preview-card-body">
+        <p>Type-safe with TypeScript 5.9, predictable class naming, minimal abstraction. The <code>cn()</code> utility and CVA patterns make styling straightforward.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="stack">Technology Stack</h2>
+  <table class="token-table">
+    <thead>
+      <tr><th>Layer</th><th>Technology</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Runtime</td><td>React 19 + TypeScript 5.9</td></tr>
+      <tr><td>Styling</td><td>Tailwind CSS 3 + class-variance-authority + clsx + tailwind-merge</td></tr>
+      <tr><td>Animations</td><td>tailwindcss-animate + @tailwindcss/typography</td></tr>
+      <tr><td>UI Primitives</td><td>Radix UI (unstyled, accessible primitives)</td></tr>
+      <tr><td>Component Library</td><td>shadcn/ui (new-york style, slate base)</td></tr>
+      <tr><td>Icons</td><td>lucide-react</td></tr>
+      <tr><td>Fonts</td><td>Inter (body) + JetBrains Mono (code)</td></tr>
+      <tr><td>Forms</td><td>react-hook-form + @hookform/resolvers + Zod v4</td></tr>
+      <tr><td>Toast</td><td>sonner (dark theme)</td></tr>
+      <tr><td>Rich Text</td><td>TipTap (starter-kit, image, link, placeholder)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 id="projects">Projects Using Cortex DS</h2>
+  <ul>
+    <li><strong>cortex-support-front</strong> — Support dashboard with ticket management, admin panel, and team tools</li>
+    <li><strong>cortex-coder-front</strong> — AI-powered development environment</li>
+    <li><strong>cortex-coder-home</strong> — Landing and onboarding experience</li>
+  </ul>
+
+  <h2 id="browser-support">Browser Support</h2>
+  <p>Modern browsers (Chrome 100+, Firefox 120+, Safari 16+, Edge 100+).</p>
+</div>

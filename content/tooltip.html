@@ -1,0 +1,104 @@
+<div class="page-header">
+  <h2 id="tooltip">Tooltip</h2>
+  <p class="text-muted">A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it, powered by Radix UI.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="tooltip-example">Example</h3>
+    </div>
+    <div class="preview-card-body">
+      <div class="flex gap-4 items-center" style="flex-wrap: wrap;">
+        <div style="position: relative; display: inline-flex;">
+          <button class="btn btn-secondary" style="position: relative;">Hover me
+            <div style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #282A30; color: #E2E2E5; padding: 6px 10px; border-radius: 4px; font-size: 12px; font-family: 'JetBrains Mono', monospace; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.4); pointer-events: none; z-index: 50;">
+              Tooltip on top
+              <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: #282A30;"></div>
+            </div>
+          </button>
+        </div>
+        <div style="position: relative; display: inline-flex;">
+          <button class="btn btn-secondary" style="position: relative;">Right side
+            <div style="position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%); background: #282A30; color: #E2E2E5; padding: 6px 10px; border-radius: 4px; font-size: 12px; font-family: 'JetBrains Mono', monospace; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.4); pointer-events: none; z-index: 50;">
+              Tooltip on right
+              <div style="position: absolute; right: 100%; top: 50%; transform: translateY(-50%); border: 6px solid transparent; border-right-color: #282A30;"></div>
+            </div>
+          </button>
+        </div>
+        <div style="position: relative; display: inline-flex;">
+          <span style="color: #ADC6FF; text-decoration: underline; cursor: help; font-size: 13px;">What is this?
+            <div style="position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #282A30; color: #E2E2E5; padding: 6px 10px; border-radius: 4px; font-size: 12px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.4); pointer-events: none; z-index: 50;">
+              Additional context about this element
+              <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 6px solid transparent; border-top-color: #282A30;"></div>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>Tooltip content renders with <span class="font-mono text-code-sm">bg-surface-container-high (#282A30)</span> background, <span class="font-mono text-code-sm">shadow-ambient</span>, and <span class="font-mono text-code-sm">text-code-sm</span> (12px) typography. The <span class="font-mono text-code-sm">delayDuration</span> prop controls the open delay (default 700ms).</p>
+  </div>
+
+  <h3 id="tooltip-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Component</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Props</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">TooltipProvider</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">delayDuration?: number</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Wraps the app, provides tooltip configuration. Default delay: 700ms.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">Tooltip</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">open?: boolean, defaultOpen?: boolean</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Root container for trigger and content.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">TooltipTrigger</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">asChild?: boolean</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">The element that triggers the tooltip.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">TooltipContent</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">side?: 'top' | 'right' | 'bottom' | 'left', sideOffset?: number</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">The tooltip popup content. Default side: top, offset: 4.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="tooltip-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip'
+
+&lt;TooltipProvider delayDuration={300}&gt;
+  &lt;Tooltip&gt;
+    &lt;TooltipTrigger asChild&gt;
+      &lt;Button variant="ghost"&gt;Hover&lt;/Button&gt;
+    &lt;/TooltipTrigger&gt;
+    &lt;TooltipContent side="top"&gt;
+      &lt;p&gt;This is a tooltip&lt;/p&gt;
+    &lt;/TooltipContent&gt;
+  &lt;/Tooltip&gt;
+&lt;/TooltipProvider&gt;`}</code></pre>
+  </div>
+</div>

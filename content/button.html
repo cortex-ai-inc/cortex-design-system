@@ -1,0 +1,238 @@
+<div class="page-header">
+  <h1>Button</h1>
+  <p>Triggers an action or navigates to a destination. The most frequently used interactive element in the system.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix Slot</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Buttons communicate actions users can take. The system provides six visual variants, four size options,
+    and supports an <code>asChild</code> pattern via Radix Slot for composing with framework routers or custom elements.
+    All buttons use <code>rounded-sm</code> (4px), display <code>inline-flex items-center justify-center</code>,
+    and inherit <code>font-medium</code> text styling.
+  </p>
+
+  <h2 id="variants">Variants</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Variant</span>
+      <span class="prop-table-cell">Class</span>
+      <span class="prop-table-cell">Visual</span>
+      <span class="prop-table-cell">Use case</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">default</span>
+      <span class="prop-type">btn-primary</span>
+      <span class="prop-default">Gradient primary background</span>
+      <span class="prop-default">Primary call to action</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">secondary</span>
+      <span class="prop-type">btn-secondary</span>
+      <span class="prop-default">ghost-border background</span>
+      <span class="prop-default">Alternative action</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">destructive</span>
+      <span class="prop-type">btn-destructive</span>
+      <span class="prop-default">Red-tinted surface</span>
+      <span class="prop-default">Irreversible actions</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">ghost</span>
+      <span class="prop-type">btn-ghost</span>
+      <span class="prop-default">Transparent, hover fills</span>
+      <span class="prop-default">Toolbar, subtle actions</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">outline</span>
+      <span class="prop-type">btn-outline</span>
+      <span class="prop-default">Bordered, transparent fill</span>
+      <span class="prop-default">Secondary page actions</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">link</span>
+      <span class="prop-type">btn-link</span>
+      <span class="prop-default">Text only, underline on hover</span>
+      <span class="prop-default">Inline navigation</span>
+    </div>
+  </div>
+
+  <h2 id="sizes">Size Variants</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Size</span>
+      <span class="prop-table-cell">Class</span>
+      <span class="prop-table-cell">Height</span>
+      <span class="prop-table-cell">Padding</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">default</span>
+      <span class="prop-type">btn</span>
+      <span class="prop-default">h-9 (36px)</span>
+      <span class="prop-default">px-4 py-2</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">sm</span>
+      <span class="prop-type">btn-sm</span>
+      <span class="prop-default">h-8 (32px)</span>
+      <span class="prop-default">px-3</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">lg</span>
+      <span class="prop-type">btn-lg</span>
+      <span class="prop-default">h-10 (40px)</span>
+      <span class="prop-default">px-8</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">icon</span>
+      <span class="prop-type">btn-icon</span>
+      <span class="prop-default">w-8 h-8 (32x32px)</span>
+      <span class="prop-default">p-0</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">All Variants</div>
+    <div class="preview-card-body">
+      <div class="flex gap-3 items-center flex-wrap">
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-destructive">Destructive</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-outline">Outline</button>
+        <button class="btn btn-link">Link</button>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-muted font-mono text-xs">Rendered: btn btn-primary, btn btn-secondary, btn btn-destructive, btn btn-ghost, btn btn-outline, btn btn-link</span>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-card-header">Size Variants</div>
+    <div class="preview-card-body">
+      <div class="flex gap-3 items-center flex-wrap">
+        <button class="btn btn-sm">Small</button>
+        <button class="btn btn-primary">Default</button>
+        <button class="btn btn-lg">Large</button>
+        <button class="btn btn-icon">+</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="icon-buttons">Icon Buttons</h2>
+  <p>
+    Icon buttons use the <code>btn-icon</code> size class to create a square button (w-8 h-8) that
+    contains only an icon. They are commonly used in toolbars, table row actions, and dialog close buttons.
+    Always provide an <code>aria-label</code> for accessibility.
+  </p>
+  <div class="preview-card">
+    <div class="preview-card-body">
+      <div class="flex gap-2 items-center">
+        <button class="btn btn-ghost btn-icon" aria-label="Settings">&#x2699;</button>
+        <button class="btn btn-ghost btn-icon" aria-label="Edit">&#x270E;</button>
+        <button class="btn btn-ghost btn-icon" aria-label="Delete">&#x2716;</button>
+        <button class="btn btn-ghost btn-icon" aria-label="Close">&#x2715;</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="states">States</h2>
+  <div class="grid-3">
+    <div class="preview-card">
+      <div class="preview-card-header">Hover</div>
+      <div class="preview-card-body">
+        <p>Buttons darken slightly on hover. Primary becomes brighter on the gradient. Ghost and outline fill with <code>bg-surface-container-high</code>.</p>
+        <button class="btn btn-primary">Hover me</button>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Focus</div>
+      <div class="preview-card-body">
+        <p>Focus-visible shows a <code>ring-2 ring-k-primary</code> ring offset by 2px. Never remove focus indicators.</p>
+        <button class="btn btn-primary">Focus me</button>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Disabled</div>
+      <div class="preview-card-body">
+        <p>Disabled buttons use <code>opacity-50</code> and <code>pointer-events-none</code>. Do not use disabled buttons without a clear reason — prefer keeping them visible but explaining why the action is unavailable.</p>
+        <button class="btn btn-primary" disabled style="opacity:0.5;pointer-events:none;">Disabled</button>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+      <span class="prop-table-cell">Description</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">variant</span>
+      <span class="prop-type">"default" | "secondary" | "destructive" | "ghost" | "outline" | "link"</span>
+      <span class="prop-default">"default"</span>
+      <span>Visual style of the button</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">size</span>
+      <span class="prop-type">"default" | "sm" | "lg" | "icon"</span>
+      <span class="prop-default">"default"</span>
+      <span>Size of the button</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">asChild</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+      <span>Merge props onto child element via Radix Slot</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+      <span>Additional CSS classes merged via cn()</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+      <span>Disables interaction, reduces opacity</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+      <span>Content inside the button</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use one primary button per section</li>
+        <li>Use destructive variant for delete/remove actions</li>
+        <li>Provide <code>aria-label</code> on icon-only buttons</li>
+        <li>Use <code>asChild</code> when wrapping router links</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Stack multiple primary buttons — use one primary, rest secondary</li>
+        <li>Use ghost buttons for critical actions</li>
+        <li>Remove focus indicators for custom styling</li>
+        <li>Nest buttons inside each other</li>
+      </ul>
+    </div>
+  </div>
+</div>

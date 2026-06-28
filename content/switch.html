@@ -1,0 +1,150 @@
+<div class="page-header">
+  <h1>Switch</h1>
+  <p>Toggle control for binary settings with immediate effect.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix Switch</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    The Switch component uses Radix Switch for accessible, keyboard-navigable binary toggling.
+    Switches are used for settings that take effect immediately, without requiring a form submission.
+    The track is <code>h-5 w-9</code> (20px x 36px) with <code>rounded-full</code>, and the thumb
+    is <code>h-4 w-4</code> (16px) that translates <code>translate-x-4</code> when toggled on.
+  </p>
+  <p>
+    The unchecked track uses <code>bg-surface-container-high</code> (#282A30). When checked, it fills
+    with <code>bg-k-primary-container</code> (#4D8EFF). The thumb is always white.
+    Switches should always be paired with a <code>Label</code> for accessibility.
+  </p>
+
+  <h2 id="preview">Preview</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Off</div>
+      <div class="preview-card-body" style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 36px; height: 20px; background: #282A30; border-radius: 9999px; position: relative; flex-shrink: 0; cursor: pointer;">
+          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 2px;"></div>
+        </div>
+        <label style="font-size: 0.8125rem; color: #E2E2E5; cursor: pointer;">Airplane mode</label>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">On</div>
+      <div class="preview-card-body" style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 36px; height: 20px; background: #4D8EFF; border-radius: 9999px; position: relative; flex-shrink: 0; cursor: pointer;">
+          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 18px;"></div>
+        </div>
+        <label style="font-size: 0.8125rem; color: #E2E2E5; cursor: pointer;">Airplane mode</label>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Disabled (off)</div>
+      <div class="preview-card-body" style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 36px; height: 20px; background: #282A30; border-radius: 9999px; position: relative; flex-shrink: 0; opacity: 0.5; cursor: not-allowed;">
+          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 2px;"></div>
+        </div>
+        <label style="font-size: 0.8125rem; color: #6B7280; cursor: not-allowed;">Airplane mode</label>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Disabled (on)</div>
+      <div class="preview-card-body" style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 36px; height: 20px; background: #4D8EFF; border-radius: 9999px; position: relative; flex-shrink: 0; opacity: 0.5; cursor: not-allowed;">
+          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 18px;"></div>
+        </div>
+        <label style="font-size: 0.8125rem; color: #6B7280; cursor: not-allowed;">Airplane mode</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="max-width: 480px;">
+    <div class="preview-card-header">Settings Example</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="font-size: 0.8125rem; color: #E2E2E5;">Email notifications</div>
+          <div style="font-size: 0.75rem; color: #C2C6D6;">Receive email updates about your account</div>
+        </div>
+        <div style="width: 36px; height: 20px; background: #4D8EFF; border-radius: 9999px; position: relative; flex-shrink: 0; cursor: pointer;">
+          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 18px;"></div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="font-size: 0.8125rem; color: #E2E2E5;">Dark mode</div>
+          <div style="font-size: 0.75rem; color: #C2C6D6;">Use dark theme across all devices</div>
+        </div>
+        <div style="width: 36px; height: 20px; background: #4D8EFF; border-radius: 9999px; position: relative; flex-shrink: 0; cursor: pointer;">
+          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 18px;"></div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="font-size: 0.8125rem; color: #E2E2E5;">Sounds</div>
+          <div style="font-size: 0.75rem; color: #C2C6D6;">Play sounds for notifications</div>
+        </div>
+        <div style="width: 36px; height: 20px; background: #282A30; border-radius: 9999px; position: relative; flex-shrink: 0; cursor: pointer;">
+          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 2px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">checked</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">required</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onCheckedChange</span>
+      <span class="prop-type">(checked: boolean) => void</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use for settings with immediate effect (no submit needed)</li>
+        <li>Always pair with a descriptive label</li>
+        <li>Use Switch over Checkbox for settings panels</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use Switch for multi-select options — use Checkbox instead</li>
+        <li>Use Switch for actions that require confirmation</li>
+        <li>Use without a label — the binary state needs context</li>
+      </ul>
+    </div>
+  </div>
+</div>

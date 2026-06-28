@@ -1,0 +1,118 @@
+<div class="page-header">
+  <h2 id="progress">Progress</h2>
+  <p class="text-muted">A progress bar component powered by Radix UI for indicating progress or loading states. Supports determinate and indeterminate modes.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="progress-examples">Examples</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 400px;">
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 13px; color: #E2E2E5;">Loading...</span>
+            <span style="font-size: 12px; color: #C2C6D6;">45%</span>
+          </div>
+          <div style="height: 8px; border-radius: 9999px; background: #282A30; overflow: hidden;">
+            <div style="height: 100%; width: 45%; border-radius: 9999px; background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%); transition: all 0.3s ease;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 13px; color: #E2E2E5;">Upload progress</span>
+            <span style="font-size: 12px; color: #C2C6D6;">72%</span>
+          </div>
+          <div style="height: 8px; border-radius: 9999px; background: #282A30; overflow: hidden;">
+            <div style="height: 100%; width: 72%; border-radius: 9999px; background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%); transition: all 0.3s ease;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 13px; color: #E2E2E5;">Completed</span>
+            <span style="font-size: 12px; color: #4ADE80;">100%</span>
+          </div>
+          <div style="height: 8px; border-radius: 9999px; background: #282A30; overflow: hidden;">
+            <div style="height: 100%; width: 100%; border-radius: 9999px; background: #4ADE80; transition: all 0.3s ease;"></div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+            <span style="font-size: 13px; color: #E2E2E5;">Indeterminate</span>
+          </div>
+          <div style="height: 8px; border-radius: 9999px; background: #282A30; overflow: hidden;">
+            <div style="height: 100%; width: 30%; border-radius: 9999px; background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%); animation: indeterminate 1.5s ease-in-out infinite;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>The Progress component uses a <span class="font-mono text-code-sm">h-2 rounded-full bg-surface-container-high</span> track with a <span class="font-mono text-code-sm">bg-k-primary-container</span> indicator that transitions smoothly via <span class="font-mono text-code-sm">transition-all</span>. The indeterminate state shows an animated bar using a sliding CSS animation.</p>
+  </div>
+
+  <h3 id="progress-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Prop</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Type</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Default</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">value</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">number</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">0</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Progress value (0-100). Omit for indeterminate state.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">className</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">string</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">""</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Additional CSS classes.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="progress-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import { Progress } from '@/components/ui/progress'
+
+// Determinate
+&lt;Progress value={45} /&gt;
+
+// Indeterminate
+&lt;Progress /&gt;
+
+// With label
+&lt;div className="flex flex-col gap-2"&gt;
+  &lt;div className="flex justify-between"&gt;
+    &lt;span className="text-body-sm"&gt;Uploading...&lt;/span&gt;
+    &lt;span className="text-body-sm text-muted"&gt;45%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;Progress value={45} /&gt;
+&lt;/div&gt;`}</code></pre>
+  </div>
+
+  <style>
+    @keyframes indeterminate {
+      0% { transform: translateX(-100%); width: 30%; }
+      50% { width: 50%; }
+      100% { transform: translateX(400%); width: 30%; }
+    }
+  </style>
+</div>

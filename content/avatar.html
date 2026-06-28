@@ -1,0 +1,187 @@
+<div class="page-header">
+  <h1>Avatar</h1>
+  <p>User avatar display with image support and fallback initials.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix Avatar</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    The Avatar component uses Radix Avatar for accessible image loading with fallback support.
+    Avatars are <code>rounded-sm</code> (4px square) with <code>h-10 w-10</code> (40x40px) default size.
+    When an image is provided, it loads in the <code>AvatarImage</code> component. If the image fails
+    to load or is not provided, the <code>AvatarFallback</code> displays initials with a deterministic
+    background color.
+  </p>
+
+  <h2 id="utilities">Utilities</h2>
+  <p>
+    Two utility functions provide consistent avatar generation:
+  </p>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">getInitials(name: string): string</div>
+      <div class="preview-card-body">
+        <p>Extracts initials from a full name. Returns the first character of the first and last name segments, uppercased.</p>
+        <ul>
+          <li><code>getInitials("John Doe")</code> → <code>"JD"</code></li>
+          <li><code>getInitials("Alice")</code> → <code>"A"</code></li>
+          <li><code>getInitials("")</code> → <code>"?"</code></li>
+          <li><code>getInitials("John Michael Doe")</code> → <code>"JD"</code></li>
+        </ul>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">getAvatarColor(name: string): string</div>
+      <div class="preview-card-body">
+        <p>Returns a deterministic HSL color string based on the name hash. Used as the fallback background color.</p>
+        <ul>
+          <li>Maps name to a hue (0-360)</li>
+          <li>Saturation: 45%</li>
+          <li>Lightness: 35%</li>
+          <li>Consistent across renders</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="grid-3">
+    <div class="preview-card">
+      <div class="preview-card-header">With Image</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 40px; height: 40px; border-radius: 4px; background: linear-gradient(135deg, #ADC6FF, #4D8EFF); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+          <svg width="40" height="40" viewBox="0 0 40 40">
+            <circle cx="20" cy="14" r="6" fill="rgba(255,255,255,0.8)"/>
+            <path d="M8 34c0-6.627 5.373-12 12-12s12 5.373 12 12" fill="rgba(255,255,255,0.6)"/>
+          </svg>
+        </div>
+        <span style="font-size: 0.6875rem; color: #C2C6D6;">With photo</span>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Fallback Initials</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 40px; height: 40px; border-radius: 4px; background: hsl(210, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 600; color: white;">JD</div>
+        <span style="font-size: 0.6875rem; color: #C2C6D6;">John Doe</span>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Fallback Single</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+        <div style="width: 40px; height: 40px; border-radius: 4px; background: hsl(320, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 600; color: white;">A</div>
+        <span style="font-size: 0.6875rem; color: #C2C6D6;">Alice</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="sizes">Size Variants</h2>
+  <div class="preview-card">
+    <div class="preview-card-body">
+      <div class="flex gap-3 items-center flex-wrap">
+        <div style="width: 24px; height: 24px; border-radius: 4px; background: hsl(210, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.625rem; font-weight: 600; color: white;">SM</div>
+        <div style="width: 32px; height: 32px; border-radius: 4px; background: hsl(160, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.6875rem; font-weight: 600; color: white;">MD</div>
+        <div style="width: 40px; height: 40px; border-radius: 4px; background: hsl(210, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 600; color: white;">LG</div>
+        <div style="width: 48px; height: 48px; border-radius: 4px; background: hsl(280, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.9375rem; font-weight: 600; color: white;">XL</div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <span class="text-muted font-mono text-xs">Sizes: 24px (sm), 32px (md), 40px (default), 48px (xl)</span>
+    </div>
+  </div>
+
+  <h2 id="group">Avatar Group</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Stacked Avatars</div>
+    <div class="preview-card-body">
+      <div style="display: flex;">
+        <div style="width: 40px; height: 40px; border-radius: 4px; background: hsl(210, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 600; color: white; border: 2px solid #111319; margin-right: -8px;">JD</div>
+        <div style="width: 40px; height: 40px; border-radius: 4px; background: hsl(160, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 600; color: white; border: 2px solid #111319; margin-right: -8px;">AL</div>
+        <div style="width: 40px; height: 40px; border-radius: 4px; background: hsl(320, 45%, 35%); display: flex; align-items: center; justify-content: center; font-size: 0.8125rem; font-weight: 600; color: white; border: 2px solid #111319; margin-right: -8px;">RK</div>
+        <div style="width: 40px; height: 40px; border-radius: 4px; background: #282A30; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 500; color: #C2C6D6; border: 2px solid #111319;">+3</div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <h3 id="avatar">Avatar</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h3 id="avatarimage">AvatarImage</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">src</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">alt</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h3 id="avatarfallback">AvatarFallback</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Always provide <code>alt</code> text on AvatarImage</li>
+        <li>Use <code>getInitials()</code> + <code>getAvatarColor()</code> for fallbacks</li>
+        <li>Use stacked avatars to show team membership</li>
+        <li>Keep avatar sizes consistent within a context</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use avatars without fallback — images can fail to load</li>
+        <li>Mix different avatar sizes in the same group</li>
+        <li>Place more than 5-6 avatars in a stack before using +N overflow</li>
+      </ul>
+    </div>
+  </div>
+</div>

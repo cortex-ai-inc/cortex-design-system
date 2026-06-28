@@ -1,0 +1,152 @@
+<div class="page-header">
+  <h2 id="notification-bell">NotificationBell</h2>
+  <p class="text-muted">A notification bell component with unread count badge and dropdown panel. Displays real-time notification updates with type-specific icons.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="notification-states">States</h3>
+    </div>
+    <div class="preview-card-body">
+      <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <div style="position: relative; display: inline-flex;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div style="position: absolute; top: -4px; right: -4px; width: 18px; height: 18px; border-radius: 50%; background: #F87171; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #111319;">3</div>
+          </div>
+          <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em;">Unread Count</span>
+        </div>
+
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <div style="position: relative; display: inline-flex;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C2C6D6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em;">Empty (No Unread)</span>
+        </div>
+
+        <div style="background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <div class="spinner spinner-md" style="width: 20px; height: 20px; border: 2px solid rgba(77, 142, 255, 0.3); border-top-color: #4D8EFF; border-radius: 50%; animation: spin 0.6s linear infinite;"></div>
+          <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em;">Loading</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="margin-top: 24px;">
+    <div class="preview-card-header">
+      <h3 id="notification-dropdown">Dropdown Panel</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="width: 320px; max-width: 100%; background: #191B22; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); overflow: hidden;">
+        <div style="padding: 12px 16px; border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <span style="font-size: 13px; font-weight: 600; color: #E2E2E5;">Notifications</span>
+        </div>
+        <div style="max-height: 320px; overflow-y: auto;">
+          <div style="padding: 12px 16px; border-bottom: 1px solid rgba(194, 198, 214, 0.08); display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(77, 142, 255, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ADC6FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-size: 13px; color: #E2E2E5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">New comment on TKT-0042</div>
+              <div style="font-size: 12px; color: #C2C6D6; margin-top: 2px;">John added a comment to your ticket.</div>
+              <div style="font-size: 11px; color: rgba(194, 198, 214, 0.6); margin-top: 4px;">5 minutes ago</div>
+            </div>
+          </div>
+          <div style="padding: 12px 16px; border-bottom: 1px solid rgba(194, 198, 214, 0.08); display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(251, 191, 36, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-size: 13px; color: #E2E2E5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Status changed: TKT-0040</div>
+              <div style="font-size: 12px; color: #C2C6D6; margin-top: 2px;">Ticket moved to Resolved.</div>
+              <div style="font-size: 11px; color: rgba(194, 198, 214, 0.6); margin-top: 4px;">1 hour ago</div>
+            </div>
+          </div>
+          <div style="padding: 12px 16px; display: flex; gap: 12px; align-items: flex-start;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(74, 222, 128, 0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-size: 13px; color: #E2E2E5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Assigned to TKT-0039</div>
+              <div style="font-size: 12px; color: #C2C6D6; margin-top: 2px;">You have been assigned to a new ticket.</div>
+              <div style="font-size: 11px; color: rgba(194, 198, 214, 0.6); margin-top: 4px;">3 hours ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 id="notification-types">Notification Types</h3>
+  <div style="overflow-x: auto; margin-top: 16px;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Type</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Icon</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Color</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">comment</span></td>
+          <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">MessageSquare</td>
+          <td style="padding: 8px 12px; color: #ADC6FF;">Blue (#ADC6FF)</td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">New comment on a ticket</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">status_change</span></td>
+          <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">ArrowRight</td>
+          <td style="padding: 8px 12px; color: #FBBF24;">Amber (#FBBF24)</td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Ticket status has changed</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">assigned</span></td>
+          <td style="padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px;">UserPlus</td>
+          <td style="padding: 8px 12px; color: #4ADE80;">Green (#4ADE80)</td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">User assigned to a ticket</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>Notifications poll every 30 seconds via React Query <span class="font-mono text-code-sm">refetchInterval: 30000</span>. The last-check timestamp is stored in localStorage as <span class="font-mono text-code-sm">cortex.notifications.since</span>. Unread count badge shows on the Bell/BellDot icon. Notifications are auto-marked as read when the dropdown opens.</p>
+  </div>
+
+  <h3 id="notification-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Prop</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Type</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Default</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">className</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">string</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-default">--</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Additional CSS classes for the trigger button</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="notification-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import { NotificationBell } from '@/components/ui/notification-bell'
+
+// Place in topbar or header:
+&lt;NotificationBell className="ml-auto" /&gt;`}</code></pre>
+  </div>
+</div>

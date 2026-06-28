@@ -1,0 +1,123 @@
+<div class="page-header">
+  <h2 id="input-group">InputGroup</h2>
+  <p class="text-muted">An input component with attached addons (prefix/suffix text or buttons). Useful for search fields, URLs, currency inputs, and more.</p>
+  <div class="section-tags" style="margin-top: 8px;">
+    <span class="tag tag-react">React</span>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="preview-card">
+    <div class="preview-card-header">
+      <h3 id="input-group-addons">Addon Positions</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="display: flex; flex-direction: column; gap: 16px; max-width: 400px;">
+        <div>
+          <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; display: block;">Inline Start (Prefix)</span>
+          <div style="display: flex; align-items: stretch; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; overflow: hidden; background: #191B22;">
+            <span style="display: flex; align-items: center; padding: 0 12px; font-size: 13px; color: #C2C6D6; background: rgba(194, 198, 214, 0.05); border-right: 1px solid rgba(194, 198, 214, 0.15);">$</span>
+            <input type="text" placeholder="Amount" style="flex: 1; padding: 8px 12px; font-size: 13px; color: #E2E2E5; background: transparent; border: none; outline: none; font-family: inherit;" />
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; display: block;">Inline End (Suffix)</span>
+          <div style="display: flex; align-items: stretch; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; overflow: hidden; background: #191B22;">
+            <input type="text" placeholder="Search" style="flex: 1; padding: 8px 12px; font-size: 13px; color: #E2E2E5; background: transparent; border: none; outline: none; font-family: inherit;" />
+            <span style="display: flex; align-items: center; padding: 0 12px; font-size: 13px; color: #C2C6D6; background: rgba(194, 198, 214, 0.05); border-left: 1px solid rgba(194, 198, 214, 0.15);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; display: block;">With Button Addon</span>
+          <div style="display: flex; align-items: stretch; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; overflow: hidden; background: #191B22;">
+            <input type="text" placeholder="Enter URL" style="flex: 1; padding: 8px 12px; font-size: 13px; color: #E2E2E5; background: transparent; border: none; outline: none; font-family: inherit;" />
+            <button style="display: flex; align-items: center; gap: 4px; padding: 8px 12px; font-size: 12px; color: #E2E2E5; background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%); border: none; cursor: pointer; font-weight: 500;">Go</button>
+          </div>
+        </div>
+
+        <div>
+          <span style="font-size: 11px; color: #C2C6D6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; display: block;">Both Sides</span>
+          <div style="display: flex; align-items: stretch; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; overflow: hidden; background: #191B22;">
+            <span style="display: flex; align-items: center; padding: 0 12px; font-size: 12px; color: #C2C6D6; background: rgba(194, 198, 214, 0.05); border-right: 1px solid rgba(194, 198, 214, 0.15); font-family: 'JetBrains Mono', monospace;">https://</span>
+            <input type="text" placeholder="example.com" style="flex: 1; padding: 8px 12px; font-size: 13px; color: #E2E2E5; background: transparent; border: none; outline: none; font-family: inherit;" />
+            <button style="display: flex; align-items: center; padding: 8px 12px; background: rgba(194, 198, 214, 0.05); border: none; border-left: 1px solid rgba(194, 198, 214, 0.15); cursor: pointer; color: #C2C6D6;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="margin-top: 24px;">
+    <div class="preview-card-header">
+      <h3 id="input-group-button-sizes">Button Addon Sizes</h3>
+    </div>
+    <div class="preview-card-body">
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px;">
+        <div style="display: flex; align-items: stretch; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; overflow: hidden; background: #191B22;">
+          <input type="text" placeholder="xs button addon" style="flex: 1; padding: 4px 8px; font-size: 13px; color: #E2E2E5; background: transparent; border: none; outline: none;" />
+          <button style="padding: 4px 8px; font-size: 11px; background: rgba(194, 198, 214, 0.1); border: none; border-left: 1px solid rgba(194, 198, 214, 0.15); cursor: pointer; color: #C2C6D6;">Clear</button>
+        </div>
+        <div style="display: flex; align-items: stretch; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; overflow: hidden; background: #191B22;">
+          <input type="text" placeholder="sm button addon" style="flex: 1; padding: 6px 10px; font-size: 13px; color: #E2E2E5; background: transparent; border: none; outline: none;" />
+          <button style="padding: 6px 10px; font-size: 12px; background: rgba(194, 198, 214, 0.1); border: none; border-left: 1px solid rgba(194, 198, 214, 0.15); cursor: pointer; color: #C2C6D6;">Apply</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-info" style="margin-top: 24px;">
+    <p>InputGroup composes an input with addon elements positioned at <span class="font-mono text-code-sm">inline-start</span>, <span class="font-mono text-code-sm">inline-end</span>, <span class="font-mono text-code-sm">block-start</span>, or <span class="font-mono text-code-sm">block-end</span>. Addons can be text labels, icons, or buttons. Button addons support <span class="font-mono text-code-sm">xs</span>, <span class="font-mono text-code-sm">sm</span>, <span class="font-mono text-code-sm">icon-xs</span>, and <span class="font-mono text-code-sm">icon-sm</span> sizes.</p>
+  </div>
+
+  <h3 id="input-group-api">API</h3>
+  <div style="overflow-x: auto;">
+    <table class="prop-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+      <thead>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.15);">
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Component</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Props</th>
+          <th style="text-align: left; padding: 8px 12px; color: #C2C6D6; font-size: 11px; font-weight: 600; text-transform: uppercase;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">InputGroup</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">className?: string</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Root wrapper with flex layout and border.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid rgba(194, 198, 214, 0.08);">
+          <td style="padding: 8px 12px;"><span class="prop-name">InputGroupAddon</span></td>
+          <td style="padding: 8px 12px;"><span class="prop-type">align: "inline-start" | "inline-end" | "block-start" | "block-end", children: ReactNode</span></td>
+          <td style="padding: 8px 12px; color: #E2E2E5;">Addon element attached to the input. Position controlled by <span class="font-mono">align</span>.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="input-group-usage">Usage</h3>
+  <div style="background: #111319; border: 1px solid rgba(194, 198, 214, 0.15); border-radius: 6px; padding: 16px; margin-top: 8px;">
+    <pre style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #E2E2E5; overflow-x: auto;"><code>{`import { InputGroup, InputGroupAddon } from '@/components/ui/input-group'
+
+// With prefix text
+&lt;InputGroup&gt;
+  &lt;InputGroupAddon align="inline-start"&gt;
+    &lt;span&gt;$&lt;/span&gt;
+  &lt;/InputGroupAddon&gt;
+  &lt;input type="text" placeholder="Amount" /&gt;
+&lt;/InputGroup&gt;
+
+// With suffix button
+&lt;InputGroup&gt;
+  &lt;input type="text" placeholder="Search..." /&gt;
+  &lt;InputGroupAddon align="inline-end"&gt;
+    &lt;Button size="sm"&gt;Go&lt;/Button&gt;
+  &lt;/InputGroupAddon&gt;
+&lt;/InputGroup&gt;`}</code></pre>
+  </div>
+</div>
