@@ -2,7 +2,9 @@
 
 ## Overview
 
-User avatar built on Radix UI `Avatar` primitive. Displays an image when available, otherwise shows initials with a deterministic background color. Used in user menus, comment threads, ticket assignments, and user lists.
+User avatar built on the Radix UI `Avatar` primitive. Displays an image when one loads successfully, otherwise shows fallback content (typically initials) on a surface tint. Used in user menus, comment threads, ticket assignments, and user lists.
+
+The Cortex variant uses `rounded-sm` (4px), **not** the shadcn default `rounded-full`. Default size is `h-10 w-10` (40px).
 
 ## Import
 
@@ -10,22 +12,50 @@ User avatar built on Radix UI `Avatar` primitive. Displays an image when availab
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 ```
 
-## Sub-components
+## Anatomy / Sub-components
 
 | Component | Description |
 |---|---|
-| `Avatar` | Root container with sizing and clipping |
-| `AvatarImage` | `<img>` element for the avatar image |
-| `AvatarFallback` | Fallback content shown when image is loading or missing |
+| `Avatar` | Root container; fixed size, clips overflow, `rounded-sm` |
+| `AvatarImage` | `<img>` element; fills the container preserving aspect ratio |
+| `AvatarFallback` | Shown while the image loads or if it fails — centered content on `bg-surface-container-high` |
+
+```tsx
+<Avatar>
+  <AvatarImage src={user.avatarUrl} alt={user.name} />
+  <AvatarFallback>JD</AvatarFallback>
+</Avatar>
+```
+
+## Reference implementation
+
+Core className strings, quoted verbatim from `cortex-support-front` (primary source):
+
+```tsx
+// Avatar (Root)
+"relative flex h-10 w-10 shrink-0 overflow-hidden rounded-sm"
+
+// AvatarImage
+"aspect-square h-full w-full"
+
+// AvatarFallback
+"flex h-full w-full items-center justify-center rounded-sm bg-surface-container-high text-on-surface"
+```
+
+All three are thin wrappers over `AvatarPrimitive.Root` / `.Image` / `.Fallback` via `React.forwardRef`; the only custom styling is the className above. There is no `cva`, no variant prop, and no `data-slot` attribute.
+
+> Variation: `cortex-coder-front` ships the unmodified shadcn defaults (`size-8`, `rounded-full`, `bg-muted` fallback). Cortex products follow the `cortex-support-front` styling above: `h-10 w-10`, `rounded-sm`, `bg-surface-container-high text-on-surface`.
 
 ## Props
+
+All props pass through to the underlying Radix primitives.
 
 ### Avatar
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| `className` | `string` | `undefined` | Additional classes |
-| `children` | `React.ReactNode` | required | AvatarImage + AvatarFallback |
+| `className` | `string` | `undefined` | Additional classes (e.g. to override size) |
+| `children` | `React.ReactNode` | required | `AvatarImage` + `AvatarFallback` |
 
 ### AvatarImage
 
@@ -33,99 +63,59 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 |---|---|---|---|
 | `src` | `string` | required | Image URL |
 | `alt` | `string` | `""` | Alt text |
+| `onLoadingStatusChange` | `(status) => void` | `undefined` | Radix callback: `idle \| loading \| loaded \| error` |
 | `className` | `string` | `undefined` | Additional classes |
 
 ### AvatarFallback
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
+| `delayMs` | `number` | `undefined` | Delay before rendering fallback (avoids flash on fast loads) |
 | `className` | `string` | `undefined` | Additional classes |
 | `children` | `React.ReactNode` | required | Fallback content (typically initials) |
-| `delayMs` | `number` | `undefined` | Delay before showing fallback (ms) |
 
 ## Styling
 
-| Part | CSS Classes | Description |
+| Part | CSS Classes | Notes |
 |---|---|---|
-| Avatar wrapper | `relative flex h-10 w-10 shrink-0 overflow-hidden rounded-sm` | 40x40px, no overflow, rounded-sm (4px) |
-| AvatarImage | `aspect-square h-full w-full` | Fills container maintaining aspect ratio |
-| AvatarFallback | `flex h-full w-full items-center justify-center rounded-sm bg-surface-container-high text-on-surface` | Centered initials, container background color |
+| Avatar (root) | `relative flex h-10 w-10 shrink-0 overflow-hidden rounded-sm` | 40×40px, clips children, 4px radius |
+| AvatarImage | `aspect-square h-full w-full` | Fills container, square aspect ratio |
+| AvatarFallback | `flex h-full w-full items-center justify-center rounded-sm bg-surface-container-high text-on-surface` | Centered content, `#282A30` tint, primary text |
 
-## Variants
+### Resizing
 
-| Variant | Size Classes | Description |
-|---|---|---|
-| Default | `h-10 w-10` | 40x40px, standard user avatar |
-| Small | `h-8 w-8` | 32x32px, compact contexts |
-| Large | `h-12 w-12` | 48x48px, profile pages |
-| XSmall | `h-6 w-6` | 24x24px, inline/badge contexts |
+There is no `size` prop. Override dimensions by passing utility classes through `className` on the root:
 
-## Helper Functions
-
-### getInitials(name: string): string
-
-Returns the first letter of the first name and first letter of the last name, uppercased.
-
+```tsx
+<Avatar className="h-8 w-8">…</Avatar>   {/* 32px */}
+<Avatar className="h-6 w-6">…</Avatar>   {/* 24px, inline */}
+<Avatar className="h-12 w-12">…</Avatar> {/* 48px, profile */}
 ```
-getInitials("John Doe")       // "JD"
-getInitials("Alice")          // "A"
-getInitials("")               // ""
-getInitials("  ")             // ""
-getInitials("Jean-Claude Van Damme")  // "JV"
-```
-
-Implementation: split on whitespace, filter empty, take first char of first and last tokens.
-
-### getAvatarColor(name: string): string
-
-Returns a deterministic background color from a palette based on a hash of the name. Same name always produces the same color.
-
-Palette:
-```
-#4D8EFF (blue)
-#4ADE80 (green)
-#F87171 (red)
-#FBBF24 (yellow)
-#A78BFA (purple)
-#F472B6 (pink)
-#34D399 (emerald)
-#FB923C (orange)
-#60A5FA (light blue)
-#E879F9 (fuchsia)
-```
-
-Hash algorithm: sum of char codes at positions 0, 2, 4, 6, 8, 10 modulo palette length. Handles empty strings (returns first color).
 
 ## States
 
-- **Image loaded**: AvatarImage renders the user photo filling the container.
-- **Image loading**: AvatarFallback shows initials (with optional `delayMs` to prevent flash).
-- **Image error**: AvatarFallback shows initials (Radix handles error recovery).
-- **No image (initials only)**: AvatarFallback with `getInitials(name)` result and `getAvatarColor(name)` background.
-- **Empty name**: AvatarFallback shows a generic user icon or empty.
-
-## Tailwind Classes
-
-| Selector | Description |
+| State | Behavior |
 |---|---|
-| `relative flex h-10 w-10 shrink-0 overflow-hidden rounded-sm` | Avatar wrapper |
-| `aspect-square h-full w-full` | AvatarImage fill |
-| `flex h-full w-full items-center justify-center rounded-sm bg-surface-container-high text-on-surface` | AvatarFallback centering |
+| Image loaded | `AvatarImage` renders the photo filling the container. |
+| Image loading | `AvatarFallback` is shown (use `delayMs` to avoid a flash). |
+| Image error / missing | Radix swaps to `AvatarFallback` automatically. |
+| No `src` provided | Only `AvatarFallback` renders. |
+
+Radix manages the load/error transition internally based on `AvatarImage`'s loading status — no manual error handling required.
 
 ## Usage Guidelines
 
 ### Do
 
-- Always provide `AvatarImage` with a valid `src` when an image is available.
-- Always provide `AvatarFallback` with `getInitials(name)` as children.
-- Use `getAvatarColor(name)` on the fallback via `style={{ backgroundColor: getAvatarColor(name) }}` for deterministic color coding.
-- Use `delayMs={500}` on AvatarFallback to avoid flashing initials when images load quickly.
-- Set `alt` on AvatarImage for accessibility.
+- Always pair `AvatarImage` with an `AvatarFallback` so loading and error states have content.
+- Put initials (or a lucide user icon) in `AvatarFallback`.
+- Set a meaningful `alt` on `AvatarImage` for accessibility.
+- Use `delayMs={600}` on `AvatarFallback` to avoid flashing initials when images load quickly.
+- Resize via `className` (`h-8 w-8`, `h-6 w-6`, etc.) — keep width and height equal.
 
 ### Don't
 
-- Do NOT rely on AvatarImage alone — always include AvatarFallback for loading/error states.
-- Do NOT hardcode background colors on AvatarFallback; use `getAvatarColor()`.
-- Do NOT use Avatar without a meaningful `alt` attribute.
-- Do NOT stretch the avatar — sizing is fixed per variant.
-- Do NOT add border radius override; `rounded-sm` is the standard.
+- Do NOT render `AvatarImage` alone — always include `AvatarFallback`.
+- Do NOT change the radius to `rounded-full`; Cortex avatars are `rounded-sm`.
+- Do NOT stretch the avatar; keep it square (`aspect-square` on the image enforces this).
+- Do NOT expect a `getInitials`/`getAvatarColor` helper or a `variant`/`size` prop — none exist in this component. Compute initials and any deterministic color at the call site and pass them in.

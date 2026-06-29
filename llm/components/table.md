@@ -2,7 +2,7 @@
 
 ## Overview
 
-Data table built on HTML table elements with consistent styling for row hover, dividers, and responsive overflow.
+Data table built on native HTML table elements. Rows hover and support a selected state, dividers use a bottom border, and the table is wrapped in a horizontally scrollable container for responsive overflow. The `<table>` sets the base font with the standard Tailwind `text-sm` utility (no custom `text-body-sm`).
 
 ## Import
 
@@ -11,6 +11,7 @@ import {
   Table,
   TableHeader,
   TableBody,
+  TableFooter,
   TableRow,
   TableHead,
   TableCell,
@@ -20,33 +21,67 @@ import {
 
 ## Sub-components
 
-| Component | HTML element | Description |
-|-----------|--------------|-------------|
-| Table | table | Root table wrapper |
-| TableHeader | thead | Header group |
-| TableBody | tbody | Body group |
-| TableRow | tr | Table row |
-| TableHead | th | Header cell |
-| TableCell | td | Data cell |
-| TableCaption | caption | Table caption / description |
+| Component | HTML element | `data-slot` | Description |
+|-----------|--------------|-------------|-------------|
+| Table | table (wrapped in div) | `table` / `table-container` | Root table, wrapped in a scroll container |
+| TableHeader | thead | `table-header` | Header group |
+| TableBody | tbody | `table-body` | Body group |
+| TableFooter | tfoot | `table-footer` | Footer group (muted background) |
+| TableRow | tr | `table-row` | Table row (hover + selected states) |
+| TableHead | th | `table-head` | Header cell |
+| TableCell | td | `table-cell` | Data cell |
+| TableCaption | caption | `table-caption` | Table caption / description |
 
 ## Styles
 
-| Element | Classes | Description |
-|---------|---------|-------------|
-| Wrapper | relative w-full overflow-auto | Responsive wrapper with horizontal scroll |
-| Row (default) | border-b ghost-border transition-colors | Divider between rows |
-| Row (hover) | hover:bg-muted/50 | Hightlight on hover |
-| Header cell | h-10 px-2 text-left align-middle font-medium text-on-surface-variant | Styled header |
-| Data cell | p-2 align-middle | Standard cell padding |
+| Element | Classes | Notes |
+|---------|---------|-------|
+| Container (div) | `relative w-full overflow-x-auto` | Wraps the `<table>`; handles horizontal scroll |
+| Table | `w-full caption-bottom text-sm` | Caption renders at the bottom |
+| Header | `[&_tr]:border-b` | Bottom divider under header rows |
+| Body | `[&_tr:last-child]:border-0` | Removes divider on the last row |
+| Footer | `bg-muted/50 border-t font-medium [&>tr]:last:border-b-0` | Muted fill, top border |
+| Row | `hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors` | Hover + selected highlight, bottom divider |
+| Header cell | `text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap` | 40px tall, padded, primary text color |
+| Data cell | `p-2 align-middle whitespace-nowrap` | Standard cell padding |
+| Caption | `text-muted-foreground mt-4 text-sm` | Muted, below the table |
+
+Header and data cells also include checkbox helpers `[&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]` to align row-selection checkboxes.
+
+## Reference implementation
+
+```tsx
+// Container + table
+<div data-slot="table-container" className="relative w-full overflow-x-auto">
+  <table data-slot="table" className={cn("w-full caption-bottom text-sm", className)} {...props} />
+</div>
+
+// Row
+className={cn(
+  "hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors",
+  className
+)}
+
+// Header cell
+className={cn(
+  "text-foreground h-10 px-2 text-left align-middle font-medium whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+  className
+)}
+
+// Data cell
+className={cn(
+  "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+  className
+)}
+```
 
 ## Responsive
 
-The table wrapper uses overflow-x-auto to handle horizontal overflow on narrow viewports. Set a min-width on the table (via className) when columns exceed available space.
+The container uses `overflow-x-auto`, so the table scrolls horizontally on narrow viewports. Set a `min-width` on the table (via `className`) when columns exceed the available space.
 
 ## Usage pattern
 
-```
+```tsx
 <Table>
   <TableCaption>List of items</TableCaption>
   <TableHeader>
@@ -56,7 +91,7 @@ The table wrapper uses overflow-x-auto to handle horizontal overflow on narrow v
     </TableRow>
   </TableHeader>
   <TableBody>
-    <TableRow>
+    <TableRow data-state="selected">
       <TableCell>Data A</TableCell>
       <TableCell>Data B</TableCell>
     </TableRow>
@@ -68,11 +103,14 @@ The table wrapper uses overflow-x-auto to handle horizontal overflow on narrow v
 
 | State | Implementation |
 |-------|----------------|
+| Hover | Applied automatically via `hover:bg-muted/50` on each row |
+| Selected | Set `data-state="selected"` on `TableRow` → `bg-muted` |
 | Loading | Replace body rows with Skeleton components |
-| Empty | Show TableCaption with "No results" message, or use EmptyState |
-| Error | Replace table with error message or inline alert |
+| Empty | Show TableCaption with a "No results" message, or use Empty |
+| Error | Replace table with an error message or inline alert |
 
 ## Related
 
 - Skeleton — loading placeholder for table rows
-- EmptyState — empty state for zero-data tables
+- Empty — empty state for zero-data tables
+- Checkbox — row selection (cells align it via the `[role=checkbox]` helpers)

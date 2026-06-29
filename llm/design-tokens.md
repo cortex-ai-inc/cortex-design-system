@@ -47,6 +47,31 @@ gradient-primary: `linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%)`
 
 Used for: primary button backgrounds, active tab indicators, decorative accents.
 
+**Text on the gradient must be dark** — use `text-surface-container-lowest` (`#0C0E14`). Light text (`on-surface`) on the light end of the gradient fails contrast. This is the convention in every product.
+
+### Semantic (shadcn) Tokens
+
+Alongside the Cortex brand tokens above, the system maps the standard **shadcn/ui semantic tokens** to HSL CSS variables. Every shadcn component (Button, Dialog, Select, Checkbox, …) is styled through these — they are not optional. The values below are the **dark** palette that ships on `:root`.
+
+| Token (Tailwind) | HSL var | Resolves to | Usage |
+|---|---|---|---|
+| `background` | `--background` `222.2 84% 4.9%` | near `#0A0E16` | App canvas (often overridden by `surface-dim`) |
+| `foreground` | `--foreground` `210 40% 98%` | near `#F8FAFC` | Default text on `background` |
+| `primary` | `--primary` `210 40% 98%` | near-white | shadcn primary surface (Cortex overrides primary CTAs with `gradient-primary`) |
+| `primary-foreground` | `--primary-foreground` `222.2 47.4% 11.2%` | dark | Text on `primary` |
+| `secondary` | `--secondary` `217.2 32.6% 17.5%` | slate | Secondary surfaces |
+| `muted` / `muted-foreground` | `--muted` / `--muted-foreground` | slate / `215 20.2% 65.1%` | Muted fills, muted text |
+| `accent` / `accent-foreground` | `--accent` `217.2 32.6% 17.5%` | slate | Hover/active fills in menus, list items |
+| `popover` / `popover-foreground` | `--popover` | slate | Dropdown / popover surfaces |
+| `card` / `card-foreground` | `--card` | slate | shadcn card surface (Cortex often uses `surface-container-low`) |
+| `destructive` | `--destructive` `0 62.8% 30.6%` | dark red | shadcn destructive (Cortex destructive uses `k-error` tints) |
+| `border` | `--border` `217.2 32.6% 17.5%` | slate | Default component borders (`border-border`) |
+| `input` | `--input` | slate | Input borders |
+| `ring` | `--ring` `212.7 26.8% 83.9%` | light slate | Focus ring (`focus-visible:ring-ring`) |
+| `sidebar.*` | `--sidebar-*` | — | shadcn Sidebar primitive subtokens |
+
+> **Two layers, one system.** Reach for the **Cortex tokens** (`surface-*`, `k-*`, `on-surface*`) for layout, brand color, and the dark hierarchy. The **shadcn semantic tokens** come along for free with shadcn components and back their focus rings, borders, and default fills. Both must be present in the Tailwind config (see `getting-started.md`).
+
 ## Typography
 
 ### Font Stack
@@ -58,13 +83,17 @@ Used for: primary button backgrounds, active tab indicators, decorative accents.
 
 ### Font Scale
 
+The brand type scale is delivered as **`@layer utilities` classes** (defined in CSS — see `getting-started.md`), **not** as a Tailwind `fontSize` config. The products ship no custom `fontSize` block: these five classes plus the default Tailwind sizes (`text-xs`/`text-sm`/`text-lg`/…) are the whole scale. Because they live in `@layer utilities`, the `.text-*` classes below override any same-named Tailwind size.
+
 | Utility | Size | Weight | Letter Spacing | Transform | Usage |
 |---|---|---|---|---|---|
-| .text-display-sm | 2.25rem (36px) | 700 | -0.02em | none | Page headings, hero titles |
+| .text-display-sm | 2.25rem (36px) → 1.625rem (26px) on `< 640px` | 700 | -0.02em | none | Page headings, hero titles |
 | .text-title-sm | 1rem (16px) | 600 | -0.02em | none | Section titles, card titles |
-| .text-body-sm | 0.8125rem (13px) | 400 | normal | none | Body text, paragraphs |
+| .text-body-sm | 0.8125rem (13px) | 400 | normal | none | Body text, paragraphs (default) |
 | .text-label-sm | 0.6875rem (11px) | 500 | 0.05em | uppercase | Labels, badges, captions |
 | .text-code-sm | 0.75rem (12px) | 400 | normal | none | Inline code, monospace data |
+
+> Do not introduce a custom `fontSize` config to add sizes — it shadows these utilities inconsistently across apps. If you need an intermediate size, use a default Tailwind class (`text-sm` = 14px, `text-xs` = 12px).
 
 ### Body Defaults
 
@@ -120,7 +149,7 @@ shadow-ambient is the only shadow used for elevated/floating elements. It provid
 | pulse-ring | 0% { transform: scale(1), opacity: 0.2 } -> 100% { transform: scale(1.5), opacity: 0 } | 2s | linear infinite | Notification bell, status indicators |
 | accordion-down | 0% { height: 0 } -> 100% { height: var(--radix-accordion-content-height) } | 200ms | ease-out | Radix Accordion expand |
 | accordion-up | 0% { height: var(--radix-accordion-content-height) } -> 100% { height: 0 } | 200ms | ease-out | Radix Accordion collapse |
-| caret-blink | 0%,70%,100% { opacity: 1 } / 20%,50% { opacity: 0 } | 1.25s | step-end infinite | Text input cursor blink |
+| caret-blink | 0%,70%,100% { opacity: 1 } / 20%,50% { opacity: 0 } | 1.25s | ease-out infinite | Text input cursor blink (OTP) |
 
 ## Z-Index
 

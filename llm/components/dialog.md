@@ -2,13 +2,13 @@
 
 ## Overview
 
-Modal overlay for focused user interactions that require attention before continuing. Built on Radix UI Dialog and AlertDialog primitives.
+Modal overlay for focused user interactions that require attention before continuing. Built on Radix UI Dialog (`@radix-ui/react-dialog`).
 
-Two variants: standard **Dialog** (for forms, information, confirmations) and **AlertDialog** (for destructive confirmations requiring explicit user acknowledgment).
+For destructive confirmations requiring explicit acknowledgment, use the separate **AlertDialog** component (`@/components/ui/alert-dialog`).
 
 **Import path**: `@/components/ui/dialog`
 
-**Dependencies**: @radix-ui/react-dialog, class-variance-authority
+**Dependencies**: `@radix-ui/react-dialog`, `lucide-react` (close `X` icon). No `class-variance-authority` — this component has no CVA variants.
 
 ## Import
 
@@ -22,6 +22,8 @@ import {
   DialogDescription,
   DialogFooter,
   DialogClose,
+  DialogPortal,
+  DialogOverlay,
 } from "@/components/ui/dialog"
 ```
 
@@ -29,24 +31,51 @@ import {
 
 | Component | Role |
 |---|---|
-| Dialog | Root wrapper managing open/close state |
-| DialogTrigger | Button or element that opens the dialog |
-| DialogContent | The actual dialog panel (overlay + content) |
-| DialogHeader | Top section with title and description |
+| Dialog | Root wrapper managing open/close state (`DialogPrimitive.Root`) |
+| DialogTrigger | Element that opens the dialog |
+| DialogContent | The dialog panel — renders `DialogPortal` + `DialogOverlay` + content, plus the built-in close button |
+| DialogHeader | Top section grouping title and description |
 | DialogTitle | Heading inside the dialog |
 | DialogDescription | Optional description or instructions |
 | DialogFooter | Bottom action area (typically buttons) |
-| DialogClose | A Button variant="ghost" close icon (X) positioned top-right, or an action button that closes |
+| DialogClose | Element that closes the dialog (used for footer Cancel buttons) |
+| DialogOverlay | Backdrop layer (rendered automatically by DialogContent) |
+| DialogPortal | Portal target (rendered automatically by DialogContent) |
 
-## Width Tiers
+## Anatomy & Sizing
 
-| Tier | Width | Use Case |
+`DialogContent` renders its own `DialogOverlay` and a built-in close button (the `X` top-right). You only compose the inner pieces:
+
+```tsx
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="secondary">Open</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Title</DialogTitle>
+      <DialogDescription>Optional supporting text.</DialogDescription>
+    </DialogHeader>
+    {/* body */}
+    <DialogFooter>
+      <DialogClose asChild>
+        <Button variant="ghost">Cancel</Button>
+      </DialogClose>
+      <Button>Confirm</Button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+### Width
+
+The base content width is `w-full max-w-[calc(100%-2rem)] sm:max-w-lg` (≈512px). There are **no** built-in size variants — wider/narrower tiers are achieved by overriding `max-w-*` on `DialogContent`:
+
+| Tier | className override | Use Case |
 |---|---|---|
-| Confirmations | sm:max-w-[440px] | Simple confirmations, short alerts |
-| Forms | sm:max-w-[560px] | Form dialogs, medium content |
-| Complex | sm:max-w-[720px] | Multi-column forms, rich content |
-
-The base width is controlled via `className` on DialogContent:
+| Confirmations | `sm:max-w-[440px]` | Simple confirmations, short alerts |
+| Forms (default-ish) | `sm:max-w-lg` (≈512px) / `sm:max-w-[560px]` | Form dialogs, medium content |
+| Complex | `sm:max-w-[720px]` | Multi-column forms, rich content |
 
 ```tsx
 <DialogContent className="sm:max-w-[560px]">
@@ -66,115 +95,80 @@ The base width is controlled via `className` on DialogContent:
 
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| className | string | undefined | Additional CSS classes via cn() |
-| children | ReactNode | required | Header, content, footer |
+| showCloseButton | boolean | `true` | Renders the top-right `X` close button. Pass `false` to hide it |
+| className | string | undefined | Additional CSS classes via `cn()` (use for width overrides) |
+| children | ReactNode | required | Header, body, footer |
 
-### DialogHeader
+> Note: `showCloseButton` exists in cortex-coder-front. The cortex-support-front build always renders the close button (no prop).
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| className | string | undefined | Additional CSS classes via cn() |
-| children | ReactNode | required | Title + optional description |
-
-### DialogTitle
-
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| className | string | undefined | Additional CSS classes via cn() |
-| children | ReactNode | required | Title text |
-
-### DialogDescription
-
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| className | string | undefined | Additional CSS classes via cn() |
-| children | ReactNode | required | Description text |
-
-### DialogFooter
-
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| className | string | undefined | Additional CSS classes via cn() |
-| children | ReactNode | required | Action buttons (typically aligned right) |
+`DialogHeader`, `DialogTitle`, `DialogDescription`, and `DialogFooter` each accept `className` and `children`.
 
 ## States
 
-- **Closed**: Default state. Dialog is not rendered (removed from DOM).
-- **Open**: Rendered with overlay and content. Content enters via `animate-slide-up`. Overlay fades in.
-- **Loading (during submit)**: Submit button shows spinner and is disabled. Dialog should not auto-close.
-- **Error**: Inline error messages within the form content. Server errors shown in DialogDescription or a dedicated alert area.
-- **Validation**: Form fields show validation errors inline. Dialog stays open until valid or cancelled.
+- **Closed**: Not rendered (removed from DOM via portal unmount).
+- **Open**: Overlay fades in; content animates in. Radix manages focus trap, Escape-to-close, and click-outside-to-close.
+- **Loading (during submit)**: Keep the dialog open; show a spinner and disable the submit button.
+- **Error / Validation**: Show messages inline within the body; keep the dialog open until valid or cancelled.
 
-## Tailwind Classes (key selectors)
+## Reference implementation
 
-```css
-/* Overlay */
-fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm
-data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0
+Overlay (cortex-coder-front, primary source):
 
-/* Content */
-fixed left-[50%] top-[50%] z-[200]
-translate-x-[-50%] translate-y-[-50%]
-bg-surface-container-low
-rounded-md
-shadow-ambient
-animate-slide-up
-
-/* DialogHeader */
-flex flex-col gap-1.5
-
-/* DialogTitle */
-text-title-sm font-semibold
-
-/* DialogDescription */
-text-body-sm text-on-surface-variant
-
-/* DialogFooter */
-flex flex-col-reverse sm:flex-row sm:justify-end gap-2
-
-/* Close button (X) - top right */
-absolute right-4 top-4 rounded-sm opacity-70 hover:opacity-100
+```
+data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm
 ```
 
-## AlertDialog (Destructive Confirmations)
+Content (cortex-coder-front, primary source):
 
-For destructive actions, use `AlertDialog` instead of `Dialog`. Import:
-
-```tsx
-import {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogCancel,
-  AlertDialogAction,
-} from "@/components/ui/alert-dialog"
+```
+bg-surface-container-low data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:slide-out-to-bottom-2 data-[state=open]:slide-in-from-bottom-2 fixed top-[50%] left-[50%] z-[200] grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-md border border-on-surface-variant/15 p-6 shadow-ambient duration-200 outline-none sm:max-w-lg
 ```
 
-AlertDialog includes:
-- **AlertDialogCancel**: Closes the dialog without action (typically `variant="secondary"`).
-- **AlertDialogAction**: Confirms the destructive action (typically `variant="destructive"`).
+Built-in close button (cortex-coder-front):
+
+```
+text-on-surface-variant hover:text-on-surface ring-offset-background focus:ring-ring absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4
+```
+
+Header / Footer / Title / Description (cortex-coder-front):
+
+```
+/* DialogHeader  */ flex flex-col gap-1.5 text-left
+/* DialogFooter  */ flex flex-col-reverse gap-2 sm:flex-row sm:justify-end
+/* DialogTitle   */ text-title-sm text-on-surface
+/* DialogDescription */ text-body-sm text-on-surface-variant
+```
+
+> cortex-support-front variation: content uses `animate-slide-up` / overlay `animate-fade-in` (200ms) and zero content padding (`p-0`), with padding pushed into the parts — `DialogHeader` = `flex flex-col space-y-1.5 p-5 pb-0`, `DialogFooter` = `flex flex-row justify-end gap-2 p-3 pt-0`, `DialogTitle` adds `font-semibold`, close button uses `rounded-sm` with an explicit `h-4 w-4` icon. Functionally equivalent; follow cortex-coder-front for new work.
+
+## Tokens used
+
+| Element | Token / class |
+|---|---|
+| Overlay | `bg-black/60`, `backdrop-blur-sm`, `z-[200]` |
+| Content surface | `bg-surface-container-low` |
+| Content border | `border border-on-surface-variant/15` |
+| Content radius | `rounded-md` (6px) |
+| Content elevation | `shadow-ambient` |
+| Content z-index | `z-[200]` |
+| Title text | `text-title-sm text-on-surface` (16px / 600) |
+| Description text | `text-body-sm text-on-surface-variant` (13px) |
+| Close icon | lucide `X`, `size-4` (`w-4 h-4`) |
 
 ## Usage Guidelines
 
 ### Do
 
-- Use `Dialog` for forms, editing content, and non-destructive confirmations.
-- Use `AlertDialog` for destructive confirmations (delete, remove, irreversible changes).
-- Close the dialog on Escape key press (handled by Radix by default).
-- Close the dialog when clicking outside (handled by Radix by default; disable with `onInteractOutside={(e) => e.preventDefault()}` if needed).
-- Focus the first focusable element inside the dialog on open (handled by Radix by default).
-- Return focus to the trigger element when dialog closes (handled by Radix by default).
-- Use the appropriate width tier for the content complexity.
+- Use `Dialog` for confirmations and short, focused interactions.
+- Use `AlertDialog` (separate component) for destructive confirmations (delete, irreversible changes).
+- Let Radix handle Escape-to-close, click-outside-to-close, focus trap, and return-focus (all default behavior).
+- Disable click-outside with `onInteractOutside={(e) => e.preventDefault()}` only when data loss is a risk.
+- Override `max-w-*` on `DialogContent` to match content complexity.
 
 ### Don't
 
-- Don't nest dialogs -- use a multi-step form within one dialog instead.
-- Don't open a dialog from another dialog.
-- Don't put too much content in a dialog -- if scrolling is extensive, consider a page or drawer instead.
-- Don't use `Dialog` for destructive actions -- use `AlertDialog`.
-- Don't remove the backdrop overlay -- it provides essential visual context.
-- Don't disable the close button (X) -- users should always have an escape hatch.
+- Don't use modals for create/edit forms — Cortex uses dedicated pages for those. Reserve dialogs for confirmations and small interactions.
+- Don't nest dialogs or open a dialog from another dialog.
+- Don't pack extensive scrolling content into a dialog — use a page or `Sheet`/`Drawer` instead.
+- Don't remove the backdrop overlay — it provides essential visual context.
+- Don't hide the close button unless an explicit footer action always remains as an escape hatch (`showCloseButton={false}`).

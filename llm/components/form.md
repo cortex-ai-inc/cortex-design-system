@@ -2,188 +2,192 @@
 
 ## Overview
 
-Form system built on react-hook-form with Zod validation via `@hookform/resolvers/zod`. Uses a compound component pattern (`Form`, `FormItem`, `FormLabel`, `FormControl`, `FormDescription`, `FormMessage`) wrapping Radix's `Slot` for controlled form fields. A separate `Field` compound component (`Field`, `FieldSet`, `FieldGroup`, `FieldLabel`, `FieldTitle`, `FieldContent`, `FieldDescription`, `FieldError`, `FieldSeparator`, `FieldLegend`) provides an alternative layout-oriented API with orientation modes.
+Thin compound wrapper around **react-hook-form** (shadcn/ui New York style). It wires field state, accessibility ids, and error styling into a small set of components: `Form`, `FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormDescription`, `FormMessage`. A `useFormField` hook exposes the active field's id/name/error.
 
-The architecture follows a "no modals for create/edit" rule: create and edit flows are handled as full-page or inline forms, never inside modals.
+There is no custom submit wrapper or styling shell — `Form` is simply react-hook-form's `FormProvider`, and submission is wired with the native `<form onSubmit={form.handleSubmit(...)}>`. This follows the "no modals for create/edit" rule: create and edit flows are full-page or inline forms, never modals.
 
 ## Import
 
 ```tsx
-// react-hook-form based
 import {
   Form,
+  FormField,
   FormItem,
   FormLabel,
   FormControl,
   FormDescription,
   FormMessage,
-  FormField,
+  useFormField,
 } from "@/components/ui/form"
-
-// Field compound
-import {
-  Field,
-  FieldSet,
-  FieldGroup,
-  FieldLabel,
-  FieldTitle,
-  FieldContent,
-  FieldDescription,
-  FieldError,
-  FieldSeparator,
-  FieldLegend,
-} from "@/components/ui/field"
 ```
 
-## Form (react-hook-form wrapper)
+## Anatomy
 
-### Props
+| Component | Underlying | Purpose |
+|---|---|---|
+| `Form` | `FormProvider` (react-hook-form) | Provides form context. Spread the `useForm()` return into it. |
+| `FormField` | `Controller` | Renders a controlled field via `render` prop; child receives `{ field, fieldState, formState }`. |
+| `FormItem` | `<div>` | Field group wrapper. Generates a `useId()` for label/description/message wiring. |
+| `FormLabel` | `Label` (`@/components/ui/label`, wraps Radix `LabelPrimitive.Root`) | Label bound to the control via `htmlFor`; turns destructive on error. |
+| `FormControl` | `Slot` (Radix) | Wraps the input, injecting `id`, `aria-describedby`, `aria-invalid`. |
+| `FormDescription` | `<p>` | Muted helper text below the field. |
+| `FormMessage` | `<p>` | Validation error text. Renders `null` when there is no error/children. |
+| `useFormField` | hook | Returns `{ id, name, formItemId, formDescriptionId, formMessageId, ...fieldState }`. |
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `form` | `UseFormReturn<T>` | required | Return value from `useForm()` or `useZodForm()` |
-| `onSubmit` | `(data: T) => void \| Promise<void>` | required | Form submission handler |
-| `className` | `string` | `undefined` | Additional classes |
-| `children` | `React.ReactNode` | required | Form content |
-| `fieldsetClassName` | `string` | `undefined` | Classes for inner fieldset |
-| `id` | `string` | `undefined` | HTML id attribute |
+> `Form` is a re-export of `FormProvider` — there is **no** custom `form`/`onSubmit`/`fieldsetClassName` prop. There is **no** `FormSection` component and **no** `.form-field`/`.form-label` CSS utility classes. Wire submission yourself with `<form onSubmit={form.handleSubmit(onSubmit)}>`.
 
-### Sub-components
+## Element classes
 
-| Component | Purpose |
-|---|---|
-| `FormField` | Renders a controlled field via render prop (children receive `field` object) |
-| `FormItem` | Wrapper for a single form field group (adds margin/stacking) |
-| `FormLabel` | Renders `<label>` with form text styling |
-| `FormControl` | Wraps the input element using Radix Slot for controlled behavior |
-| `FormDescription` | Descriptive text below the field |
-| `FormMessage` | Validation error message (auto-shown when error exists on the field) |
+| Component | className (verbatim) | Notes |
+|---|---|---|
+| `FormItem` | `grid gap-2` | Stacks label, control, description, message. |
+| `FormLabel` | `data-[error=true]:text-destructive` | Inherits all `Label` base styles; `data-error` set from field error. `text-destructive` maps to the `k-error` (`#F87171`) token. |
+| `FormDescription` | `text-muted-foreground text-sm` | `text-muted-foreground` maps to `on-surface-variant`. |
+| `FormMessage` | `text-destructive text-sm` | Error color = `k-error` (`#F87171`). |
 
-### States
+## Accessibility wiring
 
-- **Loading**: Disable submit button, show spinner. Mutations managed externally via React Query `useMutation`.
-- **Validation error**: Zod schema validation errors surface via `FormMessage` per field. Errors appear after `form.handleSubmit` validation or on blur (configured in `useForm`).
-- **Submission error**: Server errors displayed as a toast (sonner) or a top-of-form alert. Handled in the mutation's `onError` callback.
-- **Success**: Toast notification, redirect or reset form. Handled in the mutation's `onSuccess` callback.
+`useFormField` derives stable ids from the `FormItem` id:
 
-### Tailwind Classes
+- `formItemId` → `${id}-form-item` (set as the control's `id`)
+- `formDescriptionId` → `${id}-form-item-description`
+- `formMessageId` → `${id}-form-item-message`
 
-| Selector | Purpose |
-|---|---|
-| `.form-field` | Field spacing container |
-| `.form-label` | Label text style |
-| `.form-description` | Helper text style |
-| `.form-message` | Error text style (k-error color) |
+`FormControl` applies `aria-invalid={!!error}` and points `aria-describedby` at the description id (and additionally the message id when an error is present). `FormLabel` sets `htmlFor={formItemId}`.
 
-### Usage
+## States
+
+- **Default**: Description shown (if present), no message.
+- **Error**: `FormLabel` gets `data-error="true"` → `text-destructive`; `FormMessage` renders the error string in `text-destructive`; `FormControl` sets `aria-invalid`.
+- **No message**: `FormMessage` returns `null` when there is neither an error nor `children`.
+- **Submission / loading / success**: Not handled by these components. Manage via the submit handler (e.g. React Query `useMutation`) and disable the submit button / show a spinner externally.
+
+## Usage
 
 ```tsx
-const formSchema = z.object({
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormDescription,
+  FormMessage,
+} from "@/components/ui/form"
+
+const schema = z.object({
   title: z.string().min(1, "Title is required"),
-  description: z.string().optional(),
 })
 
 function MyForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { title: "", description: "" },
-  })
-  const mutation = useMutation({
-    mutationFn: (data) => api.post("/resource", data),
-    onSuccess: () => { toast.success("Created"); form.reset() },
-    onError: (e) => { toast.error(e.message) },
+  const form = useForm<z.infer<typeof schema>>({
+    resolver: zodResolver(schema),
+    defaultValues: { title: "" },
   })
 
   return (
-    <Form form={form} onSubmit={(data) => mutation.mutateAsync(data)}>
-      <FormField
-        name="title"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Title</FormLabel>
-            <FormControl>
-              <Input placeholder="Enter title" {...field} />
-            </FormControl>
-            <FormMessage />
-          </FormItem>
-        )}
-      />
-      <Button type="submit" loading={mutation.isPending}>Save</Button>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit((data) => console.log(data))}>
+        <FormField
+          control={form.control}
+          name="title"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Title</FormLabel>
+              <FormControl>
+                <Input placeholder="Enter title" {...field} />
+              </FormControl>
+              <FormDescription>Shown in lists and headings.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Save</Button>
+      </form>
     </Form>
   )
 }
 ```
 
-## Field (layout-oriented compound)
+## Reference implementation
 
-### Props
+```tsx
+const Form = FormProvider
 
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `orientation` | `"vertical" \| "horizontal" \| "responsive"` | `"vertical"` | Layout direction |
+function FormItem({ className, ...props }: React.ComponentProps<"div">) {
+  const id = React.useId()
+  return (
+    <FormItemContext.Provider value={{ id }}>
+      <div data-slot="form-item" className={cn("grid gap-2", className)} {...props} />
+    </FormItemContext.Provider>
+  )
+}
 
-### Orientation modes
+function FormLabel({ className, ...props }) {
+  const { error, formItemId } = useFormField()
+  return (
+    <Label
+      data-slot="form-label"
+      data-error={!!error}
+      className={cn("data-[error=true]:text-destructive", className)}
+      htmlFor={formItemId}
+      {...props}
+    />
+  )
+}
 
-| Mode | Behavior |
-|---|---|
-| `vertical` | Label stacked above content (default). |
-| `horizontal` | Label and input side by side (label on left, content on right). |
-| `responsive` | Horizontal on `md:` breakpoint and above, vertical on smaller screens. |
+function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
+  const { error, formItemId, formDescriptionId, formMessageId } = useFormField()
+  return (
+    <Slot
+      data-slot="form-control"
+      id={formItemId}
+      aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
+      aria-invalid={!!error}
+      {...props}
+    />
+  )
+}
 
-### Sub-components
+function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
+  const { formDescriptionId } = useFormField()
+  return (
+    <p data-slot="form-description" id={formDescriptionId}
+       className={cn("text-muted-foreground text-sm", className)} {...props} />
+  )
+}
 
-| Component | Description |
-|---|---|
-| `Field` | Root wrapper, controls orientation |
-| `FieldSet` | Groups multiple fields into a logical section |
-| `FieldGroup` | Inline group of related controls within a field |
-| `FieldLabel` | Label element |
-| `FieldTitle` | Section title (bold) |
-| `FieldContent` | Wrapper for input/control elements |
-| `FieldDescription` | Helper text |
-| `FieldError` | Validation error display |
-| `FieldSeparator` | Visual divider between sections |
-| `FieldLegend` | Legend for a FieldSet |
-
-## FormSection
-
-### Overview
-
-Card-like grouping for form sections with an icon, title, and description. Used to visually separate form sections on the page.
-
-### Props
-
-| Prop | Type | Default | Description |
-|---|---|---|---|
-| `icon` | `React.ElementType` | required | Lucide icon component |
-| `title` | `string` | required | Section heading |
-| `description` | `string` | required | Section description |
-| `children` | `React.ReactNode` | required | Form fields in this section |
-| `className` | `string` | `undefined` | Additional classes |
-
-### Tailwind Classes
-
-| Selector | Purpose |
-|---|---|
-| `max-w-5xl` | Width cap on the form container |
-| `grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5` | Two-column grid on medium+ screens |
+function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
+  const { error, formMessageId } = useFormField()
+  const body = error ? String(error?.message ?? "") : props.children
+  if (!body) return null
+  return (
+    <p data-slot="form-message" id={formMessageId}
+       className={cn("text-destructive text-sm", className)} {...props}>
+      {body}
+    </p>
+  )
+}
+```
 
 ## Usage Guidelines
 
 ### Do
 
-- Use `FormField` + `FormItem` for individual fields with validation.
-- Use `Field` with `orientation="responsive"` for label-input pairs on wide forms.
-- Use `FormSection` to group related fields with a descriptive heading.
-- Use `grid grid-cols-1 md:grid-cols-2` layout for multi-column forms.
-- Cap form width at `max-w-5xl`.
-- Handle submission state via `useMutation` from React Query.
-- Show validation errors inline via `FormMessage`.
+- Spread `useForm()` into `Form` (`<Form {...form}>`) and wire submission with `<form onSubmit={form.handleSubmit(onSubmit)}>`.
+- Pass `control={form.control}` and a `name` to every `FormField`, and use its `render` prop.
+- Wrap the actual input in `FormControl` so id / `aria-describedby` / `aria-invalid` are applied.
+- Use `FormMessage` (no children) to auto-display the field's validation error.
+- Group fields with `grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5`; cap form width at `max-w-5xl`.
 
 ### Don't
 
-- Do NOT use modals for create/edit flows. Use full-page or inline forms.
-- Do NOT manage form submission state manually — always use React Query mutations.
-- Do NOT use `Field` compound and `Form` compound together in the same form hierarchy; pick one API.
-- Do NOT use `horizontal` orientation for very long or complex inputs; prefer `vertical`.
-- Do NOT forget to wrap controlled inputs with `FormControl`.
+- Do NOT pass `form`/`onSubmit`/`fieldsetClassName` props to `Form` — they do not exist; `Form` is `FormProvider`.
+- Do NOT reference a `FormSection` component or `.form-field`/`.form-label` classes — they are not part of this module.
+- Do NOT use modals for create/edit flows — use full-page or inline forms.
+- Do NOT forget to wrap controlled inputs in `FormControl`.
