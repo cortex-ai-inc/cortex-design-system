@@ -26,32 +26,42 @@ If you are an LLM helping with a Cortex product, start with:
 | Component | Radix | File |
 |---|---|---|
 | Accordion | Radix Accordion | `components/accordion.md` |
+| Alert | — | `components/alert.md` |
 | Avatar | Radix Avatar | `components/avatar.md` |
 | Badge | — | `components/badge.md` |
 | Breadcrumb | — | `components/breadcrumb.md` |
 | Button | Radix Slot | `components/button.md` |
+| Calendar | react-day-picker | `components/date-picker.md` |
 | Card | — | `components/card.md` |
 | Checkbox | Radix Checkbox | `components/checkbox.md` |
+| Combobox | cmdk + Radix Popover | `components/combobox.md` |
 | Command Palette | cmdk | `components/command-palette.md` |
+| DatePicker | react-day-picker | `components/date-picker.md` |
 | Dialog | Radix Dialog | `components/dialog.md` |
 | Drawer | vaul | `components/modal.md` |
 | DropdownMenu | Radix DropdownMenu | `components/dropdown-menu.md` |
 | Empty State | — | `components/empty-state.md` |
 | Field (Form) | — | `components/form.md` |
+| FileUpload | — | `components/file-upload.md` |
 | Form | react-hook-form | `components/form.md` |
 | Input | — | `components/input.md` |
 | InputGroup | — | `components/input-group.md` |
 | Item (List) | — | `components/item.md` |
+| Kbd | — | `components/kbd.md` |
 | Modal (Sheet) | Radix Dialog | `components/modal.md` |
 | Notification Bell | — | `components/notification.md` |
 | Pagination | — | `components/pagination.md` |
+| Popover | Radix Popover | `components/popover.md` |
 | Progress | Radix Progress | `components/progress.md` |
+| RadioGroup | Radix RadioGroup | `components/radio-group.md` |
 | Select | Radix Select | `components/select.md` |
 | Sheet | Radix Dialog | `components/modal.md` |
 | Sidebar | — | `components/sidebar.md` |
 | Skeleton | — | `components/skeleton.md` |
+| Slider | Radix Slider | `components/slider.md` |
 | Spinner | — | `components/spinner.md` |
 | StatusDot | — | `components/status-dot.md` |
+| Stepper | — | `components/stepper.md` |
 | Switch | Radix Switch | `components/switch.md` |
 | Table | — | `components/table.md` |
 | Tabs | Radix Tabs | `components/tabs.md` |

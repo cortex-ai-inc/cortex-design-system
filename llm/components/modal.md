@@ -72,7 +72,7 @@ There are **no named size variants**. `DialogContent` ships with a single defaul
 
 | Element | CSS Classes |
 |---|---|
-| Overlay | `fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm` |
+| Overlay | `fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm` — the `bg-black/60` scrim is named by the token `--scrim: rgba(0, 0, 0, 0.60)` |
 | Content | `bg-surface-container-low fixed top-[50%] left-[50%] z-[200] grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-md border border-on-surface-variant/15 p-6 shadow-ambient sm:max-w-lg` |
 | Close button | `text-on-surface-variant hover:text-on-surface absolute top-4 right-4 rounded-xs opacity-70 hover:opacity-100 focus:ring-2 focus:ring-offset-2` (`XIcon`, `size-4`) |
 | Header | `flex flex-col gap-1.5 text-left` |
@@ -84,10 +84,10 @@ There are **no named size variants**. `DialogContent` ships with a single defaul
 
 - **Surface**: dialog sits on `bg-surface-container-low` (#191B22), the panel surface — not `bg-background`.
 - **Border**: thin `border-on-surface-variant/15` (ghost border), `rounded-md` (6px) corners.
-- **Depth**: uses `shadow-ambient` — one of the only places shadows are allowed (floating elements).
+- **Depth**: uses `shadow-ambient` — one of the only places shadows are allowed. Dialogs/modals/sheets keep `shadow-ambient`; small floats (dropdowns, tooltips, selects) use `shadow-overlay`.
 - **Z-index**: overlay and content both render at `z-[200]` (the dialog/overlay layer).
-- **Backdrop**: `bg-black/60` with `backdrop-blur-sm`.
-- **Animation**: `fade-in` + `slide-in-from-bottom-2` on open, `fade-out` + `slide-out-to-bottom-2` on close, `duration-200`.
+- **Backdrop**: `bg-black/60` with `backdrop-blur-sm` — the overlay color is named by the token `--scrim: rgba(0, 0, 0, 0.60)` (values unchanged).
+- **Animation**: `fade-in` + `slide-in-from-bottom-2` on open, `fade-out` + `slide-out-to-bottom-2` on close, `duration-200` (= `--motion-base`, ease-out).
 - **Close behavior**: Escape closes; clicking the overlay closes; top-right X closes (unless `showCloseButton={false}`).
 - **Focus**: content is `outline-none`; focus is trapped inside while open and restored on close.
 
@@ -110,6 +110,8 @@ className={cn(
   className
 )}
 ```
+
+> The `bg-black/60` overlay value is named by the token `--scrim: rgba(0, 0, 0, 0.60)`.
 
 Auto-rendered close button (verbatim):
 

@@ -107,7 +107,7 @@ Every variant starts from `border border-transparent`; `outline` only swaps the 
 ## States / Notes
 
 - **Hover** — Only `<a>` children animate: `[a]:hover:bg-accent/50 [a]:transition-colors duration-100`. There is no built-in hover for plain `div` items; add your own (e.g. `hover:bg-surface-container-high`) when interactive.
-- **Focus** — `focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]` (note: a 3px ring with no offset, not the standard 2px+offset pattern).
+- **Focus** — `focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-2` (full-width rows use a 2px ring with no offset, not the compact-control 2px+offset pattern). Stock shadcn ships a 3px ring; Cortex normalizes to `ring-2` at port time.
 - **ItemContent stacking** — `flex flex-1 flex-col gap-1`; a second adjacent `ItemContent` becomes `flex-none`.
 - **ItemTitle** — `flex w-fit items-center gap-2 text-sm leading-snug font-medium`.
 - **ItemDescription** — `text-muted-foreground line-clamp-2 text-sm leading-normal font-normal text-balance`; nested links get `underline underline-offset-4` and `hover:text-primary`.
@@ -138,11 +138,11 @@ Every variant starts from `border border-transparent`; `outline` only swaps the 
 
 ## Reference implementation
 
-Base `Item` CVA (verbatim from `item.tsx`):
+Base `Item` CVA (from `item.tsx`; focus ring normalized to `ring-2` per the vNext canon — stock shadcn ships a 3px ring):
 
 ```ts
 const itemVariants = cva(
-  "group/item flex items-center border border-transparent text-sm rounded-md transition-colors [a]:hover:bg-accent/50 [a]:transition-colors duration-100 flex-wrap outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+  "group/item flex items-center border border-transparent text-sm rounded-md transition-colors [a]:hover:bg-accent/50 [a]:transition-colors duration-100 flex-wrap outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-2",
   {
     variants: {
       variant: {

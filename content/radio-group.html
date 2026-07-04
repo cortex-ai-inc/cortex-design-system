@@ -1,0 +1,176 @@
+<div class="page-header">
+  <h1>RadioGroup</h1>
+  <p>Mutually exclusive selection control — pick exactly one option from a small visible set.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-new">New</span>
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix RadioGroup</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    RadioGroup uses Radix RadioGroup for accessible single-choice selection with arrow-key
+    navigation. Items are 16x16 circles (<code>rounded-full</code> — sanctioned here because the
+    control is inherently circular). The checked state mirrors Checkbox exactly: the circle fills
+    with <code>bg-k-primary-container</code> (#4D8EFF) and shows a <strong>dark</strong> 8px dot
+    (<code>fill-surface-container-lowest</code>) — a deliberate divergence from stock shadcn's
+    outline-plus-blue-dot.
+  </p>
+  <p>
+    The unchecked state is a <code>border-on-surface-variant/30</code> outline with no fill.
+    Always pair each item with a <code>Label</code> (<code>text-body-sm</code>, <code>gap-2</code>).
+    The Root lays out as <code>grid gap-2</code>. Single 16px size — no size prop.
+  </p>
+
+  <h2 id="preview">Preview</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Unchecked</div>
+      <div class="preview-card-body" style="gap: 8px;">
+        <span class="radio"></span>
+        <label class="text-body-sm" style="color: var(--on-surface); cursor: pointer;">Email notifications</label>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Checked</div>
+      <div class="preview-card-body" style="gap: 8px;">
+        <span class="radio checked"><span class="radio-dot"></span></span>
+        <label class="text-body-sm" style="color: var(--on-surface); cursor: pointer;">Email notifications</label>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Disabled (unchecked)</div>
+      <div class="preview-card-body" style="gap: 8px;">
+        <span class="radio" style="opacity: 0.5; cursor: not-allowed;"></span>
+        <label class="text-body-sm" style="color: var(--on-surface-variant); opacity: 0.5; cursor: not-allowed;">Email notifications</label>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Disabled (checked)</div>
+      <div class="preview-card-body" style="gap: 8px;">
+        <span class="radio checked" style="opacity: 0.5; cursor: not-allowed;"><span class="radio-dot"></span></span>
+        <label class="text-body-sm" style="color: var(--on-surface-variant); opacity: 0.5; cursor: not-allowed;">Email notifications</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="max-width: 480px;">
+    <div class="preview-card-header">Labeled group</div>
+    <div class="preview-card-body column" style="gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="radio checked"><span class="radio-dot"></span></span>
+        <label class="text-body-sm" style="color: var(--on-surface); cursor: pointer;">Email</label>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="radio"></span>
+        <label class="text-body-sm" style="color: var(--on-surface); cursor: pointer;">Push notification</label>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="radio"></span>
+        <label class="text-body-sm" style="color: var(--on-surface); cursor: pointer;">Off</label>
+      </div>
+    </div>
+    <div class="preview-card-footer"><code>&lt;RadioGroup&gt; = grid gap-2 · exactly one value selected</code></div>
+  </div>
+
+  <div class="preview-card" style="max-width: 480px;">
+    <div class="preview-card-header">With description</div>
+    <div class="preview-card-body column" style="gap: 16px;">
+      <div style="display: flex; align-items: flex-start; gap: 8px;">
+        <span class="radio checked" style="margin-top: 2px;"><span class="radio-dot"></span></span>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label class="text-body-sm" style="color: var(--on-surface); font-weight: 500; cursor: pointer;">Standard</label>
+          <p class="text-body-sm text-muted" style="margin: 0;">Shared workers, retries within 24h.</p>
+        </div>
+      </div>
+      <div style="display: flex; align-items: flex-start; gap: 8px;">
+        <span class="radio" style="margin-top: 2px;"></span>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label class="text-body-sm" style="color: var(--on-surface); font-weight: 500; cursor: pointer;">Priority</label>
+          <p class="text-body-sm text-muted" style="margin: 0;">Dedicated queue, immediate retries.</p>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer"><code>flex items-start gap-2 · item gets mt-0.5 to align with the first text line</code></div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <p>RadioGroup (Root):</p>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">defaultValue</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onValueChange</span>
+      <span class="prop-type">(value: string) => void</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">orientation</span>
+      <span class="prop-type">"vertical" | "horizontal"</span>
+      <span class="prop-default">"vertical"</span>
+    </div>
+  </div>
+  <p>RadioGroupItem:</p>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">required</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">id</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use for 2–5 mutually exclusive options, all visible at once</li>
+        <li>Always pair each item with a visible label via <code>htmlFor</code></li>
+        <li>Use <code>items-start</code> + <code>mt-0.5</code> when options have descriptions</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use for more than 5 options — use Select instead</li>
+        <li>Use for independent toggles — use Checkbox instead</li>
+        <li>Revert to shadcn's outline + blue dot — checked is filled blue with a dark dot</li>
+      </ul>
+    </div>
+  </div>
+</div>

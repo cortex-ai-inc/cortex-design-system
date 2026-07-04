@@ -3,27 +3,78 @@
   <p>Minimal shadow usage — prefer tonal layering over drop shadows.</p>
 </div>
 <div class="page-body">
-  <h2 id="tokens">Shadow Tokens</h2>
+  <h2 id="tokens">Elevation Tiers</h2>
+  <p>Tonal layering is the primary depth language — cards and panels get <strong>no shadow</strong>. Four tiers exist for elements that float above the page:</p>
   <table class="token-table">
     <thead>
-      <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+      <tr><th>Tier</th><th>Token</th><th>Value</th><th>Elements</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td><code>shadow-xs</code></td>
-        <td><code>0 1px 2px 0 rgb(0 0 0 / 0.05)</code></td>
-        <td>Subtle elevation for small floating elements</td>
+        <td>0</td>
+        <td><em>none — tonal only</em></td>
+        <td>—</td>
+        <td>Cards, panels, page sections</td>
       </tr>
       <tr>
+        <td>1</td>
+        <td><code>shadow-xs</code></td>
+        <td><code>0 1px 2px 0 rgb(0 0 0 / 0.05)</code></td>
+        <td>Switch thumb, tiny raised details</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><code>shadow-overlay</code></td>
+        <td><code>0 8px 24px rgba(0, 0, 0, 0.40)</code></td>
+        <td>Dropdowns, selects, tooltips, popovers, command palette</td>
+      </tr>
+      <tr>
+        <td>3</td>
         <td><code>shadow-ambient</code></td>
         <td><code>0 32px 64px rgba(0, 0, 0, 0.12)</code></td>
-        <td>Modal and dialog ambient occlusion</td>
+        <td>Modals, dialogs, sheets</td>
       </tr>
     </tbody>
   </table>
 
+  <h2 id="previews">Previews</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Shadow scale</div>
+    <div class="preview-card-body" style="padding:2.5rem 1.5rem;gap:2rem;">
+      <div class="shadow-preview shadow-xs">xs</div>
+      <div class="shadow-preview shadow-overlay">overlay</div>
+      <div class="shadow-preview shadow-ambient">ambient</div>
+    </div>
+    <div class="preview-card-footer"><code>.shadow-xs · .shadow-overlay · .shadow-ambient</code></div>
+  </div>
+
+  <h2 id="glow">Glow — accent, not elevation</h2>
+  <table class="token-table">
+    <thead>
+      <tr><th>Token</th><th>Value</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>shadow-glow-primary</code></td>
+        <td><code>0 0 24px 0 rgba(77, 142, 255, 0.25)</code></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>The blue halo is the system's single luminous flourish, derived from <code>k-primary-container</code>.</p>
+  <div class="preview-card">
+    <div class="preview-card-header">Glow on the signature gradient</div>
+    <div class="preview-card-body" style="padding:2.5rem 1.5rem;">
+      <button class="btn btn-primary shadow-glow-primary">Get started</button>
+    </div>
+    <div class="preview-card-footer"><code>class="gradient-primary text-surface-container-lowest shadow-glow-primary"</code></div>
+  </div>
+  <div class="callout callout-warning">
+    <div class="callout-title">&#9888;&#65039; Glow rules</div>
+    <p>Only on <code>gradient-primary</code> elements; at most <strong>one per viewport</strong>. Allowed on hero/marketing CTAs, empty-state primary actions, onboarding finish steps. Never on in-app toolbar/form buttons, inputs, or cards.</p>
+  </div>
+
   <h2 id="usage">When to Use Shadows</h2>
-  <p>Shadows are reserved exclusively for floating elements: modals, dropdowns, tooltips, and popovers. Cards and panels use tonal layering instead.</p>
+  <p>Shadows are reserved exclusively for floating elements. Small floats (dropdowns, tooltips, popovers, command) use <code>shadow-overlay</code>; full modal surfaces use <code>shadow-ambient</code>. Cards and panels use tonal layering instead.</p>
 
   <div class="callout callout-info">
     <div class="callout-title">&#128161; Design Principle</div>

@@ -1,0 +1,255 @@
+<div class="page-header">
+  <h1>Stepper</h1>
+  <p>Shows progress through an ordered multi-step flow with 24px circular indicators and connector lines. Heads wizard pages — steps are pages or page sections, never modals.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-new">New</span>
+    <span class="tag tag-react">React</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    A custom compound component — no Radix primitive. The React implementation renders
+    <code>&lt;nav aria-label="Progress"&gt;</code> wrapping an <code>&lt;ol&gt;</code> with one
+    <code>&lt;li&gt;</code> per step; the current item carries <code>aria-current="step"</code>.
+    Indicator colors follow the StatusDot semantics: blue fill with a <strong>dark</strong> glyph
+    (<code>bg-k-primary-container</code> + <code>text-surface-container-lowest</code>) for current and
+    completed steps, red tints for errors, ghost outline for pending. The circular indicator is a
+    sanctioned <code>rounded-full</code> use. See <code>stepper.md</code> for the full spec.
+  </p>
+
+  <h2 id="horizontal">Horizontal</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">4 steps — completed segments fill blue</div>
+    <div class="preview-card-body">
+      <div class="stepper">
+        <div class="stepper-item">
+          <span class="step-indicator completed">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <span class="step-title">Account</span>
+        </div>
+        <div class="step-connector completed" aria-hidden="true"></div>
+        <div class="stepper-item">
+          <span class="step-indicator completed">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <span class="step-title">Profile</span>
+        </div>
+        <div class="step-connector completed" aria-hidden="true"></div>
+        <div class="stepper-item" aria-current="step">
+          <span class="step-indicator current">3</span>
+          <span class="step-title current">Team</span>
+        </div>
+        <div class="step-connector" aria-hidden="true"></div>
+        <div class="stepper-item">
+          <span class="step-indicator">4</span>
+          <span class="step-title">Review</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <code>indicator: flex h-6 w-6 rounded-full border text-label-sm · completed/current: bg-k-primary-container text-surface-container-lowest · connector: h-px flex-1, completed = bg-k-primary-container</code>
+    </div>
+  </div>
+
+  <h2 id="vertical">Vertical</h2>
+  <p>Vertical orientation adds room for a <code>StepperDescription</code> under each title. Connectors become <code>w-px min-h-6</code>, aligned under the indicator's center.</p>
+  <div class="preview-card">
+    <div class="preview-card-header">With descriptions</div>
+    <div class="preview-card-body">
+      <div class="stepper vertical" style="max-width: 340px;">
+        <div class="stepper-item">
+          <span class="step-indicator completed">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <div>
+            <div class="step-title">Connect data source</div>
+            <div class="step-description">Postgres connection verified.</div>
+          </div>
+        </div>
+        <div class="step-connector completed" aria-hidden="true"></div>
+        <div class="stepper-item" aria-current="step">
+          <span class="step-indicator current">2</span>
+          <div>
+            <div class="step-title current">Map fields</div>
+            <div class="step-description">Match source columns to Cortex fields.</div>
+          </div>
+        </div>
+        <div class="step-connector" aria-hidden="true"></div>
+        <div class="stepper-item">
+          <span class="step-indicator">3</span>
+          <div>
+            <div class="step-title">Run import</div>
+            <div class="step-description">Validate and start the first sync.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <code>orientation="vertical" · connector: w-px min-h-6 ml-3</code>
+    </div>
+  </div>
+
+  <h2 id="error">Error state</h2>
+  <p>Mark a step <code>error</code> when its validation fails so users can see where to return. The indicator uses the semantic tint ladder (<code>bg-k-error/20</code> fill, <code>border-k-error/40</code>), and the title turns red.</p>
+  <div class="preview-card">
+    <div class="preview-card-header">Failed validation on step 2</div>
+    <div class="preview-card-body">
+      <div class="stepper">
+        <div class="stepper-item">
+          <span class="step-indicator completed">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <span class="step-title">Account</span>
+        </div>
+        <div class="step-connector completed" aria-hidden="true"></div>
+        <div class="stepper-item">
+          <span class="step-indicator error">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </span>
+          <span class="step-title error">Billing</span>
+        </div>
+        <div class="step-connector" aria-hidden="true"></div>
+        <div class="stepper-item">
+          <span class="step-indicator">3</span>
+          <span class="step-title">Review</span>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <code>error: border border-k-error/40 bg-k-error/20 text-k-error · title: text-k-error · glyph: X h-3.5 w-3.5 strokeWidth 2.5</code>
+    </div>
+  </div>
+
+  <h2 id="wizard">Wizard pattern</h2>
+  <p>
+    The stepper sits at the top of a wizard <strong>page</strong>; the current step's form renders below it
+    (standard form grid, <code>max-w-5xl</code>). The footer pairs a secondary "Back" on the left with the
+    primary gradient CTA on the right — on the final step the CTA becomes the submit action. Validate the
+    current step before advancing and keep entered values when navigating Back. See the
+    <a href="#forms-pattern" data-page-link="forms-pattern">Forms pattern</a> for grid and validation rules.
+  </p>
+  <div class="preview-card">
+    <div class="preview-card-header">Step 2 of 3 — workspace setup</div>
+    <div class="preview-card-body column" style="gap: 1.25rem;">
+      <div class="stepper">
+        <div class="stepper-item">
+          <span class="step-indicator completed">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <span class="step-title">Account</span>
+        </div>
+        <div class="step-connector completed" aria-hidden="true"></div>
+        <div class="stepper-item" aria-current="step">
+          <span class="step-indicator current">2</span>
+          <span class="step-title current">Workspace</span>
+        </div>
+        <div class="step-connector" aria-hidden="true"></div>
+        <div class="stepper-item">
+          <span class="step-indicator">3</span>
+          <span class="step-title">Invite team</span>
+        </div>
+      </div>
+      <div class="grid-2 w-full">
+        <div>
+          <label class="text-label-sm" for="wizard-ws-name" style="color: var(--on-surface-variant); display: block; margin-bottom: 6px;">Workspace name</label>
+          <input class="input" id="wizard-ws-name" type="text" placeholder="Acme Inc" />
+        </div>
+        <div>
+          <label class="text-label-sm" for="wizard-ws-slug" style="color: var(--on-surface-variant); display: block; margin-bottom: 6px;">Workspace URL</label>
+          <input class="input" id="wizard-ws-slug" type="text" placeholder="acme" />
+        </div>
+      </div>
+      <div class="flex items-center justify-between w-full">
+        <button class="btn btn-secondary">Back</button>
+        <button class="btn btn-primary">Continue</button>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <code>footer: Button variant="secondary" left + gradient-primary CTA right · final step CTA submits</code>
+    </div>
+  </div>
+  <div class="callout callout-info">
+    <p style="margin: 0;">Wizard steps are dedicated pages or sections of one page — <strong>never modals</strong>. Create/edit flows never live in dialogs (see the Forms pattern).</p>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <h3 id="props-root">Stepper (root)</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+      <span class="prop-table-cell">Description</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">number</span>
+      <span class="prop-default">—</span>
+      <span>Controlled current step (1-based)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onValueChange</span>
+      <span class="prop-type">(value: number) =&gt; void</span>
+      <span class="prop-default">—</span>
+      <span>Called when a StepperTrigger navigates to a completed step</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">orientation</span>
+      <span class="prop-type">"horizontal" | "vertical"</span>
+      <span class="prop-default">"horizontal"</span>
+      <span>Layout axis; vertical adds room for descriptions</span>
+    </div>
+  </div>
+
+  <h3 id="props-item">StepperItem</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+      <span class="prop-table-cell">Description</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">number</span>
+      <span class="prop-default">—</span>
+      <span>This step's index (1-based)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">state</span>
+      <span class="prop-type">"pending" | "current" | "completed" | "error"</span>
+      <span class="prop-default">derived</span>
+      <span>Derived from root value; set explicitly to force error</span>
+    </div>
+  </div>
+  <p>
+    <code>StepperTrigger</code> wraps the indicator in a <code>&lt;button&gt;</code> so users can jump
+    <em>back</em> to completed steps — pending steps stay disabled. Trigger focus ring:
+    <code>focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2</code>.
+  </p>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Keep wizards to 3–5 steps</li>
+        <li>Mark failed steps with the error state</li>
+        <li>Keep titles to 1–2 words; put detail in descriptions</li>
+        <li>Preserve entered values when navigating Back</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Exceed 6 steps — split the flow instead</li>
+        <li>Build modal wizards — steps are pages or page sections</li>
+        <li>Skip validation or allow jumping ahead to pending steps</li>
+        <li>Put light text on the blue indicator fill — the glyph is dark</li>
+      </ul>
+    </div>
+  </div>
+</div>

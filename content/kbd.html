@@ -1,0 +1,130 @@
+<div class="page-header">
+  <h1>Kbd</h1>
+  <p>Keyboard key chip for documenting shortcuts. Native <code>&lt;kbd&gt;</code> element, no library.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-new">New</span>
+    <span class="tag tag-react">React</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Kbd renders a single physical key as a mono 11px chip — <code>h-5</code>,
+    <code>rounded-sm</code>, <code>bg-surface-container-high</code> with a ghost border and
+    <code>text-on-surface-variant</code>. <code>KbdGroup</code> lines up multiple keys for
+    combinations, with an optional <code>+</code> separator at <code>text-on-surface-variant/50</code>.
+  </p>
+  <p>
+    Non-interactive like Badge: no hover, focus, or active states — Kbd displays a key, it never
+    triggers the shortcut.
+  </p>
+
+  <h2 id="preview">Preview</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Single keys</div>
+    <div class="preview-card-body">
+      <kbd class="kbd">Esc</kbd>
+      <kbd class="kbd">&#x21B5;</kbd>
+      <kbd class="kbd">Tab</kbd>
+      <kbd class="kbd">&#x2318;</kbd>
+      <kbd class="kbd">&#x21E7;</kbd>
+      <kbd class="kbd">&#x2325;</kbd>
+      <kbd class="kbd">&#x2191;</kbd>
+      <kbd class="kbd">&#x2193;</kbd>
+      <kbd class="kbd">&#x2190;</kbd>
+      <kbd class="kbd">&#x2192;</kbd>
+    </div>
+    <div class="preview-card-footer"><code>inline-flex h-5 min-w-5 rounded-sm border ghost-border bg-surface-container-high px-1.5 font-mono text-[11px] font-medium text-on-surface-variant select-none</code></div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-card-header">Combinations</div>
+    <div class="preview-card-body" style="gap: 1.5rem;">
+      <span class="kbd-group">
+        <kbd class="kbd">&#x2318;</kbd>
+        <kbd class="kbd">K</kbd>
+      </span>
+      <span class="kbd-group">
+        <kbd class="kbd">Ctrl</kbd>
+        <span class="kbd-sep">+</span>
+        <kbd class="kbd">Shift</kbd>
+        <span class="kbd-sep">+</span>
+        <kbd class="kbd">P</kbd>
+      </span>
+      <span class="kbd-group">
+        <kbd class="kbd">&#x2318;</kbd>
+        <kbd class="kbd">&#x21E7;</kbd>
+        <kbd class="kbd">F</kbd>
+      </span>
+    </div>
+    <div class="preview-card-footer"><code>KbdGroup: inline-flex items-center gap-1 · separator span: text-on-surface-variant/50</code></div>
+  </div>
+
+  <h2 id="in-context">In context</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Input suffix</div>
+      <div class="preview-card-body">
+        <div style="position: relative; width: 100%; max-width: 320px;">
+          <input class="input" placeholder="Search documentation..." style="padding-right: 3.25rem;" />
+          <kbd class="kbd" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%);">&#x2318;K</kbd>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Menu shortcuts</div>
+      <div class="preview-card-body">
+        <div class="popover-panel" style="width: 100%; max-width: 320px; padding: 0.25rem;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.375rem 0.5rem; border-radius: 4px; background: var(--surface-container-high);">
+            <span class="text-body-sm" style="color: var(--on-surface);">Save changes</span>
+            <span class="kbd-group"><kbd class="kbd">&#x2318;</kbd><kbd class="kbd">S</kbd></span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.375rem 0.5rem; border-radius: 4px;">
+            <span class="text-body-sm" style="color: var(--on-surface);">Duplicate</span>
+            <span class="kbd-group"><kbd class="kbd">&#x2318;</kbd><kbd class="kbd">D</kbd></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">required</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use only for physical keyboard keys and combos</li>
+        <li>Use standard glyphs: &#x2318; &#x21E7; &#x2325; Ctrl Alt &#x21B5; Esc</li>
+        <li>Use <code>KbdGroup</code> with the muted <code>+</code> separator for combos</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Make Kbd clickable — use a Button if the shortcut should be triggerable</li>
+        <li>Use for arbitrary emphasis or tags — use Badge or <code>code</code> instead</li>
+        <li>Restyle per context — the chip is fixed at mono 11px, h-5</li>
+      </ul>
+    </div>
+  </div>
+</div>

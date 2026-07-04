@@ -1,0 +1,291 @@
+<div class="page-header">
+  <h1>Combobox</h1>
+  <p>Searchable select composed from Popover + Command. Type to filter, pick one value — or many.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-new">New</span>
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix Popover</span>
+    <span class="tag">cmdk</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    The Combobox is a <strong>composition recipe, not a new primitive</strong>: a cmdk
+    <code>Command</code> rendered inside a Radix <code>Popover</code>, opened from a Button styled
+    as a form field. The trigger copies the Select trigger tokens verbatim (<code>h-9</code>,
+    <code>ghost-border-20</code>, <code>bg-surface-dim</code>, <code>rounded-sm</code>,
+    <code>focus:ring-2 focus:ring-k-primary-container/50</code>) and swaps the chevron for
+    <code>ChevronsUpDown</code> to signal searchability. The panel uses the shared popover recipe
+    (<code>bg-surface-container-low</code>, <code>shadow-overlay</code>, <code>z-[100]</code>) sized
+    to the trigger via <code>w-[--radix-popover-trigger-width] p-0</code>.
+  </p>
+
+  <h2 id="structure">Structure</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Component</span>
+      <span class="prop-table-cell">Role</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Popover</span>
+      <span class="prop-default">Open state + positioning (Radix Popover)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">PopoverTrigger asChild &rarr; Button</span>
+      <span class="prop-default">role="combobox" aria-expanded, styled with the Select trigger tokens (h-9)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">PopoverContent</span>
+      <span class="prop-default">w-[--radix-popover-trigger-width] p-0 — panel matches field width</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Command / CommandInput</span>
+      <span class="prop-default">cmdk root + search field (auto-filters items)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">CommandList / CommandGroup / CommandItem</span>
+      <span class="prop-default">Scrollable results; highlighted item = bg-surface-container-high</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">CommandEmpty</span>
+      <span class="prop-default">"No results found." when the filter matches nothing</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Check (lucide)</span>
+      <span class="prop-default">Trailing ml-auto h-4 w-4 text-k-primary-container on the selected item</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Closed</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
+        <label class="text-label-sm text-muted">Assignee</label>
+        <div class="input" style="align-items: center; justify-content: space-between; cursor: pointer; max-width: 280px;">
+          <span style="color: rgba(194, 198, 214, 0.5);">Select assignee...</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0;"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+        </div>
+      </div>
+      <div class="preview-card-footer"><code>h-9 trigger — Select tokens + ChevronsUpDown opacity-50</code></div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Open</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 4px;">
+        <div class="input force-focus" style="align-items: center; justify-content: space-between; cursor: pointer; max-width: 280px;">
+          <span style="color: rgba(194, 198, 214, 0.5);">Select assignee...</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0;"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+        </div>
+        <div class="popover-panel" style="padding: 0; max-width: 280px;">
+          <div style="display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border-bottom: 1px solid var(--ghost-border);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <span class="text-body-sm" style="color: rgba(194, 198, 214, 0.5);">Search assignee...</span>
+          </div>
+          <div style="padding: 4px;">
+            <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; padding: 0 8px; border-radius: 4px; color: var(--on-surface);">Ana Souza</div>
+            <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; padding: 0 8px; border-radius: 4px; color: var(--on-surface); background: var(--surface-container-high);">Bruno Lima</div>
+            <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; padding: 0 8px; border-radius: 4px; color: var(--on-surface);">Carla Mendes</div>
+            <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; padding: 0 8px; border-radius: 4px; color: var(--on-surface);">Diego Alves</div>
+          </div>
+        </div>
+      </div>
+      <div class="preview-card-footer"><code>panel: popover recipe, w-[--radix-popover-trigger-width] p-0 — highlighted row = surface-container-high</code></div>
+    </div>
+  </div>
+
+  <div class="preview-card" style="max-width: 400px;">
+    <div class="preview-card-header">Single select — chosen item</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 4px;">
+      <div class="input" style="align-items: center; justify-content: space-between; cursor: pointer;">
+        <span>Bruno Lima</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0;"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+      </div>
+      <div class="popover-panel" style="padding: 4px;">
+        <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; padding: 0 8px; border-radius: 4px; color: var(--on-surface);">Ana Souza</div>
+        <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; border-radius: 4px; color: var(--on-surface); background: var(--surface-container-high);">
+          <span>Bruno Lima</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--k-primary-container)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; padding: 0 8px; border-radius: 4px; color: var(--on-surface);">Carla Mendes</div>
+      </div>
+    </div>
+    <div class="preview-card-footer"><code>selection = trailing Check text-k-primary-container — never a blue-filled row</code></div>
+  </div>
+
+  <h2 id="multiselect">MultiSelect</h2>
+  <p>
+    The multiple-selection variant swaps the trigger height for <code>min-h-9 h-auto flex-wrap gap-1 py-1.5</code>
+    and renders one Badge chip (<code>bg-surface-container-high text-on-surface-variant rounded-sm</code>,
+    icons <code>[&amp;_svg]:size-3</code>) per selected value, plus a <code>+N more</code> overflow chip.
+    Items toggle on select and the popover <strong>stays open</strong>; the chip's X removes a value
+    without opening the panel (stop propagation).
+  </p>
+  <div class="preview-card" style="max-width: 400px;">
+    <div class="preview-card-header">MultiSelect trigger + open list</div>
+    <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 4px;">
+      <div class="input" style="height: auto; min-height: 2.25rem; align-items: center; flex-wrap: wrap; gap: 4px; padding: 6px 12px; cursor: pointer;">
+        <span class="badge badge-default">Design
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </span>
+        <span class="badge badge-default">Frontend
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </span>
+        <span class="badge badge-default">Infra
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </span>
+        <span class="badge badge-default">+2 more</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0; margin-left: auto;"><path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/></svg>
+      </div>
+      <div class="popover-panel" style="padding: 4px;">
+        <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; border-radius: 4px; color: var(--on-surface);">
+          <span>Design</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--k-primary-container)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; justify-content: space-between; padding: 0 8px; border-radius: 4px; color: var(--on-surface); background: var(--surface-container-high);">
+          <span>Frontend</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--k-primary-container)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <div class="text-body-sm" style="height: 32px; display: flex; align-items: center; padding: 0 8px; border-radius: 4px; color: var(--on-surface);">Backend</div>
+      </div>
+    </div>
+    <div class="preview-card-footer"><code>min-h-9 h-auto flex-wrap — badge chips with X ([&amp;_svg]:size-3); toggling keeps the popover open</code></div>
+  </div>
+
+  <h2 id="async-empty">Async &amp; Empty States</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Async loading</div>
+      <div class="preview-card-body">
+        <div class="popover-panel" style="padding: 0; max-width: 280px;">
+          <div style="display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border-bottom: 1px solid var(--ghost-border);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <span class="text-body-sm">mar</span>
+          </div>
+          <div style="padding: 24px 0; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center;">
+            <span class="spinner spinner-sm"></span>
+            <span class="text-body-sm text-muted">Searching&hellip;</span>
+          </div>
+        </div>
+      </div>
+      <div class="preview-card-footer"><code>spinner row py-6 text-center while fetching</code></div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Empty</div>
+      <div class="preview-card-body">
+        <div class="popover-panel" style="padding: 0; max-width: 280px;">
+          <div style="display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border-bottom: 1px solid var(--ghost-border);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <span class="text-body-sm">zzz</span>
+          </div>
+          <div class="text-body-sm text-muted" style="padding: 24px 0; text-align: center;">No results found.</div>
+        </div>
+      </div>
+      <div class="preview-card-footer"><code>CommandEmpty &mdash; py-6 text-center</code></div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <h3 id="convenience-wrapper">Convenience wrapper (optional)</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">options</span>
+      <span class="prop-type">{ value; label; disabled? }[]</span>
+      <span class="prop-default">&mdash;</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">string | string[]</span>
+      <span class="prop-default">&mdash;</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onValueChange</span>
+      <span class="prop-type">(value) =&gt; void</span>
+      <span class="prop-default">&mdash;</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">multiple</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">placeholder</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">"Select..."</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">searchPlaceholder</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">"Search..."</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">emptyText</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">"No results found."</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">loading</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+  </div>
+
+  <h3 id="command-item">CommandItem (composition point)</h3>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">&mdash;</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onSelect</span>
+      <span class="prop-type">(value: string) =&gt; void</span>
+      <span class="prop-default">&mdash;</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use for searchable lists with more than ~7 options (users, projects, tags)</li>
+        <li>Use for async lookups — debounce input and show the spinner row while fetching</li>
+        <li>Use MultiSelect with badge chips for multi-tag pickers; keep the popover open on toggle</li>
+        <li>Keep the trigger h-9 (min-h-9 when multiple) so it aligns with Inputs and Selects</li>
+        <li>Size the panel with w-[--radix-popover-trigger-width] p-0</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use for fewer than ~7 static options — use Select instead</li>
+        <li>Use for global actions or navigation — that's the CommandDialog (Cmd+K)</li>
+        <li>Build a new primitive — compose Popover + Command</li>
+        <li>Fill the selected row blue — selection is the trailing Check in k-primary-container</li>
+        <li>Add a red error border to the trigger — errors go through FormMessage</li>
+      </ul>
+    </div>
+  </div>
+</div>

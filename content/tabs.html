@@ -47,21 +47,39 @@
 
   <h2 id="preview">Preview</h2>
   <div class="preview-card">
-    <div class="preview-card-header">Default Tabs</div>
+    <div class="preview-card-header">Default Tabs <span class="badge badge-primary">Live</span></div>
     <div class="preview-card-body">
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <div style="display: inline-flex; background: #282A30; border-radius: 4px; padding: 4px; gap: 2px;">
-          <div style="padding: 8px 16px; font-size: 0.8125rem; color: #E2E2E5; background: #191B22; border-radius: 4px; cursor: pointer; font-weight: 500;">Account</div>
-          <div style="padding: 8px 16px; font-size: 0.8125rem; color: #C2C6D6; border-radius: 4px; cursor: pointer;">Password</div>
-          <div style="padding: 8px 16px; font-size: 0.8125rem; color: #C2C6D6; border-radius: 4px; cursor: pointer;">Notifications</div>
+      <div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+        <div class="tabs-list">
+          <button class="tab-trigger active" type="button">Account</button>
+          <button class="tab-trigger" type="button">Password</button>
+          <button class="tab-trigger" type="button">Notifications</button>
         </div>
-        <div style="padding: 8px 0; font-size: 0.8125rem; color: #C2C6D6;">
+        <div class="text-body-sm text-muted" style="padding: 8px 0;">
           Account settings content goes here. This panel is shown when the "Account" tab is active.
         </div>
       </div>
     </div>
     <div class="preview-card-footer">
       <span class="text-muted font-mono text-xs">Active trigger uses bg-surface-container-low (#191B22) on bg-surface-container-high (#282A30) list</span>
+    </div>
+  </div>
+
+  <div class="preview-card">
+    <div class="preview-card-header">Trigger states <span class="badge badge-primary">Live</span></div>
+    <div class="preview-card-body state-grid">
+      <div class="state-cell">
+        <span class="state-label">Rest</span>
+        <div class="tabs-list"><button class="tab-trigger" type="button">Details</button></div>
+      </div>
+      <div class="state-cell">
+        <span class="state-label">Hover</span>
+        <div class="tabs-list"><button class="tab-trigger force-hover" type="button">Details</button></div>
+      </div>
+      <div class="state-cell">
+        <span class="state-label">Active</span>
+        <div class="tabs-list"><button class="tab-trigger active" type="button">Details</button></div>
+      </div>
     </div>
   </div>
 

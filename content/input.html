@@ -9,50 +9,35 @@
 
   <h2 id="overview">Overview</h2>
   <p>
-    Input fields follow a consistent styling pattern: <code>h-10</code> (40px) height, <code>bg-surface-dim</code>
-    fill, and a <code>ghost-border-20</code> border. On focus, inputs display a <code>ring-2 ring-k-primary</code>
+    Input fields follow a consistent styling pattern: <code>h-9</code> (36px) height, <code>bg-surface-dim</code>
+    fill, and a <code>ghost-border-20</code> border. On focus, inputs display a <code>ring-2 ring-k-primary-container/50</code>
     ring. All inputs use <code>rounded-sm</code> (4px) corners and <code>px-3 py-2</code> padding.
-    Placeholder text uses <code>on-surface-variant</code> (muted) color.
+    Placeholder text uses <code>on-surface-variant</code> (muted) color. Inputs share the control height
+    scale with Button and Select — one form row, one height.
   </p>
 
   <h2 id="input-states">Input States</h2>
-  <div class="grid-2">
-    <div class="preview-card">
-      <div class="preview-card-header">Default</div>
-      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; flex-direction: column; gap: 4px;">
-          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
-          <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #C2C6D6;">you@example.com</div>
-        </div>
+  <div class="preview-card">
+    <div class="preview-card-header">Interactive states <span class="badge badge-primary">Live</span></div>
+    <div class="preview-card-body state-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+      <div class="state-cell" style="width:100%;">
+        <span class="state-label">Default</span>
+        <input class="input" type="email" value="you@example.com" aria-label="Email (default state)" />
+      </div>
+      <div class="state-cell" style="width:100%;">
+        <span class="state-label">Focus</span>
+        <input class="input force-focus" type="email" value="you@example.com" aria-label="Email (focus state)" />
+      </div>
+      <div class="state-cell" style="width:100%;">
+        <span class="state-label">Placeholder</span>
+        <input class="input" type="email" placeholder="you@example.com" aria-label="Email (placeholder state)" />
+      </div>
+      <div class="state-cell" style="width:100%;">
+        <span class="state-label">Disabled</span>
+        <input class="input" type="email" value="you@example.com" disabled aria-label="Email (disabled state)" />
       </div>
     </div>
-    <div class="preview-card">
-      <div class="preview-card-header">Focus</div>
-      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; flex-direction: column; gap: 4px;">
-          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
-          <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #E2E2E5; box-shadow: 0 0 0 2px rgba(77,142,255,0.5);">you@example.com</div>
-        </div>
-      </div>
-    </div>
-    <div class="preview-card">
-      <div class="preview-card-header">Disabled</div>
-      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; flex-direction: column; gap: 4px;">
-          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
-          <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #6B7280; opacity: 0.5;">you@example.com</div>
-        </div>
-      </div>
-    </div>
-    <div class="preview-card">
-      <div class="preview-card-header">Placeholder</div>
-      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="display: flex; flex-direction: column; gap: 4px;">
-          <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
-          <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #6B7280;">you@example.com</div>
-        </div>
-      </div>
-    </div>
+    <div class="preview-card-footer"><code>class="input" — real &lt;input&gt; elements; tab into them to see the live focus ring</code></div>
   </div>
 
   <h2 id="textarea">Textarea</h2>
@@ -63,8 +48,8 @@
   <div class="preview-card" style="max-width: 480px;">
     <div class="preview-card-header">Textarea</div>
     <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
-      <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Description</label>
-      <div style="min-height: 80px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 8px 12px; font-size: 0.8125rem; color: #C2C6D6;">Enter a description for this ticket...</div>
+      <label class="text-label-sm text-muted" for="demo-textarea">Description</label>
+      <textarea class="input" id="demo-textarea" rows="3" style="height:auto;min-height:80px;padding:8px 12px;resize:vertical;" placeholder="Enter a description for this ticket..."></textarea>
     </div>
   </div>
 
@@ -76,9 +61,9 @@
   <div class="preview-card" style="max-width: 360px;">
     <div class="preview-card-header">Search Input</div>
     <div class="preview-card-body">
-      <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; gap: 8px;">
-        <span style="color: #C2C6D6; font-size: 0.875rem;">&#x1F50D;</span>
-        <span style="font-size: 0.8125rem; color: #6B7280;">Search tickets...</span>
+      <div style="position: relative; width: 100%;">
+        <svg style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--on-surface-variant);opacity:0.6;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input class="input" type="search" placeholder="Search tickets..." aria-label="Search tickets" style="padding-left: 32px;" />
       </div>
     </div>
   </div>
@@ -146,9 +131,9 @@
   <div class="preview-card" style="max-width: 400px;">
     <div class="preview-card-header">Input with Error</div>
     <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
-      <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Email</label>
-      <div style="height: 40px; background: #111319; border: 1px solid #F87171; border-radius: 4px; padding: 0 12px; display: flex; align-items: center; font-size: 0.8125rem; color: #C2C6D6;"></div>
-      <div style="font-size: 0.75rem; color: #F87171;">This field is required.</div>
+      <label class="text-label-sm text-muted" for="demo-error-input">Email</label>
+      <input class="input" id="demo-error-input" type="email" aria-invalid="true" style="border-color: var(--k-error);" />
+      <div class="text-code-sm" style="color: var(--k-error);">This field is required.</div>
     </div>
   </div>
 

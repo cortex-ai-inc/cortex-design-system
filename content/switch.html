@@ -22,43 +22,39 @@
   </p>
 
   <h2 id="preview">Preview</h2>
-  <div class="grid-2">
-    <div class="preview-card">
-      <div class="preview-card-header">Off</div>
-      <div class="preview-card-body" style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 36px; height: 20px; background: #282A30; border-radius: 9999px; position: relative; flex-shrink: 0; cursor: pointer;">
-          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 2px;"></div>
-        </div>
-        <label style="font-size: 0.8125rem; color: #E2E2E5; cursor: pointer;">Airplane mode</label>
+  <div class="preview-card">
+    <div class="preview-card-header">Interactive states <span class="badge badge-primary">Live</span></div>
+    <div class="preview-card-body state-grid">
+      <div class="state-cell">
+        <span class="state-label">Off</span>
+        <span style="display:inline-flex;align-items:center;gap:10px;">
+          <span class="switch"><span class="switch-thumb"></span></span>
+          <label class="text-body-sm">Airplane mode</label>
+        </span>
+      </div>
+      <div class="state-cell">
+        <span class="state-label">On</span>
+        <span style="display:inline-flex;align-items:center;gap:10px;">
+          <span class="switch checked"><span class="switch-thumb"></span></span>
+          <label class="text-body-sm">Airplane mode</label>
+        </span>
+      </div>
+      <div class="state-cell">
+        <span class="state-label">Disabled off</span>
+        <span style="display:inline-flex;align-items:center;gap:10px;opacity:0.5;cursor:not-allowed;">
+          <span class="switch" style="cursor:not-allowed;"><span class="switch-thumb"></span></span>
+          <label class="text-body-sm text-muted">Airplane mode</label>
+        </span>
+      </div>
+      <div class="state-cell">
+        <span class="state-label">Disabled on</span>
+        <span style="display:inline-flex;align-items:center;gap:10px;opacity:0.5;cursor:not-allowed;">
+          <span class="switch checked" style="cursor:not-allowed;"><span class="switch-thumb"></span></span>
+          <label class="text-body-sm text-muted">Airplane mode</label>
+        </span>
       </div>
     </div>
-    <div class="preview-card">
-      <div class="preview-card-header">On</div>
-      <div class="preview-card-body" style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 36px; height: 20px; background: #4D8EFF; border-radius: 9999px; position: relative; flex-shrink: 0; cursor: pointer;">
-          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 18px;"></div>
-        </div>
-        <label style="font-size: 0.8125rem; color: #E2E2E5; cursor: pointer;">Airplane mode</label>
-      </div>
-    </div>
-    <div class="preview-card">
-      <div class="preview-card-header">Disabled (off)</div>
-      <div class="preview-card-body" style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 36px; height: 20px; background: #282A30; border-radius: 9999px; position: relative; flex-shrink: 0; opacity: 0.5; cursor: not-allowed;">
-          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 2px;"></div>
-        </div>
-        <label style="font-size: 0.8125rem; color: #6B7280; cursor: not-allowed;">Airplane mode</label>
-      </div>
-    </div>
-    <div class="preview-card">
-      <div class="preview-card-header">Disabled (on)</div>
-      <div class="preview-card-body" style="display: flex; align-items: center; gap: 10px;">
-        <div style="width: 36px; height: 20px; background: #4D8EFF; border-radius: 9999px; position: relative; flex-shrink: 0; opacity: 0.5; cursor: not-allowed;">
-          <div style="width: 16px; height: 16px; background: white; border-radius: 9999px; position: absolute; top: 2px; left: 18px;"></div>
-        </div>
-        <label style="font-size: 0.8125rem; color: #6B7280; cursor: not-allowed;">Airplane mode</label>
-      </div>
-    </div>
+    <div class="preview-card-footer"><code>unchecked: bg-surface-container-high · checked: bg-k-primary-container · disabled: opacity-50</code></div>
   </div>
 
   <div class="preview-card" style="max-width: 480px;">

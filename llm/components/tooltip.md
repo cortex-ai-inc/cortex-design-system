@@ -4,7 +4,7 @@
 
 Radix UI Tooltip primitive for hover-reveal contextual information. The branded Cortex
 build (cortex-support-front) renders content on a `surface-container-high` chip with
-mono `text-code-sm` text, `rounded-sm` corners, an ambient shadow, and a fade-in entrance.
+mono `text-code-sm` text, `rounded-sm` corners, a `shadow-overlay` elevation, and a fade-in entrance.
 
 > Note: cortex-coder-front ships the unstyled shadcn default for this component
 > (`bg-foreground text-background rounded-md px-3 py-1.5 text-xs`, with a `TooltipPrimitive.Arrow`
@@ -35,7 +35,7 @@ import {
 
 | Property | Value |
 |----------|-------|
-| Z-index | `z-50` |
+| Z-index | `z-[100]` (popover layer) |
 | Overflow | `overflow-hidden` |
 | Border radius | `rounded-sm` (4px) |
 | Background | `bg-surface-container-high` |
@@ -43,16 +43,18 @@ import {
 | Vertical padding | `py-1` |
 | Font | `text-code-sm` (12px JetBrains Mono) |
 | Text color | `text-on-surface` |
-| Box shadow | `shadow-ambient` |
-| Animation | `animate-fade-in` |
+| Box shadow | `shadow-overlay` (`0 8px 24px rgba(0,0,0,0.40)`) |
+| Animation | `animate-fade-in` (200ms = `--motion-base`) |
 
 ## Reference implementation
 
-`TooltipContent` base className (cortex-support-front, verbatim):
+`TooltipContent` canonical base className (support-front pattern; z-index and shadow normalized to the vNext canon):
 
 ```
-z-50 overflow-hidden rounded-sm bg-surface-container-high px-2.5 py-1 text-code-sm text-on-surface shadow-ambient animate-fade-in
+z-[100] overflow-hidden rounded-sm bg-surface-container-high px-2.5 py-1 text-code-sm text-on-surface shadow-overlay animate-fade-in
 ```
+
+> `shadow-overlay` (`0 8px 24px rgba(0,0,0,0.40)`) is the elevation token for small floating panels (tooltips, dropdowns, selects, popovers); dialogs keep `shadow-ambient`. Stock shadcn ships `z-50`; the Cortex z-index scale places tooltips at the popover layer (`z-[100]`).
 
 `TooltipProvider`, `Tooltip`, and `TooltipTrigger` are direct re-exports of the Radix
 primitives with no added styling:
@@ -109,3 +111,5 @@ Plain Radix `Tooltip.Provider` — no custom defaults are applied, so Radix defa
 ## Related
 
 - Sidebar — tooltips used in collapsed (icon-only) mode for nav labels
+
+> MIGRATION(vNext): small floats get their own shadow — replace shadow-ambient with shadow-overlay in dropdown-menu.tsx, tooltip.tsx, select.tsx content — all products.

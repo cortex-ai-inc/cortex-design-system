@@ -86,7 +86,7 @@
       <span class="prop-name">lg</span>
       <span class="prop-type">btn-lg</span>
       <span class="prop-default">h-10 (40px)</span>
-      <span class="prop-default">px-8</span>
+      <span class="prop-default">px-6</span>
     </div>
     <div class="prop-table-row">
       <span class="prop-name">icon</span>
@@ -144,27 +144,29 @@
   </div>
 
   <h2 id="states">States</h2>
-  <div class="grid-3">
-    <div class="preview-card">
-      <div class="preview-card-header">Hover</div>
-      <div class="preview-card-body">
-        <p>Buttons darken slightly on hover. Primary becomes brighter on the gradient. Ghost and outline fill with <code>bg-surface-container-high</code>.</p>
-        <button class="btn btn-primary">Hover me</button>
-      </div>
+  <p>
+    Hover brightens the gradient (<code>hover:brightness-110</code>) or fills transparent variants with
+    <code>bg-surface-container-high</code>. Pressed adds <code>active:brightness-95</code> (filled) or
+    <code>active:bg-surface-container-high/70</code> (transparent). Focus-visible shows a 2px brand-blue ring
+    offset by 2px — never remove focus indicators. Disabled uses <code>opacity-50 pointer-events-none</code>.
+  </p>
+  <div class="preview-card">
+    <div class="preview-card-header">Interactive states <span class="badge badge-primary">Live</span></div>
+    <div class="preview-card-body state-grid">
+      <div class="state-cell"><span class="state-label">Default</span><button class="btn btn-primary">Save changes</button></div>
+      <div class="state-cell"><span class="state-label">Hover</span><button class="btn btn-primary force-hover">Save changes</button></div>
+      <div class="state-cell"><span class="state-label">Focus</span><button class="btn btn-primary force-focus">Save changes</button></div>
+      <div class="state-cell"><span class="state-label">Disabled</span><button class="btn btn-primary" disabled>Save changes</button></div>
     </div>
-    <div class="preview-card">
-      <div class="preview-card-header">Focus</div>
-      <div class="preview-card-body">
-        <p>Focus-visible shows a <code>ring-2 ring-k-primary</code> ring offset by 2px. Never remove focus indicators.</p>
-        <button class="btn btn-primary">Focus me</button>
-      </div>
-    </div>
-    <div class="preview-card">
-      <div class="preview-card-header">Disabled</div>
-      <div class="preview-card-body">
-        <p>Disabled buttons use <code>opacity-50</code> and <code>pointer-events-none</code>. Do not use disabled buttons without a clear reason — prefer keeping them visible but explaining why the action is unavailable.</p>
-        <button class="btn btn-primary" disabled style="opacity:0.5;pointer-events:none;">Disabled</button>
-      </div>
+    <div class="preview-card-footer"><code>force-hover / force-focus are documentation-only — real states use :hover / :focus-visible / :disabled</code></div>
+  </div>
+  <div class="preview-card">
+    <div class="preview-card-header">Secondary &amp; ghost states <span class="badge badge-primary">Live</span></div>
+    <div class="preview-card-body state-grid">
+      <div class="state-cell"><span class="state-label">Secondary</span><button class="btn btn-secondary">Cancel</button></div>
+      <div class="state-cell"><span class="state-label">Sec. hover</span><button class="btn btn-secondary force-hover">Cancel</button></div>
+      <div class="state-cell"><span class="state-label">Ghost</span><button class="btn btn-ghost">More</button></div>
+      <div class="state-cell"><span class="state-label">Ghost hover</span><button class="btn btn-ghost force-hover">More</button></div>
     </div>
   </div>
 
