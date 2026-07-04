@@ -75,9 +75,9 @@ All props are forwarded to the underlying Radix primitives via `React.ComponentP
 
 - **Trigger layout**: `flex flex-1 items-start justify-between gap-4 py-4 text-left text-sm font-medium`. Items are top-aligned (`items-start`), so multi-line labels keep the chevron pinned to the top.
 - **Trigger interaction**: `transition-all`, `hover:underline`, and disabled handling via `disabled:pointer-events-none disabled:opacity-50`.
-- **Focus**: keyboard focus uses `focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]` plus `outline-none` (the shadcn New York focus treatment — note this is `ring-[3px]`, not the standard `ring-2` used elsewhere).
+- **Focus**: keyboard focus uses `focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-2` plus `outline-none` — the full-width-row treatment (2px ring, no offset). Stock shadcn ships a 3px ring; Cortex normalizes to `ring-2` at port time.
 - **Chevron**: `ChevronDownIcon` styled `text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200`. It rotates via the trigger rule `[&[data-state=open]>svg]:rotate-180`.
-- **Content animation**: the animated container carries `data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm` (the `accordion-down`/`accordion-up` keyframes run at 0.2s). Padding lives on the inner wrapper `<div>` as `pt-0 pb-4`.
+- **Content animation**: the animated container carries `data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm` (the `accordion-down`/`accordion-up` keyframes run at 0.2s = `--motion-base`, ease-out). Padding lives on the inner wrapper `<div>` as `pt-0 pb-4`.
 - **Disabled items**: set `disabled` on `AccordionItem`; the trigger becomes non-interactive (`pointer-events-none`) and dims to `opacity-50`.
 
 ## Reference implementation
@@ -92,7 +92,7 @@ className={cn("border-b last:border-b-0", className)}
 
 ```tsx
 className={cn(
-  "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180",
+  "focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 [&[data-state=open]>svg]:rotate-180",
   className
 )}
 ```

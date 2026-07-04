@@ -7,6 +7,7 @@ Form system built on `react-hook-form` with Zod validation via `@hookform/resolv
 ## Key Rules
 
 - **Grid layout**: `grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5` — single column on mobile, two columns above md breakpoint.
+- **Control height**: all controls in one form row share the default height `h-9` (36px) — Button `default`, `Input`, and the `Select` trigger all render `h-9`, so they align with zero hacks.
 - **Full-width fields**: Use `md:col-span-2` for fields that should span both columns (rich text editors, textareas, multi-selects).
 - **FormSection**: A card-like container `rounded-sm p-4 border border-[rgba(194,198,214,0.15)]` with an icon, title, and description header for grouping related fields.
 - **Field orientation**:

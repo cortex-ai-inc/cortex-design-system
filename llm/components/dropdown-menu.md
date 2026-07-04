@@ -118,10 +118,10 @@ The variant is applied via `data-variant` attribute styling, not a className you
 
 ## Reference implementation
 
-VERBATIM from `cortex-coder-front/.../dropdown-menu.tsx` — `DropdownMenuContent`:
+From `cortex-coder-front/.../dropdown-menu.tsx` — `DropdownMenuContent` (z-index normalized to the Cortex popover layer; stock shadcn ships `z-50`):
 
 ```tsx
-"bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md"
+"bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-[100] max-h-(--radix-dropdown-menu-content-available-height) min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md"
 ```
 
 VERBATIM — `DropdownMenuItem` base (note the typed destructive variant via `data-[variant=destructive]`):
@@ -130,11 +130,11 @@ VERBATIM — `DropdownMenuItem` base (note the typed destructive variant via `da
 "focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 dark:data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive data-[variant=destructive]:*:[svg]:!text-destructive [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
 ```
 
-VERBATIM from `cortex-support-front/.../dropdown-menu.tsx` — the branded `DropdownMenuContent` and `DropdownMenuItem`:
+Branded `DropdownMenuContent` and `DropdownMenuItem` (from `cortex-support-front/.../dropdown-menu.tsx`; z-index and shadow normalized to the vNext canon):
 
 ```tsx
 // Content
-"z-50 min-w-[8rem] overflow-hidden rounded-md border border-on-surface-variant/10 bg-surface-container-low p-1 shadow-ambient animate-fade-in"
+"z-[100] min-w-[8rem] overflow-hidden rounded-md border border-on-surface-variant/10 bg-surface-container-low p-1 shadow-overlay animate-fade-in"
 
 // Item
 "relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-body-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&>svg]:size-4 [&>svg]:shrink-0"
@@ -151,12 +151,13 @@ Other support-front classNames:
 
 ### Design-system token mapping
 
-Both sources render at `z-50` in the source string; the Cortex z-index scale places dropdowns/popovers/tooltips at the popover layer (`z-[100]`). The branded surface intent is:
+The canonical content classes are `z-[100]` (the Cortex z-index scale places dropdowns/popovers/tooltips at the popover layer, 100) and `shadow-overlay` (`0 8px 24px rgba(0,0,0,0.40)` — the elevation token for small floating panels; dialogs keep `shadow-ambient`). Stock shadcn ships `z-50` and `shadow-md` — normalize at port time. The branded surface intent is:
 
 | Element | Coder-front (shadcn) | Branded Cortex token |
 |---|---|---|
 | Content surface | `bg-popover` | `bg-surface-container-low` (#191B22) |
-| Content shadow | `shadow-md` | `shadow-ambient` |
+| Content shadow | `shadow-md` | `shadow-overlay` (`0 8px 24px rgba(0,0,0,0.40)`) |
+| Content z-index | `z-50` | `z-[100]` (popover layer 100) |
 | Content border | `border` | `border ghost-border` / `border-on-surface-variant/10` |
 | Item focus bg | `bg-accent` | `bg-surface-container-high` (#282A30) |
 | Destructive text | `text-destructive` | `text-k-error` (#F87171) |
@@ -183,3 +184,5 @@ Radius is `rounded-md` (content/sub-content) and `rounded-sm` (items). Icons res
 - Don't use dropdown menus for primary navigation — use sidebar navigation instead.
 - Don't remove keyboard navigation (arrow keys, Enter, Escape) — it is essential for accessibility.
 - Don't reach for SubTrigger/SubContent, Checkbox/Radio items, or Shortcut in cortex-support-front — they aren't exported there.
+
+> MIGRATION(vNext): small floats get their own shadow — replace shadow-ambient with shadow-overlay in dropdown-menu.tsx, tooltip.tsx, select.tsx content — all products.

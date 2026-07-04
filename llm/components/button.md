@@ -18,11 +18,11 @@ import { Button, buttonVariants } from "@/components/ui/button"
 
 | Variant | CSS Class | Visual Description | Use Case |
 |---|---|---|---|
-| default | `gradient-primary text-surface-container-lowest text-label-sm hover:brightness-110` | Blue gradient (#ADC6FF → #4D8EFF) with **dark** (#0C0E14), **uppercase** label text; brightens on hover | Primary CTA, main actions, form submissions |
-| secondary | `bg-transparent ghost-border-20 border text-on-surface text-body-sm hover:bg-surface-container-high/50` | Transparent with an emphasized ghost border; fills subtly on hover | Secondary actions, cancel buttons |
-| destructive | `bg-k-error/20 text-k-error text-body-sm border border-k-error/40 hover:bg-k-error/30` | Red-tinted background, red text and border | Delete, remove, irreversible destructive actions |
-| ghost | `text-on-surface-variant text-body-sm hover:bg-surface-container-high hover:text-on-surface` | No background; fills on hover | Toolbar actions, less prominent controls |
-| outline | `border ghost-border bg-transparent text-on-surface text-body-sm hover:bg-surface-container-high/50` | Subtle ghost border, no fill | Alternative to secondary, paired with default |
+| default | `gradient-primary text-surface-container-lowest text-label-sm hover:brightness-110 active:brightness-95` | Blue gradient (#ADC6FF → #4D8EFF) with **dark** (#0C0E14), **uppercase** label text; brightens on hover | Primary CTA, main actions, form submissions |
+| secondary | `bg-transparent ghost-border-20 border text-on-surface text-body-sm hover:bg-surface-container-high/50 active:bg-surface-container-high/70` | Transparent with an emphasized ghost border; fills subtly on hover | Secondary actions, cancel buttons |
+| destructive | `bg-k-error/20 text-k-error text-body-sm border border-k-error/40 hover:bg-k-error/30 active:brightness-95` | Red-tinted background, red text and border | Delete, remove, irreversible destructive actions |
+| ghost | `text-on-surface-variant text-body-sm hover:bg-surface-container-high hover:text-on-surface active:bg-surface-container-high/70` | No background; fills on hover | Toolbar actions, less prominent controls |
+| outline | `border ghost-border bg-transparent text-on-surface text-body-sm hover:bg-surface-container-high/50 active:bg-surface-container-high/70` | Subtle ghost border, no fill | Alternative to secondary, paired with default |
 | link | `text-k-primary text-body-sm underline-offset-4 hover:underline` | Text only, blue, underline on hover | Inline actions, navigation links styled as buttons |
 
 > **CTA language (from `cortex-coder-front`):** the primary `default` button is the brand's signature CTA — blue gradient, **dark** text (`text-surface-container-lowest` / `#0C0E14`), and **uppercase** `text-label-sm` (11px, letter-spacing 0.05em). Two rules that are easy to miss when porting it:
@@ -40,6 +40,8 @@ import { Button, buttonVariants } from "@/components/ui/button"
 
 Text size/case comes from the **variant** (default = `text-label-sm` uppercase; others = `text-body-sm`), not the size. Icons inside any size are forced to 16px via `[&_svg]:size-4 [&_svg]:shrink-0`.
 
+This is the canonical control-height scale for all form controls (sm 32px / default 36px / lg 40px). Input and the Select trigger share the `h-9` default, so buttons align with sibling controls in a form row with zero hacks.
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -55,14 +57,14 @@ Text size/case comes from the **variant** (default = `text-label-sm` uppercase; 
 
 - **Default**: Renders with the chosen variant's styling at the chosen size.
 - **Hover**: `default` brightens the gradient (`hover:brightness-110`); `secondary`/`outline` fill to `bg-surface-container-high/50`; `ghost` fills to `bg-surface-container-high`; `destructive` deepens to `bg-k-error/30`.
-- **Active / Press**: Maintains hover styling, no separate press state.
-- **Focus-visible**: `focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2` — a 2px ring in the shadcn `ring` color, offset from the button. Keyboard-only (not on click).
+- **Active / Press**: Filled/gradient variants (`default`, `destructive`) add `active:brightness-95`; transparent variants (`secondary`, `ghost`, `outline`) add `active:bg-surface-container-high/70`. Purely cosmetic — optional for products to adopt.
+- **Focus-visible**: `focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2` — a 2px ring in the `ring` color, offset from the button. Keyboard-only (not on click). Note: `--ring` is now brand blue (`218 100% 65%` = #4D8EFF), so `ring-ring` renders the Cortex blue.
 - **Disabled**: `opacity-50 pointer-events-none`. No hover or focus styling.
 - **Loading**: Show a Spinner alongside the label and set `disabled`. No separate loading prop — handled by the consumer.
 
 ## Reference CVA
 
-The canonical implementation (`cortex-support-front` / `cortex-note-app`):
+The canonical CVA (base: `cortex-support-front` / `cortex-note-app`; the `active:` pressed-state classes are a vNext addition — cosmetic, optional for products):
 
 ```ts
 const buttonVariants = cva(
@@ -70,11 +72,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "gradient-primary text-surface-container-lowest text-label-sm hover:brightness-110",
-        secondary: "bg-transparent ghost-border-20 border text-on-surface text-body-sm hover:bg-surface-container-high/50",
-        destructive: "bg-k-error/20 text-k-error text-body-sm border border-k-error/40 hover:bg-k-error/30",
-        ghost: "text-on-surface-variant text-body-sm hover:bg-surface-container-high hover:text-on-surface",
-        outline: "border ghost-border bg-transparent text-on-surface text-body-sm hover:bg-surface-container-high/50",
+        default: "gradient-primary text-surface-container-lowest text-label-sm hover:brightness-110 active:brightness-95",
+        secondary: "bg-transparent ghost-border-20 border text-on-surface text-body-sm hover:bg-surface-container-high/50 active:bg-surface-container-high/70",
+        destructive: "bg-k-error/20 text-k-error text-body-sm border border-k-error/40 hover:bg-k-error/30 active:brightness-95",
+        ghost: "text-on-surface-variant text-body-sm hover:bg-surface-container-high hover:text-on-surface active:bg-surface-container-high/70",
+        outline: "border ghost-border bg-transparent text-on-surface text-body-sm hover:bg-surface-container-high/50 active:bg-surface-container-high/70",
         link: "text-k-primary text-body-sm underline-offset-4 hover:underline",
       },
       size: {

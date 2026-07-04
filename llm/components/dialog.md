@@ -118,6 +118,8 @@ Overlay (cortex-coder-front, primary source):
 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm
 ```
 
+> The overlay convention `bg-black/60 backdrop-blur-sm` is named by the token `--scrim: rgba(0, 0, 0, 0.60)` — values unchanged.
+
 Content (cortex-coder-front, primary source):
 
 ```
@@ -139,17 +141,17 @@ Header / Footer / Title / Description (cortex-coder-front):
 /* DialogDescription */ text-body-sm text-on-surface-variant
 ```
 
-> cortex-support-front variation: content uses `animate-slide-up` / overlay `animate-fade-in` (200ms) and zero content padding (`p-0`), with padding pushed into the parts — `DialogHeader` = `flex flex-col space-y-1.5 p-5 pb-0`, `DialogFooter` = `flex flex-row justify-end gap-2 p-3 pt-0`, `DialogTitle` adds `font-semibold`, close button uses `rounded-sm` with an explicit `h-4 w-4` icon. Functionally equivalent; follow cortex-coder-front for new work.
+> cortex-support-front variation: content uses `animate-slide-up` / overlay `animate-fade-in` (200ms = `--motion-base`, ease-out) and zero content padding (`p-0`), with padding pushed into the parts — `DialogHeader` = `flex flex-col space-y-1.5 p-5 pb-0`, `DialogFooter` = `flex flex-row justify-end gap-2 p-3 pt-0`, `DialogTitle` adds `font-semibold`, close button uses `rounded-sm` with an explicit `h-4 w-4` icon. Functionally equivalent; follow cortex-coder-front for new work.
 
 ## Tokens used
 
 | Element | Token / class |
 |---|---|
-| Overlay | `bg-black/60`, `backdrop-blur-sm`, `z-[200]` |
+| Overlay | `bg-black/60` (= `--scrim: rgba(0, 0, 0, 0.60)`), `backdrop-blur-sm`, `z-[200]` |
 | Content surface | `bg-surface-container-low` |
 | Content border | `border border-on-surface-variant/15` |
 | Content radius | `rounded-md` (6px) |
-| Content elevation | `shadow-ambient` |
+| Content elevation | `shadow-ambient` (dialogs/modals/sheets keep `shadow-ambient`; `shadow-overlay` is only for small floats) |
 | Content z-index | `z-[200]` |
 | Title text | `text-title-sm text-on-surface` (16px / 600) |
 | Description text | `text-body-sm text-on-surface-variant` (13px) |

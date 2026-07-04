@@ -93,14 +93,14 @@ All sizes share the base `text-sm shadow-none flex gap-2 items-center`.
 
 - **Default**: Group renders `h-9`, `rounded-md`, `border-input`, `shadow-xs`, with children in a single `flex items-center` row.
 - **Textarea**: Presence of a `>textarea` switches the group to `has-[>textarea]:h-auto`.
-- **Focus**: When the inner control (`[data-slot=input-group-control]`) is `:focus-visible`, the root gets `border-ring` + `ring-ring/50 ring-[3px]`. The inner Input/Textarea suppress their own ring (`focus-visible:ring-0`).
+- **Focus**: When the inner control (`[data-slot=input-group-control]`) is `:focus-visible`, the root gets `border-ring` + `ring-ring/50 ring-2` (no offset). Stock shadcn ships a 3px ring; Cortex normalizes to `ring-2` at port time. The inner Input/Textarea suppress their own ring (`focus-visible:ring-0`).
 - **Error**: When any slotted control has `aria-invalid=true`, the root gets `border-destructive` + `ring-destructive/20` (`dark:ring-destructive/40`).
 - **Disabled**: Addons dim to `opacity-50` via `group-data-[disabled=true]/input-group:opacity-50`.
 - **Click-to-focus**: Clicking an `InputGroupAddon` focuses the sibling `input` — unless the click lands on a `button` inside the addon.
 
 ## Reference implementation
 
-Root `InputGroup` className (verbatim):
+Root `InputGroup` className (focus ring normalized to `ring-2` per the vNext canon — stock shadcn ships a 3px ring):
 
 ```tsx
 "group/input-group border-input dark:bg-input/30 relative flex w-full items-center rounded-md border shadow-xs transition-[color,box-shadow] outline-none",
@@ -111,7 +111,7 @@ Root `InputGroup` className (verbatim):
 "has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>[data-align=block-start]]:[&>input]:pb-3",
 "has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-end]]:[&>input]:pt-3",
 // focus
-"has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-[3px]",
+"has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-2",
 // error
 "has-[[data-slot][aria-invalid=true]]:ring-destructive/20 has-[[data-slot][aria-invalid=true]]:border-destructive dark:has-[[data-slot][aria-invalid=true]]:ring-destructive/40"
 ```
