@@ -110,7 +110,7 @@ Only two shadow tokens. Used exclusively for floating elements (modals, dropdown
 | `slide-up` | 200ms | ease-out | Modal content entry |
 | `pulse-ring` | 2s | linear infinite | StatusDot loading |
 | `accordion-down/up` | 200ms | ease-out | Accordion expand/collapse |
-| `caret-blink` | 1.25s | step-end infinite | OTP input cursor |
+| `caret-blink` | 1.25s | ease-out infinite | OTP input cursor |
 
 ### Gradient Utility
 
