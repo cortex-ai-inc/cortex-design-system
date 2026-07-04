@@ -1170,6 +1170,7 @@ img {
 .w-full { width: 100%; }
 .text-center { text-align: center; }
 .text-muted { color: var(--on-surface-variant); }
+.text-xs { font-size: 0.75rem; }
 .font-mono { font-family: var(--font-mono); }
 .rounded-sm { border-radius: calc(var(--radius) - 4px); }
 .rounded-md { border-radius: calc(var(--radius) - 2px); }
@@ -1315,6 +1316,293 @@ img {
 .do-dont.do ul,
 .do-dont.dont ul {
   margin-bottom: 0;
+}
+
+/* ============================================================
+   New component demos (Popover, Radio, Kbd, Slider, Calendar,
+   Dropzone, Stepper) — static showcase classes
+   ============================================================ */
+
+/* ─── Popover panel (shared by Combobox & DatePicker demos) ── */
+.popover-panel {
+  background: var(--surface-container-low);
+  border: 1px solid var(--ghost-border-10);
+  border-radius: calc(var(--radius) - 2px);
+  box-shadow: var(--shadow-overlay);
+  padding: 1rem;
+}
+
+/* ─── Radio ─────────────────────────────────────────────────── */
+.radio {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(194, 198, 214, 0.30);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--motion-fast) var(--ease-out);
+}
+.radio.checked {
+  background: var(--k-primary-container);
+  border-color: var(--k-primary-container);
+}
+.radio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--surface-container-lowest);
+}
+
+/* ─── Kbd ───────────────────────────────────────────────────── */
+.kbd {
+  display: inline-flex;
+  height: 1.25rem;
+  min-width: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  border-radius: calc(var(--radius) - 4px);
+  border: 1px solid var(--ghost-border);
+  background: var(--surface-container-high);
+  padding: 0 0.375rem;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  user-select: none;
+}
+.kbd-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.kbd-group .kbd-sep {
+  color: rgba(194, 198, 214, 0.5);
+  font-size: 11px;
+}
+
+/* ─── Slider ────────────────────────────────────────────────── */
+.slider {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  touch-action: none;
+  user-select: none;
+}
+.slider-track {
+  position: relative;
+  height: 0.5rem;
+  width: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: var(--surface-container-high);
+}
+.slider-range {
+  position: absolute;
+  height: 100%;
+  background: var(--k-primary-container);
+}
+.slider-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  background: var(--on-surface);
+  box-shadow: var(--shadow-xs);
+}
+.slider.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* ─── Calendar (DatePicker demo) ────────────────────────────── */
+.calendar {
+  width: 268px;
+  padding: 0.75rem;
+}
+.calendar-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.25rem 0.5rem;
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  color: var(--on-surface);
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 34px);
+  gap: 1px;
+}
+.calendar-head {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-label-sm);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  font-weight: 400;
+}
+.calendar-day {
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) - 4px);
+  font-size: var(--text-body-sm);
+  color: var(--on-surface);
+  cursor: pointer;
+  transition: background var(--motion-fast) var(--ease-out);
+}
+.calendar-day:hover {
+  background: var(--surface-container-high);
+}
+.calendar-day.selected {
+  background: var(--k-primary-container);
+  color: var(--surface-container-lowest);
+}
+.calendar-day.in-range {
+  background: rgba(77, 142, 255, 0.20);
+  border-radius: 0;
+}
+.calendar-day.today {
+  border: 1px solid var(--ghost-border-20);
+  color: var(--k-primary);
+}
+.calendar-day.outside {
+  color: rgba(194, 198, 214, 0.40);
+}
+.calendar-day.disabled {
+  color: rgba(194, 198, 214, 0.30);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─── Dropzone (FileUpload demo) ────────────────────────────── */
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  border: 2px dashed var(--ghost-border-20);
+  border-radius: calc(var(--radius) - 2px);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--motion-fast) var(--ease-out);
+  width: 100%;
+}
+.dropzone:hover {
+  background: rgba(25, 27, 34, 0.5);
+}
+.dropzone.dragover {
+  border-color: var(--k-primary-container);
+  background: rgba(77, 142, 255, 0.05);
+}
+.dropzone-icon {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ghost-border);
+  border-radius: calc(var(--radius) - 4px);
+  color: var(--on-surface-variant);
+}
+
+/* ─── Stepper ───────────────────────────────────────────────── */
+.stepper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.stepper.vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+.stepper-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.stepper.vertical .stepper-item {
+  align-items: flex-start;
+}
+.step-indicator {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--ghost-border-20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-label-sm);
+  font-weight: 500;
+  color: var(--on-surface-variant);
+  flex-shrink: 0;
+  transition: all var(--motion-fast) var(--ease-out);
+}
+.step-indicator.current,
+.step-indicator.completed {
+  background: var(--k-primary-container);
+  border-color: transparent;
+  color: var(--surface-container-lowest);
+}
+.step-indicator.error {
+  background: rgba(248, 113, 113, 0.2);
+  border-color: rgba(248, 113, 113, 0.4);
+  color: var(--k-error);
+}
+.step-connector {
+  height: 1px;
+  flex: 1;
+  background: var(--ghost-border);
+  margin: 0 0.5rem;
+  min-width: 1.5rem;
+}
+.step-connector.completed {
+  background: var(--k-primary-container);
+}
+.stepper.vertical .step-connector {
+  width: 1px;
+  height: auto;
+  min-height: 1.5rem;
+  flex: none;
+  margin: 0.25rem 0 0.25rem 12px;
+}
+.step-title {
+  font-size: var(--text-body-sm);
+  color: var(--on-surface-variant);
+  white-space: nowrap;
+}
+.step-title.current {
+  color: var(--on-surface);
+  font-weight: 500;
+}
+.step-title.error {
+  color: var(--k-error);
+}
+.step-description {
+  font-size: var(--text-body-sm);
+  color: var(--on-surface-variant);
+}
+
+/* ─── Callout actions (Alert demo) ──────────────────────────── */
+.callout-actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 /* ============================================================

@@ -190,12 +190,17 @@ Components live at `@/components/ui/` (path alias `@` → `./src`). See `llm/com
 | Dialog | Dialog | 3 width tiers (440px/560px/720px) |
 | AlertDialog | AlertDialog | Confirmation dialogs |
 | DropdownMenu | DropdownMenu | Items: default, destructive |
+| Popover | Popover | Floating panel: surface-container-low, shadow-overlay, rounded-md |
 | Tabs | Tabs | segmented control (active = surface-container-low, no underline) |
 | Input | No (native) | h-9, ghost-border-20, focus:ring-2 |
 | Textarea | No (native) | Same styling as Input |
 | Select | Select | Same styling as Input |
+| Combobox | cmdk + Popover | single, multi (Badge chips), async loading, empty state |
+| DatePicker | react-day-picker + Popover | single, range, presets rail; selected = k-primary-container + dark text |
 | Checkbox | Checkbox | Checked: bg-k-primary-container |
+| RadioGroup | RadioGroup | Checked: bg-k-primary-container + dark dot (mirrors Checkbox) |
 | Switch | Switch | Checked: bg-k-primary-container, thumb translate-x-4 |
+| Slider | Slider | Track surface-container-high, range k-primary-container, thumb on-surface; single + range |
 | Avatar | Avatar | rounded-sm, fallback with initials |
 | Tooltip | Tooltip | bg-surface-container-high, text-code-sm |
 | Progress | Progress | h-2, bg-k-primary-container indicator |
@@ -206,12 +211,14 @@ Components live at `@/components/ui/` (path alias `@` → `./src`). See `llm/com
 | Field | No (custom) | vertical/horizontal/responsive orientation |
 | Item | No (custom) | default/outline/muted, list item with media/content/actions |
 | InputGroup | No (custom) | Input with addons (text/button), 4 alignments |
+| FileUpload | No (custom) | dropzone idle/dragover/uploading/error; dashed ghost-border; composes Item + Progress |
 | ButtonGroup | No (custom) | horizontal/vertical orientation |
 | Empty | No (custom) | Empty state with media/icon variant |
 | Sidebar | No (custom) | 260px expanded, 72px collapsed, mobile overlay |
 | TopBar | No (custom) | h-12, breadcrumbs, notification bell, avatar dropdown |
 | Table | No (native) | hover rows, ghost-border dividers |
 | Pagination | No (native) | Previous/Next, page links with active state |
+| Stepper | No (custom) | horizontal/vertical; pending/current/completed/error; steps = pages, never modals |
 | Breadcrumb | No (native) | Chevron separators, route mapping |
 | NotificationBell | No (custom) | Bell/BellDot icons, dropdown panel, auto-mark-read |
 | StatusDot | No (custom) | 9 statuses, 2 sizes, pulse animation |
@@ -220,12 +227,14 @@ Components live at `@/components/ui/` (path alias `@` → `./src`). See `llm/com
 | Drawer | vaul | Mobile bottom sheets |
 | Command | cmdk | Command palette with search |
 | Sonner | sonner | Toast notifications (dark theme) |
+| Alert | No (custom) | info, success, warning, error; tinted bg /10 + 3px left border; optional dismiss/action |
+| Kbd | No (custom) | mono 11px chip, surface-container-high, ghost border; KbdGroup combos |
 | Accordion | Accordion | Chevron rotation on expand |
 | Toggle/ToggleGroup | Toggle | default/outline variants |
 | Resizable | react-resizable-panels | Panel resize handles |
 | Carousel | embla-carousel-react | Image carousel |
-| Chart | recharts | Chart wrapper |
-| Calendar | react-day-picker | Date picker |
+| Chart | recharts | Chart wrapper — use `hsl(var(--chart-N))` palette |
+| Calendar | react-day-picker | See `date-picker.md` — branded day-grid (rounded-sm days, blue selected) |
 
 ## Key Constraints
 

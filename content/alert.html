@@ -1,0 +1,172 @@
+<div class="page-header">
+  <h1>Alert</h1>
+  <p>Persistent inline message for contextual status — stays in the page until the condition is resolved.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-new">New</span>
+    <span class="tag tag-react">React</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Alert is a custom component (no Radix) — a plain <code>div role="alert"</code> styled with CVA.
+    It renders a tinted background at 8% opacity with a 3px left accent border, an optional
+    lucide icon (<code>w-4 h-4</code>, <code>strokeWidth={1.5}</code>), a semibold title, and a
+    muted description. Non-interactive: no hover or focus states on the alert itself.
+  </p>
+  <p>
+    Choose the right messaging component: <strong>Alert</strong> is persistent contextual messaging
+    (form-level errors, degraded-state banners) · <strong>Toast</strong> is transient feedback after
+    an action · <strong>AlertDialog</strong> is a blocking confirmation.
+  </p>
+
+  <h2 id="variants">Variants</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Variant</span>
+      <span class="prop-table-cell">Classes</span>
+      <span class="prop-table-cell">Icon</span>
+      <span class="prop-table-cell">Use case</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">info</span>
+      <span class="prop-type">bg-k-primary-container/10 border-k-primary-container</span>
+      <span class="prop-default">Info</span>
+      <span>Neutral guidance, contextual tips</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">success</span>
+      <span class="prop-type">bg-k-secondary/10 border-k-secondary</span>
+      <span class="prop-default">CircleCheck</span>
+      <span>Completed / resolved persistent state</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">warning</span>
+      <span class="prop-type">bg-k-warning/10 border-k-warning</span>
+      <span class="prop-default">TriangleAlert</span>
+      <span>Degraded state, attention needed</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">error</span>
+      <span class="prop-type">bg-k-error/10 border-k-error</span>
+      <span class="prop-default">CircleAlert</span>
+      <span>Form-level errors, failures</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Four variants</div>
+    <div class="preview-card-body column" style="gap: 12px;">
+      <div class="callout callout-info" style="margin: 0; width: 100%; display: flex; gap: 0.75rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--k-primary-container)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <div>
+          <div class="callout-title">Read-only mode</div>
+          You are viewing a snapshot from 2 hours ago. Changes are disabled.
+        </div>
+      </div>
+      <div class="callout callout-success" style="margin: 0; width: 100%; display: flex; gap: 0.75rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--k-secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+        <div>
+          <div class="callout-title">Backup restored</div>
+          All 214 records were recovered to the state of June 30.
+        </div>
+      </div>
+      <div class="callout callout-warning" style="margin: 0; width: 100%; display: flex; gap: 0.75rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--k-warning)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 20h16a2 2 0 0 0 1.73-2"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <div>
+          <div class="callout-title">Indexing behind by 12 minutes</div>
+          Search results may be stale while the backlog drains.
+        </div>
+      </div>
+      <div class="callout callout-danger" style="margin: 0; width: 100%; display: flex; gap: 0.75rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--k-error)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+        <div>
+          <div class="callout-title">Could not save changes</div>
+          Fix the 2 highlighted fields and try again.
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer"><code>product variant name: error · callout-danger is the docs-site legacy class for the same tone</code></div>
+  </div>
+
+  <h2 id="with-actions">With title, description and actions</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">AlertActions row</div>
+    <div class="preview-card-body column">
+      <div class="callout callout-warning" style="margin: 0; width: 100%; display: flex; gap: 0.75rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--k-warning)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 20h16a2 2 0 0 0 1.73-2"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        <div>
+          <div class="callout-title">Integration degraded</div>
+          The CRM connector is retrying with exponential backoff.
+          <div class="callout-actions">
+            <button class="btn btn-outline btn-sm">View status</button>
+            <button class="btn btn-ghost btn-sm">Mute for 1h</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer"><code>AlertActions: mt-2 flex gap-2 · small outline/ghost buttons only</code></div>
+  </div>
+
+  <h2 id="dismissible">Dismissible</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Ghost icon dismiss button</div>
+    <div class="preview-card-body column">
+      <div class="callout callout-info" style="margin: 0; width: 100%; display: flex; gap: 0.75rem; position: relative; padding-right: 2.5rem;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--k-primary-container)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <div>
+          <div class="callout-title">New keyboard shortcuts</div>
+          Press <code>?</code> anywhere to see the full shortcut list.
+        </div>
+        <button class="btn btn-ghost btn-icon" aria-label="Dismiss" style="position: absolute; top: 0.5rem; right: 0.5rem; width: 24px; height: 24px;">&#x2715;</button>
+      </div>
+    </div>
+    <div class="preview-card-footer"><code>ghost icon Button with X · absolute right-2 top-2 · carries the standard focus ring</code></div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">variant</span>
+      <span class="prop-type">"info" | "success" | "warning" | "error"</span>
+      <span class="prop-default">"info"</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">children</span>
+      <span class="prop-type">ReactNode</span>
+      <span class="prop-default">—</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use for form-level errors and persistent contextual messaging</li>
+        <li>Use for degraded-state banners at the top of the affected section</li>
+        <li>Match variant to semantic meaning — green success, red error, yellow warning, blue info</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use for transient feedback — use Toast instead</li>
+        <li>Use for confirmations — use AlertDialog instead</li>
+        <li>Stack more than one Alert per section — keep only the most severe</li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,185 @@
+<div class="page-header">
+  <h1>Popover</h1>
+  <p>Floating contextual panel anchored to a trigger. Foundation primitive for Combobox and DatePicker.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-new">New</span>
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix Popover</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    Popover renders free-form panel content anchored to a trigger element, built on Radix Popover.
+    The panel sits on <code>bg-surface-container-low</code> with a hairline
+    <code>border-on-surface-variant/10</code> border, <code>rounded-md</code> (6px) corners,
+    <code>shadow-overlay</code> elevation, and a 200ms <code>animate-fade-in</code> entrance.
+    Default size is <code>w-72 p-4</code>; composed content (Combobox lists, DatePicker calendars)
+    overrides with <code>w-auto p-0</code>.
+  </p>
+  <p>
+    Popovers are <strong>non-modal</strong> — the page stays interactive, <code>Esc</code> closes
+    and returns focus to the trigger. Use DropdownMenu for action menus; Popover is for panels.
+  </p>
+
+  <h2 id="anatomy">Anatomy</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Sub-component</span>
+      <span class="prop-table-cell">Source</span>
+      <span class="prop-table-cell">Purpose</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Popover</span>
+      <span class="prop-type">PopoverPrimitive.Root</span>
+      <span>Root context provider; manages open state</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">PopoverTrigger</span>
+      <span class="prop-type">PopoverPrimitive.Trigger</span>
+      <span>Toggles the panel; compose with a Button via asChild</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">PopoverAnchor</span>
+      <span class="prop-type">PopoverPrimitive.Anchor</span>
+      <span>Optional custom positioning anchor</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">PopoverContent</span>
+      <span class="prop-type">Portal + Content</span>
+      <span>The styled floating panel (only styled part)</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Static open state — filter panel</div>
+    <div class="preview-card-body column">
+      <button class="btn btn-outline">Filters</button>
+      <div class="popover-panel" style="width: 288px; margin-top: 4px;">
+        <div class="text-label-sm" style="text-transform: uppercase; letter-spacing: 0.05em; color: var(--on-surface-variant); margin-bottom: 0.75rem;">Filter results</div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 16px; height: 16px; border: 1px solid transparent; border-radius: 4px; background: var(--k-primary-container); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--surface-container-lowest); font-size: 0.625rem; line-height: 1;">&#x2713;</div>
+            <label class="text-body-sm" style="color: var(--on-surface); cursor: pointer;">Open tickets only</label>
+          </div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 16px; height: 16px; border: 1px solid rgba(194,198,214,0.3); border-radius: 4px; background: transparent; flex-shrink: 0;"></div>
+            <label class="text-body-sm" style="color: var(--on-surface); cursor: pointer;">Assigned to me</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer">
+      <code>z-50 w-72 rounded-md border border-on-surface-variant/10 bg-surface-container-low p-4 shadow-overlay animate-fade-in outline-none — source strings may say z-50; the canonical layer is z-[100]</code>
+    </div>
+  </div>
+
+  <h2 id="alignment">Alignment</h2>
+  <p>
+    <code>align</code> positions the panel against the trigger edge; <code>sideOffset</code>
+    (default <code>4</code>) sets the gap. Default side is <code>bottom</code>.
+  </p>
+  <div class="grid-3">
+    <div class="preview-card">
+      <div class="preview-card-header">align="start"</div>
+      <div class="preview-card-body" style="justify-content: center;">
+        <div style="position: relative; width: 96px; height: 88px;">
+          <button class="btn btn-outline btn-sm" style="width: 96px;">Trigger</button>
+          <div class="popover-panel" style="position: absolute; top: 36px; left: 0; width: 140px; padding: 0.5rem 0.75rem;">
+            <span class="text-code-sm text-muted font-mono">start</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">align="center"</div>
+      <div class="preview-card-body" style="justify-content: center;">
+        <div style="position: relative; width: 96px; height: 88px;">
+          <button class="btn btn-outline btn-sm" style="width: 96px;">Trigger</button>
+          <div class="popover-panel" style="position: absolute; top: 36px; left: 50%; transform: translateX(-50%); width: 140px; padding: 0.5rem 0.75rem; text-align: center;">
+            <span class="text-code-sm text-muted font-mono">center</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">align="end"</div>
+      <div class="preview-card-body" style="justify-content: center;">
+        <div style="position: relative; width: 96px; height: 88px;">
+          <button class="btn btn-outline btn-sm" style="width: 96px;">Trigger</button>
+          <div class="popover-panel" style="position: absolute; top: 36px; right: 0; width: 140px; padding: 0.5rem 0.75rem; text-align: right;">
+            <span class="text-code-sm text-muted font-mono">end</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+      <span class="prop-table-cell">Description</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">open</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">—</span>
+      <span>Controlled open state (Root)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onOpenChange</span>
+      <span class="prop-type">(open: boolean) => void</span>
+      <span class="prop-default">—</span>
+      <span>Open-state change handler (Root)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">modal</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+      <span>Keep false — Cortex popovers are non-modal (Root)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">align</span>
+      <span class="prop-type">"start" | "center" | "end"</span>
+      <span class="prop-default">"center"</span>
+      <span>Alignment against the trigger (Content)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">sideOffset</span>
+      <span class="prop-type">number</span>
+      <span class="prop-default">4</span>
+      <span>Gap between trigger and panel in px (Content)</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">className</span>
+      <span class="prop-type">string</span>
+      <span class="prop-default">—</span>
+      <span>Extra classes; use w-auto p-0 for composed content (Content)</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use for non-modal contextual panels: filters, quick settings, inline pickers</li>
+        <li>Override to <code>w-auto p-0</code> when composing Combobox or DatePicker content</li>
+        <li>Match panel width to the trigger with <code>w-[--radix-popover-trigger-width]</code></li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use for action menus — use DropdownMenu instead</li>
+        <li>Put create/edit forms inside — forms get dedicated pages</li>
+        <li>Use for confirmations — use AlertDialog</li>
+      </ul>
+    </div>
+  </div>
+</div>

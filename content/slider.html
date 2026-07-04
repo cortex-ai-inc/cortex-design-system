@@ -1,0 +1,221 @@
+<div class="page-header">
+  <h1>Slider</h1>
+  <p>Pick a value — or a range — from a bounded interval by dragging a thumb along a track.</p>
+</div>
+<div class="page-body">
+  <div class="section-tags">
+    <span class="tag tag-new">New</span>
+    <span class="tag tag-react">React</span>
+    <span class="tag tag-radix">Radix Slider</span>
+  </div>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    The Slider is built on <code>@radix-ui/react-slider</code>. Its track is the Progress track
+    verbatim (<code>h-2 rounded-full bg-surface-container-high</code>) and its thumb mirrors the
+    Switch thumb (<code>h-4 w-4 rounded-full bg-on-surface</code>), so the three controls read as
+    one family. The filled range uses <code>bg-k-primary-container</code>. Values are arrays:
+    <code>[50]</code> renders one thumb, <code>[20, 60]</code> renders a two-thumb range.
+    <code>rounded-full</code> here is the same exemption Progress and Switch use — track, range,
+    and thumb are inherently circular/pill elements.
+  </p>
+
+  <h2 id="structure">Structure</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Part</span>
+      <span class="prop-table-cell">Role</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Slider (Root)</span>
+      <span class="prop-default">relative flex w-full touch-none select-none items-center data-[disabled]:opacity-50</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Track</span>
+      <span class="prop-default">relative h-2 w-full grow overflow-hidden rounded-full bg-surface-container-high — Progress track parity</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Range</span>
+      <span class="prop-default">absolute h-full bg-k-primary-container — fills thumb&rarr;min, or thumb&rarr;thumb</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">Thumb</span>
+      <span class="prop-default">block h-4 w-4 rounded-full bg-on-surface shadow-xs — one per value entry; 2px blue focus ring</span>
+    </div>
+  </div>
+
+  <h2 id="preview">Preview</h2>
+  <div class="grid-2">
+    <div class="preview-card">
+      <div class="preview-card-header">Single value</div>
+      <div class="preview-card-body" style="padding-top: 28px; padding-bottom: 28px;">
+        <div class="slider">
+          <div class="slider-track">
+            <div class="slider-range" style="left: 0; width: 50%;"></div>
+          </div>
+          <div class="slider-thumb" style="left: 50%;"></div>
+        </div>
+      </div>
+      <div class="preview-card-footer"><code>&lt;Slider defaultValue={[50]} max={100} step={1} /&gt;</code></div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Range — two thumbs</div>
+      <div class="preview-card-body" style="padding-top: 28px; padding-bottom: 28px;">
+        <div class="slider">
+          <div class="slider-track">
+            <div class="slider-range" style="left: 20%; width: 40%;"></div>
+          </div>
+          <div class="slider-thumb" style="left: 20%;"></div>
+          <div class="slider-thumb" style="left: 60%;"></div>
+        </div>
+      </div>
+      <div class="preview-card-footer"><code>&lt;Slider defaultValue={[20, 60]} minStepsBetweenThumbs={1} /&gt;</code></div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">With value label</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="text-body-sm" style="display: flex; justify-content: space-between;">
+          <span>Volume</span>
+          <span class="text-muted">50%</span>
+        </div>
+        <div class="slider">
+          <div class="slider-track">
+            <div class="slider-range" style="left: 0; width: 50%;"></div>
+          </div>
+          <div class="slider-thumb" style="left: 50%;"></div>
+        </div>
+      </div>
+      <div class="preview-card-footer"><code>label row: flex justify-between text-body-sm — muted value (Progress pattern)</code></div>
+    </div>
+    <div class="preview-card">
+      <div class="preview-card-header">Disabled</div>
+      <div class="preview-card-body" style="padding-top: 28px; padding-bottom: 28px;">
+        <div class="slider disabled">
+          <div class="slider-track">
+            <div class="slider-range" style="left: 0; width: 35%;"></div>
+          </div>
+          <div class="slider-thumb" style="left: 35%;"></div>
+        </div>
+      </div>
+      <div class="preview-card-footer"><code>data-[disabled]:opacity-50 on the root — thumb pointer-events-none</code></div>
+    </div>
+  </div>
+
+  <h2 id="states">States</h2>
+  <div class="preview-card">
+    <div class="preview-card-header">Thumb states</div>
+    <div class="preview-card-body state-grid">
+      <div class="state-cell" style="width: 100%;">
+        <span class="state-label">Default</span>
+        <div class="slider">
+          <div class="slider-track">
+            <div class="slider-range" style="left: 0; width: 50%;"></div>
+          </div>
+          <div class="slider-thumb" style="left: 50%;"></div>
+        </div>
+      </div>
+      <div class="state-cell" style="width: 100%;">
+        <span class="state-label">Focus</span>
+        <div class="slider">
+          <div class="slider-track">
+            <div class="slider-range" style="left: 0; width: 50%;"></div>
+          </div>
+          <div class="slider-thumb" style="left: 50%; box-shadow: var(--focus-ring-tight);"></div>
+        </div>
+      </div>
+      <div class="state-cell" style="width: 100%;">
+        <span class="state-label">Disabled</span>
+        <div class="slider disabled">
+          <div class="slider-track">
+            <div class="slider-range" style="left: 0; width: 50%;"></div>
+          </div>
+          <div class="slider-thumb" style="left: 50%;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="preview-card-footer"><code>focus-visible:ring-2 focus-visible:ring-k-primary-container/50 on the thumb — dragging has no separate style</code></div>
+  </div>
+
+  <h2 id="props">Props</h2>
+  <div class="prop-table">
+    <div class="prop-table-header">
+      <span class="prop-table-cell">Prop</span>
+      <span class="prop-table-cell">Type</span>
+      <span class="prop-table-cell">Default</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">value</span>
+      <span class="prop-type">number[]</span>
+      <span class="prop-default">&mdash;</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">defaultValue</span>
+      <span class="prop-type">number[]</span>
+      <span class="prop-default">&mdash;</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onValueChange</span>
+      <span class="prop-type">(value: number[]) =&gt; void</span>
+      <span class="prop-default">&mdash;</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">onValueCommit</span>
+      <span class="prop-type">(value: number[]) =&gt; void</span>
+      <span class="prop-default">&mdash;</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">min</span>
+      <span class="prop-type">number</span>
+      <span class="prop-default">0</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">max</span>
+      <span class="prop-type">number</span>
+      <span class="prop-default">100</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">step</span>
+      <span class="prop-type">number</span>
+      <span class="prop-default">1</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">orientation</span>
+      <span class="prop-type">"horizontal" | "vertical"</span>
+      <span class="prop-default">"horizontal"</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">disabled</span>
+      <span class="prop-type">boolean</span>
+      <span class="prop-default">false</span>
+    </div>
+    <div class="prop-table-row">
+      <span class="prop-name">minStepsBetweenThumbs</span>
+      <span class="prop-type">number</span>
+      <span class="prop-default">0</span>
+    </div>
+  </div>
+
+  <h2 id="usage">Usage Guidelines</h2>
+  <div class="grid-2">
+    <div class="do-dont do">
+      <h3>Do</h3>
+      <ul>
+        <li>Use for bounded numeric ranges — volume, thresholds, confidence cutoffs</li>
+        <li>Pair with a value label row so the current value stays readable</li>
+        <li>Use two thumbs + minStepsBetweenThumbs for min/max filters</li>
+        <li>Use onValueCommit for expensive side effects, onValueChange for live labels</li>
+        <li>Keep the 2px focus ring — arrow keys move the thumb by step</li>
+      </ul>
+    </div>
+    <div class="do-dont dont">
+      <h3>Don't</h3>
+      <ul>
+        <li>Use for precise numeric entry — use Input type="number"</li>
+        <li>Use for 2&ndash;5 discrete options — use a RadioGroup</li>
+        <li>Restyle track or thumb to rounded-sm — same rounded-full exemption as Progress/Switch</li>
+        <li>Change the geometry — track h-2 and thumb h-4 w-4 are fixed</li>
+        <li>Color the thumb blue — the thumb is light; blue is the range fill</li>
+      </ul>
+    </div>
+  </div>
+</div>

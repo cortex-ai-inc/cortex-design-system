@@ -71,7 +71,7 @@ Baseado no estilo New York do shadcn/ui: cantos levemente arredondados (4px padr
 O design system vive como documentação em três formas:
 
 1. **Documentação visual (`index.html`)** — Página web interativa com demonstração de cada componente e padrão. O que um designer ou dev front-end abre no navegador para explorar.
-2. **Documentação para LLM (`llm/`)** — 31 arquivos de componentes + 6 padrões em markdown estruturado, escritos especificamente para que modelos de linguagem (Claude, GPT, etc.) gerem código no estilo Cortex com precisão.
+2. **Documentação para LLM (`llm/`)** — 40 arquivos de componentes + 6 padrões em markdown estruturado, escritos especificamente para que modelos de linguagem (Claude, GPT, etc.) gerem código no estilo Cortex com precisão.
 3. **Código fonte real** — Os componentes em si vivem nos repositórios de cada produto (`cortex-note-app`, `cortex-coder-front`, `cortex-support-front`) como componentes shadcn/ui em `@/components/ui/`, consumindo as tokens de design via Tailwind CSS.
 
 ## O Público
