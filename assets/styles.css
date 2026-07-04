@@ -1576,6 +1576,7 @@ img {
 }
 .stepper.vertical .step-connector {
   width: 1px;
+  min-width: 0;
   height: auto;
   min-height: 1.5rem;
   flex: none;
@@ -1636,7 +1637,7 @@ img {
   transform: translateY(-200%);
   transition: transform var(--motion-fast) var(--ease-out);
 }
-.skip-link:focus-visible {
+.skip-link:focus {
   transform: translateY(0);
   outline: none;
   box-shadow: var(--focus-ring);
