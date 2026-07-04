@@ -5,99 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cortex Design System</title>
   <link rel="stylesheet" href="assets/styles.css" />
-  <style>
-    /* Content area loading states */
-    #content-area {
-      min-height: 60vh;
-    }
-    #content-area.loading {
-      opacity: 0.5;
-      transition: opacity 0.15s ease;
-    }
-    .loading-indicator {
-      display: none;
-      padding: 3rem;
-      text-align: center;
-      color: var(--on-surface-variant);
-    }
-    .loading-indicator.active {
-      display: block;
-    }
-    #content-area.loading .page-body,
-    #content-area.loading .page-header {
-      display: none;
-    }
-    .error-message {
-      padding: 2rem;
-      text-align: center;
-      color: var(--k-error);
-    }
-    /* Smooth scroll for content area */
-    #content-area {
-      scroll-margin-top: 0;
-    }
-    /* Search */
-    .search-box {
-      margin: 0.5rem 0.75rem;
-      position: relative;
-    }
-    .search-box input {
-      width: 100%;
-      padding: 0.375rem 0.75rem;
-      padding-left: 1.75rem;
-      border-radius: calc(var(--radius) - 4px);
-      border: 1px solid var(--ghost-border);
-      background: var(--surface-dim);
-      color: var(--on-surface);
-      font-size: var(--text-body-sm);
-      font-family: var(--font-body);
-      outline: none;
-      transition: border-color 0.15s ease;
-    }
-    .search-box input:focus {
-      border-color: var(--k-primary-container);
-    }
-    .search-box input::placeholder {
-      color: rgba(194, 198, 214, 0.4);
-    }
-    .search-box .search-icon {
-      position: absolute;
-      left: 0.5rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--on-surface-variant);
-      opacity: 0.5;
-      font-size: 14px;
-      pointer-events: none;
-    }
-    .search-highlight {
-      background: rgba(77, 142, 255, 0.3);
-      padding: 0 2px;
-      border-radius: 2px;
-    }
-    .no-results {
-      padding: 0.75rem 1.25rem;
-      color: var(--on-surface-variant);
-      font-size: var(--text-body-sm);
-      text-align: center;
-    }
-    /* Anchor links */
-    .anchor-link {
-      opacity: 0;
-      margin-left: 0.375rem;
-      font-size: 0.875em;
-      color: var(--k-primary);
-      text-decoration: none;
-      transition: opacity 0.15s ease;
-    }
-    h2:hover .anchor-link,
-    h3:hover .anchor-link,
-    .anchor-link:focus-visible {
-      opacity: 1;
-    }
-  </style>
 </head>
 <body>
+  <a class="skip-link" href="#content-area">Skip to content</a>
   <div class="app-layout">
     <!-- Mobile Nav Toggle -->
     <button class="mobile-nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -118,13 +28,25 @@
       </div>
 
       <!-- Search -->
-      <div class="search-box">
-        <span class="search-icon">&#8981;</span>
-        <input type="text" id="searchInput" placeholder="Search docs..." autocomplete="off" />
+      <div class="search-box" id="searchBox" role="search">
+        <span class="search-icon" aria-hidden="true">&#8981;</span>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search docs..."
+          autocomplete="off"
+          aria-label="Search documentation"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="searchResults"
+          aria-autocomplete="list"
+        />
+        <kbd class="search-kbd" id="searchKbd" aria-hidden="true">&#8984;K</kbd>
+        <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
       </div>
 
       <!-- Navigation -->
-      <nav class="sidebar-nav" id="sidebarNav">
+      <nav class="sidebar-nav" id="sidebarNav" aria-label="Main navigation">
         <!-- Getting Started -->
         <div class="nav-section">
           <span class="nav-section-title">Getting Started</span>
@@ -329,176 +251,18 @@
 
     <!-- Main Content -->
     <main class="main-content" id="mainContent">
-      <div id="content-area">
+      <div class="loading-indicator" id="loadingIndicator">
+        <div class="spinner spinner-md" style="margin:0 auto 1rem;"></div>
+        Loading...
+      </div>
+      <div id="content-area" tabindex="-1">
         <!-- Content loaded dynamically -->
-        <div class="loading-indicator" id="loadingIndicator">
-          <div class="spinner spinner-md" style="margin:0 auto 1rem;"></div>
-          Loading...
-        </div>
       </div>
     </main>
   </div>
 
-  <script>
-    /* ─── Cortex Design System — SPA Navigation ─────────────── */
+  <div class="sr-only" aria-live="polite" id="routeAnnouncer"></div>
 
-    const state = {
-      currentPage: 'overview',
-      contentCache: {},
-      searchTerm: '',
-    };
-
-    // DOM refs
-    const contentArea = document.getElementById('content-area');
-    const loadingIndicator = document.getElementById('loadingIndicator');
-    const navLinks = document.querySelectorAll('.nav-link[data-page]');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarOverlay = document.getElementById('sidebarOverlay');
-    const navToggle = document.getElementById('navToggle');
-    const searchInput = document.getElementById('searchInput');
-
-    /* ─── Page Loader ──────────────────────────────────────── */
-    async function loadPage(pageName) {
-      if (!pageName) return;
-
-      state.currentPage = pageName;
-
-      // Update active nav link
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.dataset.page === pageName);
-      });
-
-      // Show loading
-      contentArea.classList.add('loading');
-      loadingIndicator.classList.add('active');
-
-      try {
-        // Try cache first
-        if (state.contentCache[pageName]) {
-          contentArea.innerHTML = state.contentCache[pageName];
-        } else {
-          const response = await fetch(`content/${pageName}.html`);
-          if (!response.ok) throw new Error(`Page not found: ${pageName}`);
-          const html = await response.text();
-          state.contentCache[pageName] = html;
-          contentArea.innerHTML = html;
-        }
-
-        // Update document title
-        const titleEl = contentArea.querySelector('h1');
-        document.title = titleEl
-          ? `${titleEl.textContent} — Cortex Design System`
-          : 'Cortex Design System';
-
-        // Process anchor links
-        contentArea.querySelectorAll('h2[id], h3[id], h4[id]').forEach(heading => {
-          const anchor = document.createElement('a');
-          anchor.href = `#${heading.id}`;
-          anchor.className = 'anchor-link';
-          anchor.textContent = '#';
-          anchor.setAttribute('aria-label', `Link to ${heading.textContent}`);
-          heading.appendChild(anchor);
-        });
-
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      } catch (err) {
-        contentArea.innerHTML = `
-          <div class="page-header">
-            <h1>Page Not Found</h1>
-            <p>The page "${pageName}" could not be loaded.</p>
-          </div>
-          <div class="page-body">
-            <div class="callout callout-danger">
-              <div class="callout-title">Error</div>
-              <p>${err.message}</p>
-              <p style="margin-top:0.5rem;"><a href="#" onclick="loadPage('overview');return false;">Return to overview</a></p>
-            </div>
-          </div>
-        `;
-        document.title = 'Error — Cortex Design System';
-      } finally {
-        contentArea.classList.remove('loading');
-        loadingIndicator.classList.remove('active');
-      }
-
-      // Close mobile sidebar
-      sidebar.classList.remove('open');
-      sidebarOverlay.classList.remove('open');
-    }
-
-    /* ─── Navigation ────────────────────────────────────────── */
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const page = link.dataset.page;
-        if (page && page !== state.currentPage) {
-          loadPage(page);
-          history.pushState({ page }, '', `#${page}`);
-        }
-      });
-    });
-
-    // Mobile toggle
-    navToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-      sidebarOverlay.classList.toggle('open');
-    });
-    sidebarOverlay.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-      sidebarOverlay.classList.remove('open');
-    });
-
-    // Browser back/forward
-    window.addEventListener('popstate', (e) => {
-      const page = e.state?.page || location.hash.slice(1) || 'overview';
-      loadPage(page);
-    });
-
-    /* ─── Search ─────────────────────────────────────────────── */
-    function filterNav(searchTerm) {
-      const links = document.querySelectorAll('.nav-link[data-page]');
-      const sections = document.querySelectorAll('.nav-section');
-      let anyVisible = false;
-
-      links.forEach(link => {
-        const text = link.textContent.toLowerCase();
-        const page = link.dataset.page;
-        const match = text.includes(searchTerm) || page.includes(searchTerm);
-        link.style.display = match ? '' : 'none';
-        if (match) anyVisible = true;
-      });
-
-      sections.forEach(section => {
-        const visibleLinks = section.querySelectorAll('.nav-link[data-page]');
-        const hasVisible = Array.from(visibleLinks).some(l => l.style.display !== 'none');
-        section.style.display = hasVisible ? '' : 'none';
-        const title = section.querySelector('.nav-section-title');
-        if (title) title.style.display = hasVisible ? '' : 'none';
-      });
-
-      // Remove old no-results
-      const old = document.querySelector('.no-results');
-      if (old) old.remove();
-
-      if (!anyVisible && searchTerm.length > 0) {
-        const msg = document.createElement('div');
-        msg.className = 'no-results';
-        msg.textContent = `No results for "${searchTerm}"`;
-        document.getElementById('sidebarNav').appendChild(msg);
-      }
-    }
-
-    searchInput.addEventListener('input', (e) => {
-      state.searchTerm = e.target.value.toLowerCase().trim();
-      filterNav(state.searchTerm);
-    });
-
-    /* ─── Init ───────────────────────────────────────────────── */
-    // Load initial page from hash or default
-    const initialPage = location.hash.slice(1) || 'overview';
-    loadPage(initialPage);
-  </script>
+  <script src="assets/app.js" defer></script>
 </body>
 </html>

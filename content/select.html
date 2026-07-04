@@ -57,59 +57,59 @@
     <div class="preview-card">
       <div class="preview-card-header">Default</div>
       <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
-        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Role</label>
-        <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #C2C6D6; cursor: pointer;">
+        <label class="text-label-sm text-muted">Role</label>
+        <div style="height: 36px; background: var(--surface-dim); border: 1px solid var(--ghost-border-20); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: var(--on-surface-variant); cursor: pointer;">
           <span>Select role...</span>
-          <span style="color: #C2C6D6; font-size: 0.625rem;">&#x25BC;</span>
+          <span style="font-size: 0.625rem;">&#x25BC;</span>
         </div>
       </div>
     </div>
     <div class="preview-card">
       <div class="preview-card-header">Open</div>
       <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 8px;">
-        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Role</label>
-        <div style="height: 40px; background: #111319; border: 1px solid rgba(77,142,255,0.5); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #E2E2E5; cursor: pointer; box-shadow: 0 0 0 2px rgba(77,142,255,0.3);">
+        <label class="text-label-sm text-muted">Role</label>
+        <div style="height: 36px; background: var(--surface-dim); border: 1px solid rgba(77,142,255,0.5); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: var(--on-surface); cursor: pointer; box-shadow: var(--focus-ring-tight);">
           <span>Agent</span>
-          <span style="color: #C2C6D6; font-size: 0.625rem;">&#x25B2;</span>
+          <span style="color: var(--on-surface-variant); font-size: 0.625rem;">&#x25B2;</span>
         </div>
       </div>
     </div>
     <div class="preview-card">
       <div class="preview-card-header">Dropdown Content</div>
-      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 4px; background: #191B22; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 8px; max-width: 200px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);">
-        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px;">Admin</div>
-        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px; background: #282A30;">Agent</div>
-        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: #E2E2E5; border-radius: 4px;">Viewer</div>
+      <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 4px; background: var(--surface-container-low); border: 1px solid var(--ghost-border-10); border-radius: 6px; padding: 8px; max-width: 200px; box-shadow: var(--shadow-overlay);">
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: var(--on-surface); border-radius: 4px;">Admin</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: var(--on-surface); border-radius: 4px; background: var(--surface-container-high);">Agent</div>
+        <div style="height: 32px; display: flex; align-items: center; padding: 0 8px; font-size: 0.8125rem; color: var(--on-surface); border-radius: 4px;">Viewer</div>
       </div>
     </div>
   </div>
 
   <div class="preview-card" style="max-width: 400px;">
-    <div class="preview-card-header">Select States</div>
+    <div class="preview-card-header">Select States <span class="badge badge-primary">Live</span></div>
     <div class="preview-card-body" style="display: flex; flex-direction: column; gap: 16px;">
-      <div style="display: flex; flex-direction: column; gap: 4px;">
-        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Enabled</label>
-        <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #C2C6D6;">
-          <span>Option selected</span>
-          <span style="color: #C2C6D6; font-size: 0.625rem;">&#x25BC;</span>
-        </div>
+      <div style="display: flex; flex-direction: column; gap: 4px; width: 100%;">
+        <label class="text-label-sm text-muted" for="demo-select-enabled">Enabled</label>
+        <select class="input" id="demo-select-enabled" style="cursor:pointer;">
+          <option>Admin</option>
+          <option selected>Agent</option>
+          <option>Viewer</option>
+        </select>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 4px;">
-        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Disabled</label>
-        <div style="height: 40px; background: #111319; border: 1px solid rgba(255,255,255,0.06); border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #6B7280; opacity: 0.5;">
-          <span>Not available</span>
-          <span style="font-size: 0.625rem;">&#x25BC;</span>
-        </div>
+      <div style="display: flex; flex-direction: column; gap: 4px; width: 100%;">
+        <label class="text-label-sm text-muted" for="demo-select-disabled">Disabled</label>
+        <select class="input" id="demo-select-disabled" disabled>
+          <option>Not available</option>
+        </select>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 4px;">
-        <label style="font-size: 0.6875rem; text-transform: uppercase; color: #C2C6D6; letter-spacing: 0.05em;">Error</label>
-        <div style="height: 40px; background: #111319; border: 1px solid #F87171; border-radius: 4px; padding: 0 12px; display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem; color: #C2C6D6;">
-          <span>Select role...</span>
-          <span style="color: #C2C6D6; font-size: 0.625rem;">&#x25BC;</span>
-        </div>
-        <div style="font-size: 0.75rem; color: #F87171;">This field is required.</div>
+      <div style="display: flex; flex-direction: column; gap: 4px; width: 100%;">
+        <label class="text-label-sm text-muted" for="demo-select-error">Error</label>
+        <select class="input" id="demo-select-error" aria-invalid="true" style="border-color: var(--k-error);">
+          <option>Select role...</option>
+        </select>
+        <div class="text-code-sm" style="color: var(--k-error);">This field is required.</div>
       </div>
     </div>
+    <div class="preview-card-footer"><code>real &lt;select class="input"&gt; — h-9, ghost-border-20, focus:ring-2</code></div>
   </div>
 
   <h2 id="props">Props</h2>
