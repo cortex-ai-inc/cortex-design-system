@@ -88,6 +88,15 @@ module.exports = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // ── Data-viz categorical palette ──
+        "chart-1": "hsl(var(--chart-1))",
+        "chart-2": "hsl(var(--chart-2))",
+        "chart-3": "hsl(var(--chart-3))",
+        "chart-4": "hsl(var(--chart-4))",
+        "chart-5": "hsl(var(--chart-5))",
+        "chart-6": "hsl(var(--chart-6))",
+        "chart-7": "hsl(var(--chart-7))",
+        "chart-8": "hsl(var(--chart-8))",
         // ── Cortex brand / surface layer ──
         "surface-dim": "#111319",
         "surface-container-lowest": "#0C0E14",
@@ -101,21 +110,43 @@ module.exports = {
         "k-secondary": "#4ADE80",
         "k-error": "#F87171",
         "k-warning": "#FBBF24",
+        "k-accent-violet": "#A78BFA",
+        "k-accent-teal": "#22D3EE",
       },
       fontFamily: {
         inter: ["Inter", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {
-        xl: "calc(var(--radius) + 4px)",
-        lg: "var(--radius)",
+        // lg/xl are CLAMPED to 6px: "never exceed 6px" is enforced by the config,
+        // so stock shadcn code using rounded-lg/rounded-xl needs no edits.
+        xl: "0.375rem",
+        lg: "0.375rem",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
         xs: "calc(var(--radius) - 6px)",
       },
       boxShadow: {
         xs: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        overlay: "0 8px 24px rgba(0, 0, 0, 0.40)",
         ambient: "0 32px 64px rgba(0, 0, 0, 0.12)",
+        "glow-primary": "0 0 24px 0 rgba(77, 142, 255, 0.25)",
+      },
+      transitionDuration: {
+        fast: "150ms",
+        base: "200ms",
+        slow: "300ms",
+      },
+      opacity: {
+        disabled: "0.5",
+      },
+      zIndex: {
+        sidebar: "10",
+        topbar: "20",
+        popover: "100",
+        overlay: "150",
+        modal: "200",
+        toast: "300",
       },
       keyframes: {
         "accordion-down": {
@@ -183,8 +214,19 @@ The system is **dark-only**, so the dark palette lives directly on `:root` (no l
   --destructive-foreground: 210 40% 98%;
   --border: 217.2 32.6% 17.5%;
   --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
+  /* Focus ring is BRAND BLUE (#4D8EFF), not shadcn's light slate —
+     every focus ring is part of the signature. */
+  --ring: 218 100% 65%;
   --radius: 0.5rem;
+  /* Data-viz categorical palette (see design-tokens.md → Data Visualization) */
+  --chart-1: 218 100% 65%;
+  --chart-2: 255 92% 76%;
+  --chart-3: 188 86% 53%;
+  --chart-4: 329 86% 70%;
+  --chart-5: 43 96% 56%;
+  --chart-6: 142 69% 58%;
+  --chart-7: 27 96% 61%;
+  --chart-8: 215 20% 65%;
   --sidebar-background: 240 5.9% 10%;
   --sidebar-foreground: 240 4.8% 95.9%;
   --sidebar-primary: 224.3 76.3% 48%;
@@ -324,6 +366,7 @@ The type scale and the brand helpers live in `@layer utilities`. These class nam
   .gradient-primary {
     background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%);
   }
+  .ghost-border-10 { border-color: rgba(194, 198, 214, 0.10); }
   .ghost-border { border-color: rgba(194, 198, 214, 0.15); }
   .ghost-border-20 { border-color: rgba(194, 198, 214, 0.20); }
 }

@@ -47,6 +47,16 @@ Isso é tanto estético quanto funcional: elimina a complexidade de gerenciar so
 
 `#ADC6FF → #4D8EFF` é a assinatura visual da marca. Aparece em botões primários, indicadores ativos, destaques de navegação e acentos decorativos. É o único gradiente do sistema — repetido à exaustão até se tornar reconhecível como "a cor do Cortex".
 
+### Profundidade e Luz
+
+A camada tonal continua sendo a linguagem primária de profundidade — cards e painéis não recebem sombra. Existem apenas dois níveis nomeados de sombra, reservados a elementos flutuantes: `shadow-overlay` para pequenos flutuantes (dropdowns, tooltips, popovers) e `shadow-ambient` para superfícies modais.
+
+O **glow azul** (`shadow-glow-primary`) é o único floreio luminoso do sistema: um halo derivado do gradiente, permitido exclusivamente sobre elementos `gradient-primary` e no máximo um por tela. É a exceção que confirma a sobriedade.
+
+**Violeta** (`#A78BFA`, IA/inteligência) e **teal** (`#22D3EE`, dados/métricas) são vozes de apoio — categorizam e decoram, mas nunca competem com o azul: jamais aparecem em botões, links, focus rings, estados marcados ou navegação ativa.
+
+O movimento é sóbrio: 150/200/300ms, sempre `ease-out`, sem springs ou bounces. Nada acima de 300ms exceto loops de carregamento — e tudo respeita `prefers-reduced-motion`.
+
 ### Tipografia: A Escolha do Profissional
 
 - **Inter** para corpo de texto — utilitária, legível, compacta (13px padrão). Prioriza densidade de informação sobre espaçamento.

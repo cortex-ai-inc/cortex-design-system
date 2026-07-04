@@ -16,13 +16,13 @@
       </tr>
       <tr>
         <td><code>xl</code></td>
-        <td>calc(var(--radius) + 4px) = 12px</td>
-        <td><div class="token-demo" style="width:32px;height:32px;border-radius:12px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
+        <td>0.375rem (clamped) = 6px — compat alias, prefer <code>md</code></td>
+        <td><div class="token-demo" style="width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
       </tr>
       <tr>
         <td><code>lg</code></td>
-        <td>var(--radius) = 8px</td>
-        <td><div class="token-demo" style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
+        <td>0.375rem (clamped) = 6px — compat alias, prefer <code>md</code></td>
+        <td><div class="token-demo" style="width:32px;height:32px;border-radius:6px;background:linear-gradient(135deg,#ADC6FF,#4D8EFF);"></div></td>
       </tr>
       <tr>
         <td><code>md</code></td>
@@ -65,6 +65,6 @@
   <h2 id="constraint">Constraint</h2>
   <div class="callout callout-warning">
     <div class="callout-title">&#9888;&#65039; Never exceed 0.375rem (6px)</div>
-    <p>In cortex-coder-front, border-radius is constrained to maximum 6px in practice, overriding the shadcn defaults.</p>
+    <p>The Tailwind config <strong>clamps</strong> <code>rounded-lg</code> and <code>rounded-xl</code> to 6px, so the constraint is true by construction — stock shadcn code renders correctly with no edits. <code>--radius</code> stays <code>0.5rem</code> as the derivation base for <code>md/sm/xs</code>.</p>
   </div>
 </div>

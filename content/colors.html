@@ -116,19 +116,110 @@
     </div>
   </div>
 
+  <h2 id="accents">Accent Colors</h2>
+  <p>Two supporting accents exist alongside the blue signature. They are <strong>subordinate voices</strong> — decoration and categorization, never interaction. Accents never appear on buttons, links, focus rings, checked states, or active navigation; those are exclusively blue. Keep them under ~10% of any view.</p>
+  <div class="grid-3">
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#A78BFA;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">k-accent-violet</div>
+        <div class="color-swatch-value">#A78BFA</div>
+        <div class="color-swatch-usage">AI/intelligence accent — "AI" badges, feature tags, chart-2</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:#22D3EE;"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">k-accent-teal</div>
+        <div class="color-swatch-value">#22D3EE</div>
+        <div class="color-swatch-usage">Data/metrics accent — KPI highlights, sparklines, chart-3</div>
+      </div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:rgba(77,142,255,0.08);"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">k-primary-tint</div>
+        <div class="color-swatch-value">rgba(77,142,255,0.08)</div>
+        <div class="color-swatch-usage">Info-tinted backgrounds — callouts, blockquotes, selected rows</div>
+      </div>
+    </div>
+  </div>
+  <div class="preview-card">
+    <div class="preview-card-header">Accent badges (tint ladder /20)</div>
+    <div class="preview-card-body">
+      <span class="badge" style="background:rgba(167,139,250,0.2);color:#A78BFA;">AI-generated</span>
+      <span class="badge" style="background:rgba(34,211,238,0.2);color:#22D3EE;">+12.4% MRR</span>
+      <span class="badge badge-primary">Primary stays blue</span>
+    </div>
+    <div class="preview-card-footer"><code>bg-k-accent-violet/20 text-k-accent-violet · bg-k-accent-teal/20 text-k-accent-teal</code></div>
+  </div>
+
+  <h2 id="charts">Data Visualization</h2>
+  <p>Categorical palette for charts (recharts). Use <strong>in order</strong> 1&rarr;8; two-series charts prefer chart-1 + chart-5 (color-blind-safe). Status charts use the semantic colors instead. Chart colors never appear on UI controls.</p>
+  <div class="preview-card">
+    <div class="preview-card-header">Categorical scale</div>
+    <div class="preview-card-body column" style="gap:1rem;">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+        <div style="width:44px;"><div style="height:44px;border-radius:4px;background:#4D8EFF;"></div><div class="text-code-sm text-muted" style="margin-top:4px;text-align:center;">1</div></div>
+        <div style="width:44px;"><div style="height:44px;border-radius:4px;background:#A78BFA;"></div><div class="text-code-sm text-muted" style="margin-top:4px;text-align:center;">2</div></div>
+        <div style="width:44px;"><div style="height:44px;border-radius:4px;background:#22D3EE;"></div><div class="text-code-sm text-muted" style="margin-top:4px;text-align:center;">3</div></div>
+        <div style="width:44px;"><div style="height:44px;border-radius:4px;background:#F472B6;"></div><div class="text-code-sm text-muted" style="margin-top:4px;text-align:center;">4</div></div>
+        <div style="width:44px;"><div style="height:44px;border-radius:4px;background:#FBBF24;"></div><div class="text-code-sm text-muted" style="margin-top:4px;text-align:center;">5</div></div>
+        <div style="width:44px;"><div style="height:44px;border-radius:4px;background:#4ADE80;"></div><div class="text-code-sm text-muted" style="margin-top:4px;text-align:center;">6</div></div>
+        <div style="width:44px;"><div style="height:44px;border-radius:4px;background:#FB923C;"></div><div class="text-code-sm text-muted" style="margin-top:4px;text-align:center;">7</div></div>
+        <div style="width:44px;"><div style="height:44px;border-radius:4px;background:#94A3B8;"></div><div class="text-code-sm text-muted" style="margin-top:4px;text-align:center;">8</div></div>
+      </div>
+      <div style="width:100%;max-width:420px;display:flex;align-items:flex-end;gap:8px;height:96px;padding:8px 12px;border:1px solid var(--ghost-border-10);border-radius:6px;background:var(--surface-container-lowest);">
+        <div style="flex:1;height:70%;border-radius:3px 3px 0 0;background:#4D8EFF;"></div>
+        <div style="flex:1;height:45%;border-radius:3px 3px 0 0;background:#A78BFA;"></div>
+        <div style="flex:1;height:85%;border-radius:3px 3px 0 0;background:#22D3EE;"></div>
+        <div style="flex:1;height:30%;border-radius:3px 3px 0 0;background:#F472B6;"></div>
+        <div style="flex:1;height:55%;border-radius:3px 3px 0 0;background:#FBBF24;"></div>
+      </div>
+    </div>
+    <div class="preview-card-footer"><code>fill: hsl(var(--chart-1)) … hsl(var(--chart-8)) · grid: ghost-border-10 · tooltip: surface-container-high</code></div>
+  </div>
+  <table class="token-table">
+    <thead>
+      <tr><th>Token</th><th>Hex</th><th>Note</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>chart-1</code></td><td>#4D8EFF</td><td>Brand blue — first series is always the signature</td></tr>
+      <tr><td><code>chart-2</code></td><td>#A78BFA</td><td>Violet (= k-accent-violet)</td></tr>
+      <tr><td><code>chart-3</code></td><td>#22D3EE</td><td>Cyan (= k-accent-teal)</td></tr>
+      <tr><td><code>chart-4</code></td><td>#F472B6</td><td>Pink</td></tr>
+      <tr><td><code>chart-5</code></td><td>#FBBF24</td><td>Amber (= k-warning hex)</td></tr>
+      <tr><td><code>chart-6</code></td><td>#4ADE80</td><td>Green (= k-secondary hex)</td></tr>
+      <tr><td><code>chart-7</code></td><td>#FB923C</td><td>Orange — 7+ series only</td></tr>
+      <tr><td><code>chart-8</code></td><td>#94A3B8</td><td>Slate — "other/remainder"</td></tr>
+    </tbody>
+  </table>
+
   <h2 id="gradient">Gradient</h2>
-  <p>The <code>.gradient-primary</code> utility creates the signature Cortex blue gradient.</p>
+  <p>The gradient is itself a token — <code>--gradient-primary</code> — exposed by the <code>.gradient-primary</code> utility.</p>
   <div class="preview-card">
     <div class="preview-card-header">Preview</div>
     <div class="preview-card-body">
       <div style="width:200px;height:48px;border-radius:4px;background:linear-gradient(135deg,#ADC6FF 0%,#4D8EFF 100%);"></div>
     </div>
-    <div class="preview-card-footer"><code>background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%);</code></div>
+    <div class="preview-card-footer"><code>--gradient-primary: linear-gradient(135deg, var(--k-primary) 0%, var(--k-primary-container) 100%);</code></div>
+  </div>
+  <div class="callout callout-warning">
+    <div class="callout-title">&#9888;&#65039; Text on the gradient must be dark</div>
+    <p>Use <code>text-surface-container-lowest</code> (#0C0E14): 11.1:1 on the light end, 6.0:1 on the dark end — AA on both. Light text (<code>on-surface</code>) fails at 1.36:1 on the light end. This is a law, not a preference.</p>
   </div>
 
   <h2 id="borders">Ghost Borders</h2>
   <p>Subtle borders that separate without adding visual weight:</p>
-  <div class="grid-2">
+  <div class="grid-3">
+    <div class="color-swatch">
+      <div class="color-swatch-box" style="background:rgba(194,198,214,0.10);"></div>
+      <div class="color-swatch-info">
+        <div class="color-swatch-name">ghost-border-10</div>
+        <div class="color-swatch-value">rgba(194,198,214,0.10)</div>
+        <div class="color-swatch-usage">Chart grids, sub-hairlines</div>
+      </div>
+    </div>
     <div class="color-swatch">
       <div class="color-swatch-box" style="background:rgba(194,198,214,0.15);"></div>
       <div class="color-swatch-info">
@@ -142,7 +233,7 @@
       <div class="color-swatch-info">
         <div class="color-swatch-name">ghost-border-20</div>
         <div class="color-swatch-value">rgba(194,198,214,0.20)</div>
-        <div class="color-swatch-usage">Emphasized borders, focus rings</div>
+        <div class="color-swatch-usage">Emphasized borders, input borders</div>
       </div>
     </div>
   </div>

@@ -35,9 +35,45 @@
   /* Radius */
   --radius: 0.5rem;
 
-  /* Shadows */
-  --shadow-ambient: 0 32px 64px rgba(0, 0, 0, 0.12);
+  /* Shadows — elevation tiers (tonal layering stays the primary depth language) */
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.40);
+  --shadow-ambient: 0 32px 64px rgba(0, 0, 0, 0.12);
+  --shadow-glow-primary: 0 0 24px 0 rgba(77, 142, 255, 0.25);
+
+  /* Motion */
+  --motion-fast: 150ms;
+  --motion-base: 200ms;
+  --motion-slow: 300ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-linear: linear;
+
+  /* Interaction states */
+  --opacity-disabled: 0.5;
+  --scrim: rgba(0, 0, 0, 0.60);
+
+  /* Hairlines */
+  --ghost-border-10: rgba(194, 198, 214, 0.10);
+
+  /* Accent colors — subordinate to the blue signature */
+  --k-accent-violet: #A78BFA;
+  --k-accent-teal: #22D3EE;
+  --k-primary-tint: rgba(77, 142, 255, 0.08);
+
+  /* Data visualization (categorical, in usage order) */
+  --chart-1: #4D8EFF;
+  --chart-2: #A78BFA;
+  --chart-3: #22D3EE;
+  --chart-4: #F472B6;
+  --chart-5: #FBBF24;
+  --chart-6: #4ADE80;
+  --chart-7: #FB923C;
+  --chart-8: #94A3B8;
+  --chart-grid: rgba(194, 198, 214, 0.10);
+
+  /* Gradient */
+  --gradient-primary: linear-gradient(135deg, var(--k-primary) 0%, var(--k-primary-container) 100%);
 
   /* Focus rings */
   --focus-ring: 0 0 0 2px var(--surface-dim), 0 0 0 4px var(--k-primary-container);
@@ -100,7 +136,7 @@ code, pre, .font-mono {
 a {
   color: var(--k-primary);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color var(--motion-fast) var(--ease-out);
 }
 a:hover {
   color: var(--k-primary-container);
@@ -145,7 +181,7 @@ img {
   width: 32px;
   height: 32px;
   border-radius: calc(var(--radius) - 4px);
-  background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%);
+  background: var(--gradient-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -199,7 +235,7 @@ img {
   font-size: var(--text-body-sm);
   color: var(--on-surface-variant);
   text-decoration: none;
-  transition: all 0.15s ease;
+  transition: all var(--motion-fast) var(--ease-out);
   border-left: 3px solid transparent;
   position: relative;
 }
@@ -454,11 +490,11 @@ img {
 
 /* ─── Gradient Primary ─────────────────────────────────────── */
 .gradient-primary {
-  background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%);
+  background: var(--gradient-primary);
 }
 
 .gradient-primary-text {
-  background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%);
+  background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -473,6 +509,10 @@ img {
   border-color: var(--ghost-border-20);
 }
 
+.ghost-border-10 {
+  border-color: var(--ghost-border-10);
+}
+
 /* ─── Buttons ──────────────────────────────────────────────── */
 .btn {
   display: inline-flex;
@@ -485,7 +525,7 @@ img {
   font-weight: 500;
   padding: 0.375rem 0.75rem;
   height: 2.25rem;
-  transition: all 0.15s ease;
+  transition: all var(--motion-fast) var(--ease-out);
   cursor: pointer;
   border: none;
   font-family: var(--font-body);
@@ -497,7 +537,7 @@ img {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%);
+  background: var(--gradient-primary);
   color: var(--surface-container-lowest);
 }
 .btn-primary:hover {
@@ -621,7 +661,7 @@ img {
 /* ─── Inputs ────────────────────────────────────────────────── */
 .input {
   display: flex;
-  height: 2.5rem;
+  height: 2.25rem;
   width: 100%;
   border-radius: calc(var(--radius) - 4px);
   border: 1px solid var(--ghost-border-20);
@@ -630,7 +670,7 @@ img {
   font-size: var(--text-body-sm);
   color: var(--on-surface);
   font-family: var(--font-body);
-  transition: all 0.15s ease;
+  transition: all var(--motion-fast) var(--ease-out);
 }
 .input::placeholder {
   color: rgba(194, 198, 214, 0.5);
@@ -666,7 +706,7 @@ img {
   font-size: var(--text-body-sm);
   font-weight: 500;
   color: var(--on-surface-variant);
-  transition: all 0.15s ease;
+  transition: all var(--motion-fast) var(--ease-out);
   cursor: pointer;
   border: none;
   background: transparent;
@@ -691,7 +731,7 @@ img {
   border-radius: 9999px;
   border: 2px solid transparent;
   background: var(--surface-container-high);
-  transition: background 0.15s ease;
+  transition: background var(--motion-fast) var(--ease-out);
   position: relative;
 }
 .switch.checked {
@@ -703,7 +743,7 @@ img {
   height: 1rem;
   border-radius: 9999px;
   background: var(--on-surface);
-  transition: transform 0.15s ease;
+  transition: transform var(--motion-fast) var(--ease-out);
   box-shadow: var(--shadow-xs);
 }
 .switch.checked .switch-thumb {
@@ -983,7 +1023,7 @@ img {
 .anim-box {
   width: 3rem;
   height: 3rem;
-  background: linear-gradient(135deg, #ADC6FF 0%, #4D8EFF 100%);
+  background: var(--gradient-primary);
   border-radius: calc(var(--radius) - 4px);
 }
 
@@ -1040,7 +1080,7 @@ img {
 
   .sidebar {
     transform: translateX(-100%);
-    transition: transform 0.2s ease;
+    transition: transform var(--motion-base) var(--ease-out);
     z-index: var(--z-modal);
   }
   .sidebar.open {
@@ -1115,7 +1155,9 @@ img {
 }
 
 .shadow-xs { box-shadow: var(--shadow-xs); }
+.shadow-overlay { box-shadow: var(--shadow-overlay); }
 .shadow-ambient { box-shadow: var(--shadow-ambient); }
+.shadow-glow-primary { box-shadow: var(--shadow-glow-primary); }
 
 /* ─── Typography Scale Preview ──────────────────────────────── */
 .type-scale-item {

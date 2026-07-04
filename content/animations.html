@@ -3,6 +3,22 @@
   <p>Subtle, purposeful animations that enhance without distracting.</p>
 </div>
 <div class="page-body">
+  <h2 id="motion-scale">Motion Scale</h2>
+  <p>Three named durations, three named easings. Everything else is a component constant.</p>
+  <table class="token-table">
+    <thead>
+      <tr><th>Token</th><th>Value</th><th>Role</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>--motion-fast</code></td><td>150ms</td><td>Micro-interactions: hover fills, color/border/opacity</td></tr>
+      <tr><td><code>--motion-base</code></td><td>200ms</td><td>Entrances/exits: fade-in, slide-up, accordion, dropdown</td></tr>
+      <tr><td><code>--motion-slow</code></td><td>300ms</td><td>Large surfaces: Sheet/Drawer panels, layout shifts</td></tr>
+      <tr><td><code>--ease-out</code></td><td>cubic-bezier(0, 0, 0.2, 1)</td><td>Default — entrances, hovers</td></tr>
+      <tr><td><code>--ease-in-out</code></td><td>cubic-bezier(0.4, 0, 0.2, 1)</td><td>On-screen movement, resizes</td></tr>
+      <tr><td><code>--ease-linear</code></td><td>linear</td><td>Infinite loops only (spinner, pulse-ring)</td></tr>
+    </tbody>
+  </table>
+
   <h2 id="keyframes">Keyframes</h2>
   <table class="token-table">
     <thead>
@@ -21,9 +37,11 @@
   <h2 id="principles">Animation Principles</h2>
   <ul>
     <li><strong>200ms default</strong> — fast enough to feel responsive, slow enough to perceive</li>
-    <li><strong>ease-out</strong> — decelerate naturally; no bounce or spring effects</li>
+    <li><strong>Nothing over 300ms</strong> — except infinite loops (spinner, pulse, skeleton)</li>
+    <li><strong>ease-out</strong> — decelerate naturally; no bounce or spring effects, ever</li>
     <li><strong>Subtle shifts</strong> — 10px translateY for slide-up, opacity only for fade-in</li>
     <li><strong>Infinite animations</strong> — reserved for loading/status indicators only</li>
+    <li><strong>Respect <code>prefers-reduced-motion: reduce</code></strong> — disable non-essential animation</li>
   </ul>
 
   <h2 id="previews">Previews</h2>
