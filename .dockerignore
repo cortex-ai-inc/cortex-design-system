@@ -1,0 +1,10 @@
+.git/
+.gitignore
+.claude/
+Makefile
+README.md
+CLAUDE.md
+CONCEITO.md
+llm/
+.dockerignore
+.github/
